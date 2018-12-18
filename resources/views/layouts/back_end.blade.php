@@ -1,531 +1,268 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="{{asset('bower_components/morris.js/morris.css')}}">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+	<title>Light Bootstrap Dashboard by Creative Tim</title>
 
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{{asset('assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
+
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body>
+
 <div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+    <!--
 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">MAIN NAVIGATION</li>
-      <li>
-        <a href="{{route('pelanggan.index')}}">
-          <i class="fa fa-th"></i> <span>Pelanggan</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
-          </span>
-        </a>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-pie-chart"></i>
-          <span>Charts</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-laptop"></i>
-          <span>UI Elements</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-          <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-          <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-          <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-          <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-          <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-edit"></i> <span>Forms</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-          <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-          <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-table"></i> <span>Tables</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-          <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="pages/calendar.html">
-          <i class="fa fa-calendar"></i> <span>Calendar</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-red">3</small>
-            <small class="label pull-right bg-blue">17</small>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="pages/mailbox/mailbox.html">
-          <i class="fa fa-envelope"></i> <span>Mailbox</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-yellow">12</small>
-            <small class="label pull-right bg-green">16</small>
-            <small class="label pull-right bg-red">5</small>
-          </span>
-        </a>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder"></i> <span>Examples</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-          <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-          <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-          <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-          <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-          <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-          <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-          <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-          <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-share"></i> <span>Multilevel</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Level One
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-              <li class="treeview">
-                <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Creative Tim
                 </a>
-                <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                </ul>
-              </li>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('pelanggan.index')}}">
+                        <i class="pe-7s-user"></i>
+                        <p>Pelanggan</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="typography.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Typography</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons.html">
+                        <i class="pe-7s-science"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>
             </ul>
-          </li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-        </ul>
-      </li>
-      <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-      <li class="header">LABELS</li>
-      <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-    </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    @yield('main')
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+    	</div>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
 
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p>Log out</p>
+                            </a>
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
 
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+        <div class="content">
+            <div class="container-fluid">
+                @yield('main')
+            </div>
+        </div>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
 
-                <p>nora@example.com</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
 
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Show me as online
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Turn off notifications
-              <input type="checkbox" class="pull-right">
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
     </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery 3 -->
-<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<!-- Morris.js charts -->
-<script src="{{asset('bower_components/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('bower_components/morris.js/morris.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{asset('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
-<!-- jvectormap -->
-<script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-<script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('bower_components/jquery-knob/dist/jquery.knob.min.js')}}"></script>
-<!-- daterangepicker -->
-<script src="{{asset('bower_components/moment/min/moment.min.js')}}"></script>
-<script src="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-<!-- datepicker -->
-<script src="{{asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-<!-- Slimscroll -->
-<script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
-<!-- FastClick -->
-<script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+
 </body>
+
+    <!--   Core JS Files   -->
+    <script src="{{asset('assets/js/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="{{asset('assets/js/chartist.min.js')}}"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="{{asset('assets/js/bootstrap-notify.js')}}"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0')}}"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="{{asset('assets/js/demo.js')}}"></script>
+
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-gift',
+            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script>
+
 </html>

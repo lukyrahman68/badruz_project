@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/tes', function () {
+    return view('layouts.back_end');
+});
 
 Route::get('/tes2', function () {
     return view('pemilik.index');
