@@ -2,7 +2,7 @@
 @section('main')
 <br>
 <div class="container">
-<div class="col-xs-12">
+<div class="col-xs-12 inner">
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold">Responsive Hover Table</h3>
@@ -49,16 +49,6 @@
                             <div class="form-group">
                                 <label for="kk">Kartu Keluarga</label>
                                 <input type="file" class="form-control" name="kk">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="dp">Dokumen Pendukung</label>
-                                <input type="file" class="form-control" name="dp[]">
-                            </div>
-                            <div class="form-group">
-                                <label for="dp">Dokumen Pendukung</label>
-                                <input type="file" class="form-control" name="dp[]">
                             </div>
                         </div>
                     </div>

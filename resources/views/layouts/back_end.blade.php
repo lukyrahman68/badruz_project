@@ -1,313 +1,319 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
 	<title>UD Sunan Drajad</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/icons/icomoon/styles.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/minified/bootstrap.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/minified/core.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/minified/components.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/minified/colors.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('assets/css/extras/animate.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo asset('css/buttons.dataTables.min.css') ?>" rel="stylesheet" type="text/css">
 
+	<link href="<?php echo asset('vendor/summernote/summernote.css') ?>" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
 
-    <!-- Bootstrap core CSS     -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+	<!-- Core JS files -->
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/loaders/pace.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/jquery.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/bootstrap.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/loaders/blockui.min.js') ?>"></script>
+	<!-- /core JS files -->
 
-    <!-- Animation library for notifications   -->
-    <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet"/>
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/media/fancybox.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/forms/styling/uniform.min.js') ?>"></script>
 
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/tables/datatables/datatables.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/tables/datatables/extensions/tools.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('js/dataTables.buttons.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('js/buttons.print.min.js') ?>"></script>
 
+	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/forms/selects/select2.min.js') ?>"></script>
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet" />
+	<script type="text/javascript" src="<?php echo asset('assets/js/core/app.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/jquery_ui/interactions.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/pages/form_select2.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('assets/js/pages/datatables_basic.js') ?>"></script>
+	<!-- /theme JS files -->
 
+	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/jquery-ui.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('js/alert.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo asset('plugins/ckeditor/ckeditor.js') ?>"></script>
 
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="{{asset('assets/css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
+	<script type="text/javascript" src="<?php echo asset('vendor/summernote/summernote.min.js') ?>"></script>
+	@section('header')
 
+	@show
+	<style>
+		.numberCircle {
+		    border-radius: 50%;
+
+		    width: 20px;
+		    height: 20px;
+		    padding-top: 2px;
+		    
+		    background: #FF4500;
+		    color: #ffffff;
+		    text-align: center;
+		    
+		    font: 12px Arial, sans-serif;
+		}
+	</style>
 </head>
+
 <body>
 
-<div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+	<a class="navbar-brand" href="#" style="padding: 4px 10px">
+        UD Sunan Drajad
+    </a>
 
-    <!--
+		<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
 
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class="sidebar-control sidebar-main-toggle hidden-xs">
+						<i class="icon-paragraph-justify3"></i>
+					</a>
+				</li>
 
-    -->
+				<li class="dropdown">
+					<?php /*
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-git-compare"></i>
+						<span class="visible-xs-inline-block position-right">Git updates</span>
+						<span class="badge bg-warning-400">9</span>
+					</a> */ ?>
 
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                  UD Sunan Drajad
-                </a>
-            </div>
+					<div class="dropdown-menu dropdown-content">
+						<div class="dropdown-content-heading">
+							Git updates
+							<ul class="icons-list">
+								<li><a href="#"><i class="icon-sync"></i></a></li>
+							</ul>
+						</div>
 
-            <ul class="nav">
-                <li class="active">
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Input Data</p>
-                    </a>
-                </li>
-                <li >
-                    <a href="#" class="click">
-                        <i class="pe-7s-graph"></i>
-                        <span class="caret"></span>
-                        <p>Input Data</p>
-                    </a>
-                    <ul class="nav c_dd" style="margin-left:2em;margin-top:0; display:none">
-                      <li>
-                        <a href="dashboard.html">
-                            <i class="pe-7s-graph"></i>
-                            <p>Input Data</p>
-                        </a>
-                      </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Cek Stock</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Pencarian</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Pengadaan Barang</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Penentuan Harga</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Penjualan</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Laporan</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Pemberian Hadiah</p>
-                    </a>
-                </li>
-                {{-- <li>
-                    <a href="{{route('pelanggan.index')}}">
-                        <i class="pe-7s-user"></i>
-                        <p>Pelanggan</p>
-                    </a>
-                </li> --}}
-                <li>
-                    <a href="table.html">
-                        <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-            </ul>
-    	</div>
-    </div>
+						<ul class="media-list dropdown-content-body width-350">
+							<li class="media">
+								<div class="media-left">
+									<a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
+								</div>
 
-    <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
+								<div class="media-body">
+									Drop the IE <a href="#">specific hacks</a> for temporal inputs
+									<div class="media-annotation">4 minutes ago</div>
+								</div>
+							</li>
+						</ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
+						<div class="dropdown-content-footer">
+							<a href="#" data-popup="tooltip" title="All activity"><i class="icon-menu display-block"></i></a>
+						</div>
+					</div>
+				</li>
+			</ul>
 
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
-						<li class="separator hidden-lg"></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<?php /*	<img src="{{ asset('assets/images/placeholder.jpg') }}" alt="">
+						<span>{{ Sentinel::getUser()->fullname }}</span>
+						<i class="caret"></i> */?>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-right">
+						<?php /* <li><a href="{{route('admin.edit', \Auth::user()->id)}}"><i class="icon-cog5"></i> Account settings</a></li> --}}
+						<li><a href="<?php echo route('logout') ?>"><i class="icon-switch2"></i> Logout</a></li>
+					*/?></ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
 
 
-        <div class="content">
-            <div class="container-fluid">
-                @yield('main')
-            </div>
-        </div>
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar -->
+			<div class="sidebar sidebar-main">
+				<div class="sidebar-content">
+
+					<!-- User menu -->
+					<div class="sidebar-user">
+						<div class="category-content">
+							<div class="media">
+								<?php /*	<a href="#" class="media-left"><img src="{{ asset('assets/images/placeholder.jpg') }}" class="img-circle img-sm" alt=""></a>
+								<div class="media-body">
+									<span class="media-heading text-semibold">{{ \Sentinel::getUser()->fullname }}</span>
+								</div>
+							*/?></div>
+						</div>
+					</div>
+					<!-- /user menu -->
 
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
+					<!-- Main navigation -->
+					<div class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-main navigation-accordion">
 
-    </div>
-</div>
+								<!-- Main -->
+                                {{-- <li class="navigation-header"><span>Main</span> 
+                                    <i class="icon-menu" title="Main pages"></i>
+                                </li> --}}
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>Barang</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('pelanggan.index')}}"><i class="icon-user-tie"></i>
+                                    <span>Pelanggan</span></a>
+                                </li>
+                                <li>
+                                <a href="{{route('supplier.index')}}"><i class="icon-truck"></i>
+                                    <span>Supplier</span></a>
+							    </li>
+                                <li class="navigation-header">
+										<a href="dashboard.html">
+											<i class="icon-home"></i>
+											<p>Input Data</p>
+										</a>
+									</li>
+									<li >
+										<a href="#" class="click">
+											<i class="pe-7s-graph"></i>
+											<span class="caret"></span>
+											<p>Input Data</p>
+										</a>
+										<ul class="nav c_dd" style="margin-left:2em;margin-top:0; display:none">
+										  <li>
+											<a href="dashboard.html">
+												<i class="pe-7s-graph"></i>
+												<p>Input Data</p>
+											</a>
+										  </li>
+										</ul>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Cek Stock</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Pencarian</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Pengadaan Barang</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Penentuan Harga</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Penjualan</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Laporan</p>
+										</a>
+									</li>
+									<li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Pemberian Hadiah</p>
+										</a>
+									</li>
+									{{-- <li>
+										<a href="{{route('pelanggan.index')}}">
+											<i class="pe-7s-user"></i>
+											<p>Pelanggan</p>
+										</a>
+									</li> --}}
+									<li>
+										<a href="table.html">
+											<i class="pe-7s-note2"></i>
+											<p>Table List</p>
+										</a>
+									</li>
+									<li>
+										<a href="typography.html">
+											<i class="pe-7s-news-paper"></i>
+											<p>Typography</p>
+										</a>
+									</li>
+									<li>
+										<a href="icons.html">
+											<i class="pe-7s-science"></i>
+											<p>Icons</p>
+										</a>
+									</li>
+									<li>
+										<a href="maps.html">
+											<i class="pe-7s-map-marker"></i>
+											<p>Maps</p>
+										</a>
+									</li>
+									<li>
+										<a href="notifications.html">
+											<i class="pe-7s-bell"></i>
+											<p>Notifications</p>
+										</a>
+									</li>
+							
+								
 
+							</ul>
+						</div>
+					</div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+			<!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+				@yield('main')
+			</div>
+			<!-- /main content -->
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
 
 </body>
-
-    <!--   Core JS Files   -->
-    <script src="{{asset('assets/js/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
-
-	<!--  Charts Plugin -->
-	<script src="{{asset('assets/js/chartist.min.js')}}"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="{{asset('assets/js/bootstrap-notify.js')}}"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0')}}"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="{{asset('assets/js/demo.js')}}"></script>
-
-	@yield('script')
-  <script>
-    $('.click').click(function(){
-      if($('.c_dd').css('display')==='block'){
-        $('.c_dd').css('display', 'none');
-      }else{
-        $('.c_dd').css('display','block')
-      }
-        
-    });
-  </script>
 </html>

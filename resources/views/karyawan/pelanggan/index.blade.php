@@ -1,58 +1,92 @@
 @extends('layouts.back_end')
 @section('main')
-<br>
-<div class="container">
-    <a href="{{route('pelanggan.create')}}" class="btn btn-sm btn-primary">Tambah</a>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Responsive Hover Table</h3>
-    
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-    
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>NIK</th>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
-                        <th>Tempat Tanggal Lahir</th>
-                        <th>Telphone</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>45724522152</td>
-                        <td>Luky</td>
-                        <td>Laki-Laki</td>
-                        <td>Jl Jakarta Perak</td>
-                        <td>Jember</td>
-                        <td>085746664326</td>
-                        <td>lukyrahman68@gmail.com</td>
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+
+<style>
+    select[name="DataTables_Table_0_length"] {     margin-top: 8px;}
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            {{-- <h4><a href="{{!empty(\URL::previous())?\URL::previous():route('dashboard')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">User</span></h4> --}}
+            <h4><a href="{{route('pelanggan.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">DATA PELANGGAN</span></h4>
         </div>
     </div>
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            {{-- <li><a href="{{route('dashboard')}}"><i class="icon-home2 position-left"></i> Home</a></li> --}}
+            <li class="active">PELANGGAN</li>
+        </ul>
+    </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('.datatable-ajax').DataTable({
+          "processing": true,
+          "serverSide": true,
+          "ajax" 		: "{{route('pelanggan.listPelanggan')}}",
+
+          "columns": [
+              {"data": 'no'},
+              {"data": 'nik'},
+              {"data": 'nama'},
+              {"data": 'alamat'},
+              {"data": 'jk'},
+              {"data": 'ttl'},
+              {"data": 'tlp'},
+              {"data": 'email'},
+              {"data": 'created_at'},
+              {"data": 'action'},
+          ]
+      });
+  });
+  </script>
+<br>
+<div class="content">
+    <div class="panel" style="background-color: transparent; border:0; box-shadow: none;">
+            <a href="{{route('pelanggan.create')}}">
+                <button type="button" class="btn btn-success btn-labeled"><b><i class="icon-plus3"></i></b> Create
+                </button>
+              </a>
+    </div>
+
+  
+    
+           
+            <!-- /.box-header -->
+           <div class="row">
+              <div class="col-md-12">
+                <table class="table datatable-ajax" id="example">
+                  <colgroup>
+                    <col>
+                    <col width="180">
+                    <col>
+                    <col>
+                    <col>
+                  </colgroup>
+        
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">NIK</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Alamat</th>
+                      <th scope="col">Jenis Kelamin</th>
+                      <th scope="col">Tanggal Lahir</th>
+                      <th scope="col">Telepon</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Tanggal Daftar</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>
+           
+          </div>
 
 @endsection
+

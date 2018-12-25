@@ -31,7 +31,19 @@ Route::group(['middleware' => ['auth']], function() {
             return view('pemilik.index');
         }
     });
+    Route::get('pelanggan/ajaxListPelanggan', 'PelangganController@ajaxListPelanggan')->name('pelanggan.listPelanggan');
+    Route::get('pelanggan/hapus/{id}', 'PelangganController@destroy')->name('pelanggan.hapus');
     Route::resource('pelanggan', 'PelangganController');
+
+    Route::get('barang/ajaxListBarang', 'BarangController@ajaxListBarang')->name('barang.listBarang');
+    Route::get('barang/hapus/{id}', 'BarangController@destroy')->name('barang.hapus');
+    Route::resource('barang', 'BarangController');
+
+    Route::get('supplier/ajaxListSupplier', 'SupplierController@ajaxListSupplier')->name('supplier.listSupplier');
+    Route::get('supplier/hapus/{id}', 'SupplierController@destroy')->name('supplier.hapus');
+    Route::resource('supplier', 'SupplierController');
+    
+
 });
 Auth::routes();
 
