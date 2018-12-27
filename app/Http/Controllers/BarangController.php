@@ -13,19 +13,19 @@ class BarangController extends Controller
     }
     
     public function create(){
-        return view('barang.tambah');
+        return view('barang.create');
     }
 
     public function ajaxListBarang(Request $request){
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
-        $columns = array(
-           
-           
+        $columns = array(           
             0 => 'nama',
-            1 => 'jumlah',
-            2 => 'created_at',
-            3 => 'action',
+            1 => 'jenis',
+            2 => 'warna',
+            3 => 'jumlah',
+            4 => 'created_at',
+            5 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
@@ -56,8 +56,10 @@ class BarangController extends Controller
                 $barang = $barang->where(function ($query) use ($search) {
                     $query->orWhere('barangs.id', 'LIKE', "%{$search}%");
                     $query->orWhere('barangs.nama', 'LIKE', "%{$search}%");
-                    $query->orWhere('barang.created_at', 'LIKE', "%{$search}%");
+                    $query->orWhere('barangs.created_at', 'LIKE', "%{$search}%");
                     $query->orWhere('stocks.jumlah', 'LIKE', "%{$search}%");
+                    $query->orWhere('barangs.warna', 'LIKE', "%{$search}%");
+                    $query->orWhere('barangs.jenis', 'LIKE', "%{$search}%");
                
                 })
                     ->offset($start)
@@ -70,10 +72,12 @@ class BarangController extends Controller
                 $no = 1;
             foreach ($barang as $r_aktif) {
                /*route('project.edit', $r_pendanaan->loan_id) .*/
-                $edit = "<a href='' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
+                $edit = "<a href='".route('barang.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                     $nestedData['no'] = $no;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama_barang.'</strong>';
+                    $nestedData['warna'] =$r_aktif->warna;
+                    $nestedData['jenis'] =$r_aktif->jenis;
                     $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->barang_created));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
@@ -95,6 +99,22 @@ class BarangController extends Controller
 dd($data);
     }
 
+public function store(Request $request){
+    $simpan = Barang::create($request->all());
+    return view('barang.index');
+}
+
+public function edit($id){
+    $barang = Barang::findOrFail($id);
+    return view('barang.edit', compact('barang'));
+
+}
+public function ubah(Request $request,$id){
+    $barang = Barang::findOrFail($id);
+    $barang->update($request->all());
+    return view('barang.index', compact('barang'));
+
+}
     public function destroy($id){
         
 
@@ -102,6 +122,5 @@ dd($data);
         $barang->delete();
 
         return redirect()->route('barang.index')->with('success', 'Data deleted');
-    
 }
-}
+}  

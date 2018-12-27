@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('barang/ajaxListBarang', 'BarangController@ajaxListBarang')->name('barang.listBarang');
     Route::get('barang/hapus/{id}', 'BarangController@destroy')->name('barang.hapus');
+    Route::match(['put','pacth'],'barang/ubah/{id}', 'BarangController@ubah')->name('barang.ubah');
+    Route::get('barang/edit/{id}', 'BarangController@edit')->name('barang.edit');
     Route::resource('barang', 'BarangController');
 
     Route::get('supplier/ajaxListSupplier', 'SupplierController@ajaxListSupplier')->name('supplier.listSupplier');

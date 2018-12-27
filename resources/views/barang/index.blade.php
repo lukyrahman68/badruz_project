@@ -6,8 +6,7 @@
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
-                {{-- <h4><a href="{{!empty(\URL::previous())?\URL::previous():route('dashboard')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">User</span></h4> --}}
-                <h4><a href="{{route('barang.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">DATA BARANG</span></h4>
+                <h4><span class="text-semibold">DATA BARANG</span></h4>
             </div>
         </div>
     
@@ -29,6 +28,8 @@
                 
                   {"data": 'no'},
                   {"data": 'nama'},
+                  {"data": 'warna'},
+                  {"data": 'jenis'},
                   {"data": 'jumlah'},
                   {"data": 'created_at'},
                   {"data": 'action'},
@@ -65,6 +66,8 @@
                       
                           <th scope="col">No</th>
                           <th scope="col">Nama</th>
+                          <th scope="col">Warna</th>
+                          <th scope="col">Jenis</th>
                           <th scope="col">Jumlah Stock</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>
