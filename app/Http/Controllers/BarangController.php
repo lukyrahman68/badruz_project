@@ -23,15 +23,12 @@ class BarangController extends Controller
             0 => 'nama',
             1 => 'jenis',
             2 => 'warna',
-            3 => 'jumlah',
-            4 => 'created_at',
-            5 => 'action',
+            3 => 'created_at',
+            4 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
-        $totaldata = Barang::join('stocks','stocks.id_barang' ,'=','barangs.id')
-                             ->selectRaw('*, barangs.id as id_barang, barangs.nama as nama_barang
-                             , barangs.created_at as barang_created, stocks.jumlah as jumlah')->count();
+        $totaldata = Barang::select('*')->count();
     //    
             $totalFiltered =$totaldata;
         //    dd($pelanggan);
@@ -42,9 +39,7 @@ class BarangController extends Controller
         $dir   = $request->input('order.0.dir');
 
         // DD($limit, $start , $order, $dir);
-            $barang = Barang::join('stocks','stocks.id_barang' ,'=','barangs.id')
-                                ->selectRaw('*,barangs.id as id_barang, barangs.nama as nama_barang
-                                 , barangs.created_at as barang_created, stocks.jumlah as jumlah');
+            $barang = Barang::select('*');
             if (empty($request->input('search.value'))) {
                 $barang = $barang->offset($start)
                     ->limit($limit)
@@ -54,12 +49,11 @@ class BarangController extends Controller
                 $search = $request->input('search.value');
     
                 $barang = $barang->where(function ($query) use ($search) {
-                    $query->orWhere('barangs.id', 'LIKE', "%{$search}%");
-                    $query->orWhere('barangs.nama', 'LIKE', "%{$search}%");
-                    $query->orWhere('barangs.created_at', 'LIKE', "%{$search}%");
-                    $query->orWhere('stocks.jumlah', 'LIKE', "%{$search}%");
-                    $query->orWhere('barangs.warna', 'LIKE', "%{$search}%");
-                    $query->orWhere('barangs.jenis', 'LIKE', "%{$search}%");
+                    $query->orWhere('id', 'LIKE', "%{$search}%");
+                    $query->orWhere('nama', 'LIKE', "%{$search}%");
+                    $query->orWhere('created_at', 'LIKE', "%{$search}%");
+                    $query->orWhere('warna', 'LIKE', "%{$search}%");
+                    $query->orWhere('jenis', 'LIKE', "%{$search}%");
                
                 })
                     ->offset($start)
@@ -75,11 +69,10 @@ class BarangController extends Controller
                 $edit = "<a href='".route('barang.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                     $nestedData['no'] = $no;
-                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama_barang.'</strong>';
+                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
                     $nestedData['warna'] =$r_aktif->warna;
                     $nestedData['jenis'] =$r_aktif->jenis;
-                    $nestedData['jumlah'] =$r_aktif->jumlah;
-                    $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->barang_created));
+                    $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
                   
                     $data[] = $nestedData;

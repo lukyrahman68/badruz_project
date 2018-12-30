@@ -198,14 +198,14 @@
                                     <span>Management Stock</span></a>
 										<ul class="nav c_dd">
 										  <li>
-											<a href="dashboard.html">
-												<i class="icon-eye-open"></i>
+											<a href="{{route('stock.index')}}">
+												<i class="icon-eye"></i>
 												<span>Cek Stock</span>
 											</a>
 										  </li>
 										  <li>
 											<a href="dashboard.html">
-												<i class="icon-plus-sigh"></i>
+												<i class="icon-check"></i>
 												<span>Tambah Stock</span>
 											</a>
 										  </li>

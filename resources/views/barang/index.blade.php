@@ -30,7 +30,6 @@
                   {"data": 'nama'},
                   {"data": 'warna'},
                   {"data": 'jenis'},
-                  {"data": 'jumlah'},
                   {"data": 'created_at'},
                   {"data": 'action'},
               ]
@@ -68,7 +67,6 @@
                           <th scope="col">Nama</th>
                           <th scope="col">Warna</th>
                           <th scope="col">Jenis</th>
-                          <th scope="col">Jumlah Stock</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>
                         </tr>

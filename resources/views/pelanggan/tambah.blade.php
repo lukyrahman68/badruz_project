@@ -1,5 +1,13 @@
 @extends('layouts.back_end')
 @section('main')
+<link href="<?php echo asset('vendor/air-datepicker/css/datepicker.min.css') ?>" rel="stylesheet" type="text/css">
+<script src="<?php echo asset('vendor/air-datepicker/js/datepicker.min.js') ?>"></script>
+<script src="<?php echo asset('vendor/air-datepicker/js/i18n/datepicker.en.js') ?>"></script>
+<style>
+	#datepickers-container{
+		z-index: 1100 !important;
+	}
+</style>
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
@@ -20,24 +28,22 @@
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
-         <form action="{{route('pelanggan.ubah', $pelanggan->id)}}" method="post" enctype="multipart/form-data">
-            {{ method_field('PUT') }}
-            {{ csrf_field() }}
+        <form action="{{route('pelanggan.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
             
-            
-            <div class="row">
-                <div class="col-md-6">
+         
+          
             <div class="form-group">
                 <label for="nama">NIK</label>
-                <input type="text" class="form-control" placeholder="NIK" name="naik" value="{{$pelanggan->nik}}">
+                <input type="text" class="form-control" placeholder="NIK" name="nik">
             </div>
-            <div class="form-group">
+                    <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{$pelanggan->nama}}">
+                <input type="text" class="form-control" placeholder="Nama" name="nama">
             </div>
             <div class="form-group">
                 <label for="warna">Alamat</label>
-                <input type="text" class="form-control" placeholder="Alamat" name="alamat" value="{{$pelanggan->alamat}}">
+                <input type="text" class="form-control" placeholder="Alamat" name="alamat">
             </div>
             <div class="form-group">
                 <label for="jk">Jenis Kelamin</label>
@@ -47,20 +53,27 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="jenis">Tanggal Lahir</label>
+                <input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd-mm-yyyy" name="ttl" placeholder="Tanggal Lahir">
+            </div>
+            <div class="form-group">
                 <label for="jenis">Telepon</label>
-                <input type="text" class="form-control" placeholder="Telepon" name="tlpn" value="{{$pelanggan->tlpn}}">
+                <input type="text" class="form-control" placeholder="Telepon" name="tlpn">
             </div>
             <div class="form-group">
                 <label for="jenis">Email</label>
-                <input type="text" class="form-control" placeholder="Email" name="email" value="{{$pelanggan->email}}">
+                <input type="text" class="form-control" placeholder="Email" name="email">
             </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
             </div>
-                </div>
-            </div>
 
-            
+
+            <style type="text/css">
+                .datepicker>div {
+                         display: block;
+                }
+            </style>
         </form>
       </div>
     </div>

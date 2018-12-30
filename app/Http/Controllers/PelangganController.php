@@ -13,10 +13,10 @@ class PelangganController extends Controller
     //
     public function index(){
         $pelanggan = Pelanggan::all();
-        return view('karyawan.pelanggan.index', compact('pelanggan'));
+        return view('pelanggan.index', compact('pelanggan'));
     }
     public function create(){
-        return view('karyawan.pelanggan.tambah');
+        return view('pelanggan.tambah');
     }
     public function ajaxListPelanggan(Request $request){
         // $data = $request->all();
@@ -118,13 +118,10 @@ public function ubah(Request $request,$id){
     return view('pelanggan.index', compact('pelanggan'));
 
 }
-    public function destroy($id){
-        
-
-            $pelanggan = Pelanggan::find($id);
-            $pelanggan->delete();
-
-            return redirect()->route('pelanggan.index')->with('success', 'Data deleted');
+public function destroy($id){
+    $pelanggan = Pelanggan::find($id);
+    $pelanggan->delete();
+    return redirect()->route('pelanggan.index')->with('success', 'Data deleted');
         
     }
 }

@@ -59,7 +59,7 @@
                 <table class="table datatable-ajax" id="example">
                   <colgroup>
                     <col>
-                    <col width="180">
+                    <col>
                     <col>
                     <col>
                     <col>

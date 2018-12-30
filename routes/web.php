@@ -31,23 +31,30 @@ Route::group(['middleware' => ['auth']], function() {
             return view('pemilik.index');
         }
     });
+    //pelanggan
     Route::get('pelanggan/ajaxListPelanggan', 'PelangganController@ajaxListPelanggan')->name('pelanggan.listPelanggan');
     Route::get('pelanggan/hapus/{id}', 'PelangganController@destroy')->name('pelanggan.hapus');
-     Route::match(['put','pacth'],'pelanggan/ubah/{id}', 'PelangganController@ubah')->name('pelanggan.ubah');
+    Route::match(['put','pacth'],'pelanggan/ubah/{id}', 'PelangganController@ubah')->name('pelanggan.ubah');
     Route::get('pelanggan/edit/{id}', 'PelangganController@edit')->name('pelanggan.edit');
     Route::resource('pelanggan', 'PelangganController');
 
+    //barang
     Route::get('barang/ajaxListBarang', 'BarangController@ajaxListBarang')->name('barang.listBarang');
     Route::get('barang/hapus/{id}', 'BarangController@destroy')->name('barang.hapus');
     Route::match(['put','pacth'],'barang/ubah/{id}', 'BarangController@ubah')->name('barang.ubah');
     Route::get('barang/edit/{id}', 'BarangController@edit')->name('barang.edit');
     Route::resource('barang', 'BarangController');
 
+    //supplier
     Route::get('supplier/ajaxListSupplier', 'SupplierController@ajaxListSupplier')->name('supplier.listSupplier');
     Route::get('supplier/hapus/{id}', 'SupplierController@destroy')->name('supplier.hapus');
-     Route::match(['put','pacth'],'supplier/ubah/{id}', 'SupplierController@ubah')->name('supplier.ubah');
+    Route::match(['put','pacth'],'supplier/ubah/{id}', 'SupplierController@ubah')->name('supplier.ubah');
     Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit');
     Route::resource('supplier', 'SupplierController');
+
+    //stock
+    Route::get('stock/ajaxListStock', 'StockController@ajaxListStock')->name('stock.listStock');
+    Route::resource('stock', 'StockController');
     
 
 });
