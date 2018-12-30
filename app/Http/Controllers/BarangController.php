@@ -19,12 +19,13 @@ class BarangController extends Controller
     public function ajaxListBarang(Request $request){
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
-        $columns = array(           
-            0 => 'nama',
-            1 => 'jenis',
-            2 => 'warna',
-            3 => 'created_at',
-            4 => 'action',
+        $columns = array(  
+            0 => 'kode',         
+            1 => 'nama',
+            2 => 'jenis',
+            3 => 'warna',
+            4 => 'created_at',
+            5 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
@@ -68,7 +69,7 @@ class BarangController extends Controller
                /*route('project.edit', $r_pendanaan->loan_id) .*/
                 $edit = "<a href='".route('barang.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
-                    $nestedData['no'] = $no;
+                    $nestedData['kode'] = $r_aktif->kode;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
                     $nestedData['warna'] =$r_aktif->warna;
                     $nestedData['jenis'] =$r_aktif->jenis;

@@ -28,7 +28,7 @@
 
           "columns": [
               {"data": 'no'},
-              {"data": 'kode_barang'},
+              {"data": 'kode'},
               {"data": 'nama'},
               {"data": 'jumlah'},
           ]
@@ -41,14 +41,14 @@
            <div class="row">
               <div class="col-md-12">
                 <table class="table datatable-ajax" id="example">
-                  <colgroup>
+                  {{-- <colgroup>
                     <col>
                     <col>
                     <col>
                     <col>
                     <col>
                   </colgroup>
-        
+         --}}
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">No</th>

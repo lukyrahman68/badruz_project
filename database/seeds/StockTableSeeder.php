@@ -25,15 +25,6 @@ class StockTableSeeder extends Seeder
             'jumlah' => '2590',
             'created_at'  => Carbon::now('Asia/Jakarta')),
 
-            array( 
-            'id_barang' => '3',
-            'jumlah' => '2150',
-            'created_at'  => Carbon::now('Asia/Jakarta')),
-
-            array( 
-            'id_barang' => '4',
-            'jumlah' => '1500',
-            'created_at'  => Carbon::now('Asia/Jakarta')),
     );
     DB::table('stocks')->insert($stocks);
     }

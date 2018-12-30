@@ -26,7 +26,7 @@
     
               "columns": [
                 
-                  {"data": 'no'},
+                  {"data": 'kode'},
                   {"data": 'nama'},
                   {"data": 'warna'},
                   {"data": 'jenis'},
@@ -54,7 +54,7 @@
                     <table class="table datatable-ajax" id="example">
                       <colgroup>
                         <col>
-                        <col width="180">
+                        <col>
                         <col>
                         <col>
                         <col>
@@ -63,7 +63,7 @@
                       <thead class="thead-dark">
                         <tr>
                       
-                          <th scope="col">No</th>
+                          <th scope="col">Kode</th>
                           <th scope="col">Nama</th>
                           <th scope="col">Warna</th>
                           <th scope="col">Jenis</th>

@@ -211,7 +211,7 @@
 										  </li>
 										</ul>
 									</li>
-									<li>
+									{{-- <li>
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>
 											<p>Cek Stock</p>
@@ -252,7 +252,7 @@
 											<i class="pe-7s-user"></i>
 											<p>Pemberian Hadiah</p>
 										</a>
-									</li>
+									</li> --}}
 									{{-- <li>
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>

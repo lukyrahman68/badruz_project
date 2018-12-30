@@ -17,19 +17,17 @@ class BarangTableSeeder extends Seeder
         $barang = array(
             array( 
             'nama' => 'Sol',
+            'warna' => 'Coklat',
+            'jenis' => 'Utama',
+            'kode' => 'K01',
             'created_at'  => Carbon::now('Asia/Jakarta')),
             
             array( 
-            'nama' => 'Tali',
-            'created_at'  => Carbon::now('Asia/Jakarta')),
-
-            array( 
-                'nama' => 'Mata Ikan',
+                'nama' => 'Tali',
+                'warna' => 'Putih',
+                'jenis' => 'Peralatan',
+                'kode' => 'T01',
                 'created_at'  => Carbon::now('Asia/Jakarta')),
-
-            array( 
-            'nama' => 'Kulit',
-            'created_at'  => Carbon::now('Asia/Jakarta')),
     );
     DB::table('barangs')->insert($barang);
 }

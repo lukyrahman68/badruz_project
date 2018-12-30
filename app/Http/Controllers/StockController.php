@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Barang;
 
 class StockController extends Controller
 {
@@ -69,7 +70,7 @@ class StockController extends Controller
                 // $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                     $nestedData['no'] = $no;
                     $nestedData['kode'] = $r_aktif->kode;
-                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama_barang.'</strong>';
+                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
                     $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "";
