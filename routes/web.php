@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function() {
     });
     Route::get('pelanggan/ajaxListPelanggan', 'PelangganController@ajaxListPelanggan')->name('pelanggan.listPelanggan');
     Route::get('pelanggan/hapus/{id}', 'PelangganController@destroy')->name('pelanggan.hapus');
+     Route::match(['put','pacth'],'pelanggan/ubah/{id}', 'PelangganController@ubah')->name('pelanggan.ubah');
+    Route::get('pelanggan/edit/{id}', 'PelangganController@edit')->name('pelanggan.edit');
     Route::resource('pelanggan', 'PelangganController');
 
     Route::get('barang/ajaxListBarang', 'BarangController@ajaxListBarang')->name('barang.listBarang');
@@ -43,6 +45,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('supplier/ajaxListSupplier', 'SupplierController@ajaxListSupplier')->name('supplier.listSupplier');
     Route::get('supplier/hapus/{id}', 'SupplierController@destroy')->name('supplier.hapus');
+     Route::match(['put','pacth'],'supplier/ubah/{id}', 'SupplierController@ubah')->name('supplier.ubah');
+    Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit');
     Route::resource('supplier', 'SupplierController');
     
 

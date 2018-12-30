@@ -12,11 +12,7 @@ class SupplierController extends Controller
         return view('supplier.index');
     }
     public function create(){
-        return view('supplier.tambah');
-    }
-    public function store(request $request){
-        Supplier::create($request->all());
-        return redirect()->route('supplier.index');
+        return view('supplier.create');
     }
     public function ajaxListSupplier(Request $request){
         // $data = $request->all();
@@ -70,7 +66,7 @@ class SupplierController extends Controller
                 $no = 1;
             foreach ($supplier as $r_aktif) {
                /*route('project.edit', $r_pendanaan->loan_id) .*/
-                $edit = "<a href='' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
+                $edit = "<a href='".route('supplier.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('supplier.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                     $nestedData['no'] =$no;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
@@ -95,14 +91,27 @@ class SupplierController extends Controller
         return json_encode($json_data);
 dd($data);
     }
+public function store(Request $request){
+    $supplier = Supplier::create($request->all());
+    return view('supplier.index');
+}
 
-    public function destroy($id){
-        
+public function edit($id){
+    $supplier= Supplier::findOrFail($id);
+    return view('supplier.edit', compact('supplier'));
 
-        $supplier = Supplier::find($id);
-        $supplier->delete();
+}
+public function ubah(Request $request,$id){
+    $supplier = Supplier::findOrFail($id);
+    $supplier->update($request->all());
+    return view('supplier.index', compact('supplier'));
 
-        return redirect()->route('supplier.index')->with('success', 'Data deleted');
+}
+public function destroy($id){
+    $supplier = Supplier::find($id);
+    $supplier->delete();
+
+    return redirect()->route('supplier.index')->with('success', 'Data deleted');
     
 }
 }

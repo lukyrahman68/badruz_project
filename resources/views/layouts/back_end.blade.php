@@ -192,23 +192,21 @@
                                 <a href="{{route('supplier.index')}}"><i class="icon-truck"></i>
                                     <span>Supplier</span></a>
 							    </li>
-                                <li class="navigation-header">
-										<a href="dashboard.html">
-											<i class="icon-home"></i>
-											<p>Input Data</p>
-										</a>
-									</li>
-									<li >
-										<a href="#" class="click">
-											<i class="pe-7s-graph"></i>
-											<span class="caret"></span>
-											<p>Input Data</p>
-										</a>
-										<ul class="nav c_dd" style="margin-left:2em;margin-top:0; display:none">
+                         		<li>
+								<a href="#" class="click">
+								<i class="icon-briefcase"></i>
+                                    <span>Management Stock</span></a>
+										<ul class="nav c_dd">
 										  <li>
 											<a href="dashboard.html">
-												<i class="pe-7s-graph"></i>
-												<p>Input Data</p>
+												<i class="icon-eye-open"></i>
+												<span>Cek Stock</span>
+											</a>
+										  </li>
+										  <li>
+											<a href="dashboard.html">
+												<i class="icon-plus-sigh"></i>
+												<span>Tambah Stock</span>
 											</a>
 										  </li>
 										</ul>

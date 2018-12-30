@@ -18,36 +18,6 @@ class PelangganController extends Controller
     public function create(){
         return view('karyawan.pelanggan.tambah');
     }
-    public function store(request $request){
-        $input = $request->all();
-        $user = Auth::user();
-        // $user_id = $user->id;
-        // if(!empty($request->file('ktp') || $request->file('kk'))){
-        //     if($ktp = $request->file('ktp')){
-        //         $name_ktp = time() . $ktp->getClientOriginalName();
-        //         $ktp->move('images',$name_ktp);
-        //         $photo = Media::create(['id_pelanggan'=>$user_id, 'nama'=>$name_ktp, 'ket'=>"KTP"]);
-        //     }
-        //     if($kk = $request->file('kk')){
-        //         $name_kk = time() . $kk->getClientOriginalName();
-        //         $kk->move('images',$name_kk);
-        //         $photo = Media::create(['id_pelanggan'=>$user_id, 'nama'=>$name_kk, 'ket'=>"KK"]);
-        //     }
-        // }else{
-        //     Pelanggan::create($input);
-        // }
-        
-        // foreach ($request->dp as $item_dp) {
-        //     if($dp = $item_dp){
-        //         $name_dp = time() . $dp->getClientOriginalName();
-        //         $dp->move('images',$name_dp);
-        //         $photo = Media::create(['id_pelanggan'=>$user_id, 'nama'=>$name_dp, 'ket'=>"Dokumen Pendukung"]);
-        //     }
-        // };
-        // Pelanggan::create($input);
-        // return "oke";
-    }
-
     public function ajaxListPelanggan(Request $request){
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
@@ -103,7 +73,7 @@ class PelangganController extends Controller
                 $no=1;
             foreach ($pelanggan as $r_aktif) {
                /*route('project.edit', $r_pendanaan->loan_id) .*/
-                $edit = "<a href='' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
+                $edit = "<a href='".route('pelanggan.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('pelanggan.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                 $nestedData['no'] =$no;
                     $nestedData['nik'] =$r_aktif->nik;
@@ -132,7 +102,22 @@ class PelangganController extends Controller
 dd($data);
     }
 
+public function store(Request $request){
+    $pelanggan = Pelanggan::create($request->all());
+    return view('pelanggan.index');
+}
 
+public function edit($id){
+    $pelanggan = Pelanggan::findOrFail($id);
+    return view('pelanggan.edit', compact('pelanggan'));
+
+}
+public function ubah(Request $request,$id){
+    $pelanggan = Pelanggan::findOrFail($id);
+    $pelanggan->update($request->all());
+    return view('pelanggan.index', compact('pelanggan'));
+
+}
     public function destroy($id){
         
 
