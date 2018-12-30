@@ -9,7 +9,7 @@
                 <h4><span class="text-semibold">DATA BARANG</span></h4>
             </div>
         </div>
-    
+
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 {{-- <li><a href="{{route('dashboard')}}"><i class="icon-home2 position-left"></i> Home</a></li> --}}
@@ -23,13 +23,14 @@
               "processing": true,
               "serverSide": true,
               "ajax" 		: "{{route('barang.listBarang')}}",
-    
+
               "columns": [
-                
-                  {"data": 'kode'},
+
                   {"data": 'nama'},
                   {"data": 'warna'},
                   {"data": 'jenis'},
+                  {"data": 'harga_beli'},
+                  {"data": 'harga_jual'},
                   {"data": 'created_at'},
                   {"data": 'action'},
               ]
@@ -44,10 +45,10 @@
                     </button>
                   </a>
         </div>
-    
-      
-        
-               
+
+
+
+
                 <!-- /.box-header -->
                <div class="row">
                   <div class="col-md-12">
@@ -59,27 +60,28 @@
                         <col>
                         <col>
                       </colgroup>
-            
+
                       <thead class="thead-dark">
                         <tr>
-                      
-                          <th scope="col">Kode</th>
+
                           <th scope="col">Nama</th>
                           <th scope="col">Warna</th>
                           <th scope="col">Jenis</th>
+                          <th scope="col">Harga Beli</th>
+                          <th scope="col">Harga Jual</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
-                         
+
                       </tbody>
                     </table>
                   </div>
                 </div>
-               
+
               </div>
-              
+
               @if(Session::get('alert'))
               <script type="text/javascript">
                       $(window).load(function(){

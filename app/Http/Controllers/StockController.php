@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang;
+use App\Stock;
 
 class StockController extends Controller
 {
@@ -16,7 +17,7 @@ class StockController extends Controller
     public function ajaxListStock(Request $request){
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
-        $columns = array(  
+        $columns = array(
 
             0 => 'kode',
             1 => 'nama',
@@ -25,19 +26,19 @@ class StockController extends Controller
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
-        $totaldata = Barang::join('stocks','stocks.id_barang' ,'=','barangs.id')
+        $totaldata = Barang::join('stocks','stocks.barang_id' ,'=','barangs.id')
                              ->selectRaw('*, stocks.jumlah as jumlah')->count();
-    //    
+    //
             $totalFiltered =$totaldata;
         //    dd($pelanggan);
-            
+
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir   = $request->input('order.0.dir');
 
         // DD($limit, $start , $order, $dir);
-            $barang = Barang::join('stocks','stocks.id_barang' ,'=','barangs.id')
+            $barang = Barang::join('stocks','stocks.barang_id' ,'=','barangs.id')
                                 ->selectRaw('*, stocks.jumlah as jumlah');
             if (empty($request->input('search.value'))) {
                 $barang = $barang->offset($start)
@@ -46,7 +47,7 @@ class StockController extends Controller
                     ->get();
             } else {
                 $search = $request->input('search.value');
-    
+
                 $barang = $barang->where(function ($query) use ($search) {
                     $query->orWhere('barangs.id', 'LIKE', "%{$search}%");
                     $query->orWhere('barangs.nama', 'LIKE', "%{$search}%");
@@ -54,7 +55,7 @@ class StockController extends Controller
                     $query->orWhere('stocks.jumlah', 'LIKE', "%{$search}%");
                     $query->orWhere('barangs.warna', 'LIKE', "%{$search}%");
                     $query->orWhere('barangs.jenis', 'LIKE', "%{$search}%");
-               
+
                 })
                     ->offset($start)
                     ->limit($limit)
@@ -74,7 +75,7 @@ class StockController extends Controller
                     $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "";
-                  
+
                     $data[] = $nestedData;
 
                     $no++;
@@ -108,6 +109,8 @@ dd($data);
     public function create()
     {
         //
+        $barangs = Barang::all();
+        return view('stock.tambah',compact('barangs'));
     }
 
     /**
@@ -119,6 +122,15 @@ dd($data);
     public function store(Request $request)
     {
         //
+        $stock = Stock::find($request->barang_id);
+        if($stock){
+            $stock_val = $stock->jumlah + $request->jumlah;
+            $stock->update(['jumlah'=>$stock_val]);
+        }else{
+            Stock::create($request->all());
+        }
+        return redirect()->route('stock.index');
+
     }
 
     /**

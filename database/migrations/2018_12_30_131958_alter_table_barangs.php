@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterBarangTable extends Migration
+class AlterTableBarangs extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AlterBarangTable extends Migration
     public function up()
     {
         Schema::table('barangs', function (Blueprint $table) {
-            $table->string('kode');
+            //
+            $table->integer('harga_beli');
+            $table->integer('harga_jual');
         });
     }
 

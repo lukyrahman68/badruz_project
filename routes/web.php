@@ -55,7 +55,14 @@ Route::group(['middleware' => ['auth']], function() {
     //stock
     Route::get('stock/ajaxListStock', 'StockController@ajaxListStock')->name('stock.listStock');
     Route::resource('stock', 'StockController');
-    
+
+    //pengadaan barang
+    Route::get('pengadaan', 'PengadaanController@index')->name('pengadaan.index');
+
+    //penjualan
+    Route::resource('penjualan', 'PenjualanController');
+    Route::get('penjualan/barang/cari', 'PenjualanController@cari')->name('penjualan.cari');
+
 
 });
 Auth::routes();

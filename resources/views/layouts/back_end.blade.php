@@ -59,11 +59,11 @@
 		    width: 20px;
 		    height: 20px;
 		    padding-top: 2px;
-		    
+
 		    background: #FF4500;
 		    color: #ffffff;
 		    text-align: center;
-		    
+
 		    font: 12px Arial, sans-serif;
 		}
 	</style>
@@ -177,9 +177,13 @@
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<!-- Main -->
-                                {{-- <li class="navigation-header"><span>Main</span> 
+                                {{-- <li class="navigation-header"><span>Main</span>
                                     <i class="icon-menu" title="Main pages"></i>
                                 </li> --}}
+                                <li>
+                                <a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>
+                                    <span>Penjualan</span></a>
+							    </li>
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Barang</span></a>
@@ -193,24 +197,43 @@
                                     <span>Supplier</span></a>
 							    </li>
                          		<li>
-								<a href="#" class="click">
-								<i class="icon-briefcase"></i>
+                                    <a href="#" class="click">
+                                    <i class="icon-briefcase"></i>
                                     <span>Management Stock</span></a>
-										<ul class="nav c_dd">
-										  <li>
-											<a href="{{route('stock.index')}}">
-												<i class="icon-eye"></i>
-												<span>Cek Stock</span>
-											</a>
-										  </li>
-										  <li>
-											<a href="dashboard.html">
-												<i class="icon-check"></i>
-												<span>Tambah Stock</span>
-											</a>
-										  </li>
-										</ul>
-									</li>
+                                        <ul class="nav c_dd">
+                                        <li>
+                                            <a href="{{route('stock.index')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Cek Stock</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('stock.create')}}">
+                                                <i class="icon-check"></i>
+                                                <span>Tambah Stock</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+								</li>
+                         		<li>
+                                    <a href="#" class="click">
+                                    <i class="icon-briefcase"></i>
+                                    <span>Pengadaan Barang</span></a>
+                                        <ul class="nav c_dd">
+                                        <li>
+                                            <a href="{{route('pengadaan.index')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Status Barang</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('stock.create')}}">
+                                                <i class="icon-check"></i>
+                                                <span>Tambah Stock</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+								</li>
 									{{-- <li>
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>
@@ -289,8 +312,8 @@
 											<p>Notifications</p>
 										</a>
 									</li>
-							
-								
+
+
 
 							</ul>
 						</div>

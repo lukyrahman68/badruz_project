@@ -5,11 +5,11 @@
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
-                
+
                 <h4><a href="{{route('barang.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Tambah Data Barang</span></h4>
             </div>
         </div>
-    
+
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                <li><a href="{{route('barang.index')}}"><i class="icon-home2 position-left"></i> Data Barang</a></li>
@@ -23,7 +23,7 @@
         <h3 class="box-title" style="font-weight: bold"></h3>
         <form action="{{route('barang.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -38,13 +38,17 @@
                 <label for="jenis">Jenis</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="jenis">
             </div>
+           <div class="form-group">
+                <label for="jenis">Harga Beli</label>
+                <input type="text" class="form-control" placeholder="Harga Beli" name="harga_beli">
+            </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
             </div>
                 </div>
             </div>
 
-            
+
         </form>
       </div>
     </div>

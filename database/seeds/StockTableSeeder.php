@@ -15,13 +15,13 @@ class StockTableSeeder extends Seeder
         DB::table('stocks')->delete();
 
         $stocks = array(
-            array( 
-            'id_barang' => '1',
+            array(
+            'barang_id' => '1',
             'jumlah' => '3000',
             'created_at'  => Carbon::now('Asia/Jakarta')),
-            
-            array( 
-            'id_barang' => '2',
+
+            array(
+            'barang_id' => '2',
             'jumlah' => '2590',
             'created_at'  => Carbon::now('Asia/Jakarta')),
 
