@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/tes', function () {
-    return view('layouts.back_end');
-});
+Route::get('/tes', 'PenjualanController@cetak')->name('invoice');
 
 Route::get('/tes2', function () {
     return view('pemilik.index');
@@ -62,6 +60,8 @@ Route::group(['middleware' => ['auth']], function() {
     //penjualan
     Route::resource('penjualan', 'PenjualanController');
     Route::get('penjualan/barang/cari', 'PenjualanController@cari')->name('penjualan.cari');
+    Route::get('penjualan/pelanggan/cari_pelanggan', 'PenjualanController@cari_pelanggan')->name('penjualan.cari_pelanggan');
+    Route::get('penjualan/pembayaran/create', 'PenjualanController@pembayaran')->name('penjualan.pembayaran');
 
 
 });

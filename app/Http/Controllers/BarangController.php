@@ -96,7 +96,7 @@ dd($data);
     }
 
 public function store(Request $request){
-    $request['harga_jual'] = $request->harga_beli * 0.1;
+    $request['harga_jual'] = ($request->harga_beli * 0.5)+$request->harga_beli;
     $simpan = Barang::create($request->all());
     return view('barang.index');
 }
