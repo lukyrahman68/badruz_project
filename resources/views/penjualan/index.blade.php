@@ -110,7 +110,9 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>Jumlah</th>
+                                <th>Harga Satuan</th>
+                                <th>Jumlah Beli</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                     </table><br>
@@ -120,7 +122,7 @@
                 </div>
             </div>
       </div>
-      <button type="button" id="tes">tes</button>
+      <button type="button" id="bayar">tes</button>
     </div>
 </div>
 {{-- <a href="{{route('invoice')}}" target="_blank" > click me to pdf </a> --}}
@@ -169,7 +171,7 @@
                 $('#name').val('');
             });
             $(document).on('click','#simpan',function (e){
-                $('#keranjang').append('<tr><td style="display:none">'+$('#nama_brng').val()+'</td><td>'+ $('#nama_brng :selected').text()+'</td><td>'+  $('input[name=harga]').val() +'</td></tr>');
+                $('#keranjang').append('<tr><td style="display:none">'+$('#nama_brng').val()+'</td><td>'+ $('#nama_brng :selected').text()+'</td><td>'+  $('input[name=harga]').val() +'</td><td>'+ $('input[name=jml_beli]').val()+'</td><td>'+ $('input[name=total_bayar_2]').val()+'</td></tr>');
                 $(".input_box").find(':input').each(function() {
                     switch(this.type) {
                         case 'password':
@@ -191,18 +193,33 @@
                     }
                 });
             });
-            $(document).on('click','#tes',function (e){
+            $(document).on('click','#bayar',function (e){
                 var id=[];
                 $('#keranjang tr').each(function() {
 
                     if (!this.rowIndex) return; // skip first row
                     var customerId = this.cells[0].innerHTML;
-                    document.getElementById('tot_barang').value+=customerId;
                     id.push(customerId);
                 });
                 console.log(id);
+                $.ajax({
+                    type: 'post',
+                    url: 'penjualan/',
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        'barang_id': $('#nama_brng').val(),
+                        'jml_beli': $('#jml_beli').val(),
+                        'total_bayar': $('#total_bayar_2').val(),
+                    },
+                    success: function(data) {
+                        if ((data.errors)){
+                            //show error disini
+                        }
+                        else {
 
-                // $('#tot_barang').val(customerId);
+                        }
+                    },
+                });
             });
             // $(document).on('click','#simpan',function (e){
             //     // $('input[name=harga]').val('');
