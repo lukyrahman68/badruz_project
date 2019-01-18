@@ -15,114 +15,126 @@
                <li><i class="icon-home2 position-left active"></i> Penjualan</a></li>
             </ul>
         </div>
+
     </div>
 <div class="col-xs-12 inner input_box">
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
             @csrf
-
+            @if ($tempPel)
+            <div class="breadcrumb-line container">
+                <h3>{{$pelanggan->nama}}</h3>
+            </div>
             <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-            <label for="nama">Nama Barang</label>
-            <select name="nama_brng" id="nama_brng" class="form-control" >
-                <option value="" disabled selected>Pilih Barang</option>
-                @foreach ($barangs as $barang)
-                    <option value="{{$barang->id}}">{{$barang->nama}}</option>
-                @endforeach
-            </select>
-            </div>
-            <div class="form-group">
-                <label for="warna">Harga</label>
-                <input type="text" class="form-control" placeholder="Harga" name="harga" id="harga">
-            </div>
-           <div class="form-group">
-                <label for="jenis">Jumlah Stock</label>
-                <input type="text" class="form-control" placeholder="Jumlah Stock" name="jml_stock" id="jml_stock">
-            </div>
+                <div class="col-md-6">
                     <div class="form-group">
-                <label for="nama">Nama pelanggan</label>
-                <select name="nama_pelanggan" id="nama_pelanggan" class="form-control" >
-                    <option value="" disabled selected>Pilih Pelanggan</option>
-                    @foreach ($pelanggans as $pelanggan)
-                        <option value="{{$pelanggan->id}}">{{$pelanggan->nama}}</option>
+                <label for="nama">Nama Barang</label>
+                <select name="nama_brng" id="nama_brng" class="form-control" >
+                    <option value="" disabled selected>Pilih Barang</option>
+                    @foreach ($barangs as $barang)
+                        <option value="{{$barang->id}}">{{$barang->nama}}</option>
                     @endforeach
                 </select>
-            </div>
-           <div class="form-group">
-                <label for="jenis">Alamat</label>
-                <input type="text" class="form-control" placeholder="Alamat" name="alamat">
-            </div>
-           <div class="form-group">
-                <label for="jenis">No HP</label>
-                <input type="text" class="form-control" placeholder="No HP" name="tlpn">
-            </div>
-            <hr>
-           <div class="form-group">
-               <div class="row">
-               <div class="col-md-4">
-                    <label for="jenis">Jumlah Beli</label>
-               </div>
-               <div class="col-md-4" >
-                    <input type="text" class="form-control" placeholder="Jumlah Beli" name="jml_beli" id="jml_beli">
-               </div>
-               <div class="col-md-4">
-                    <button type="button" class="btn btn-sm btn-info" id="hitung">Hitung</button>
-               </div>
-            </div>
-            </div>
-            <div class="form-group" style="text-align: right">
-                    <h1><label for="" id="total_bayar"></label></h1>
-                    <input type="hidden" class="form-control" placeholder="Jumlah Beli" name="total_bayar_2" id="total_bayar_2">
                 </div>
-            <div style="display: none" id="tampil">
-           <div class="form-group">
-               <div class="row">
+                <div class="form-group">
+                    <label for="warna">Harga</label>
+                    <input type="text" class="form-control" placeholder="Harga" name="harga" id="harga">
+                </div>
+               <div class="form-group">
+                    <label for="jenis">Jumlah Stock</label>
+                    <input type="text" class="form-control" placeholder="Jumlah Stock" name="jml_stock" id="jml_stock">
+                </div>
+
+                <hr>
+               <div class="form-group">
+                   <div class="row">
                    <div class="col-md-4">
-                        <label for="bayar">Harga Bayar</label>
+                        <label for="jenis">Jumlah Beli</label>
+                   </div>
+                   <div class="col-md-4" >
+                        <input type="text" class="form-control" placeholder="Jumlah Beli" name="jml_beli" id="jml_beli">
                    </div>
                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Harga Bayar" name="bayar" id="bayar">
+                        <button type="button" class="btn btn-sm btn-info" id="hitung">Hitung</button>
                    </div>
-                   <div class="col-md-4">
-                       <button type="button" id="btn_bayar" class="btn btn-primary">Bayar</button>
+                </div>
+                </div>
+                <div class="form-group" style="text-align: right">
+                        <h1><label for="" id="total_bayar"></label></h1>
+                        <input type="hidden" class="form-control" placeholder="Jumlah Beli" name="total_bayar_2" id="total_bayar_2">
+                    </div>
+                <div style="display: none" id="tampil">
+               <div class="form-group">
+                   <div class="row">
+                       <div class="col-md-4">
+                            <label for="bayar">Harga Bayar</label>
+                       </div>
+                       <div class="col-md-4">
+                            {{-- <input type="text" class="form-control" placeholder="Harga Bayar" name="bayar" id="bayar"> --}}
+                       </div>
+                       <div class="col-md-4">
+                           <button type="button" id="btn_bayar" class="btn btn-primary">Bayar</button>
+                       </div>
                    </div>
-               </div>
 
 
-            </div>
-            <div class="form-group">
-                <label for="kembalian">Kembalian</label>
-                <input type="text" class="form-control" placeholder="Kembalian" name="kembalian" id="kembalian" disabled>
-            </div>
-            </div>
-
-
-            <div class="pull-right">
-                <input type="button" id="simpan" value="Tambah" class="btn btn-sm btn-primary">
-            </div>
                 </div>
-                <div class="col-md-6">
-                    <form action="{{route('penjualan.pembayaran')}}" method="get">
-                        @csrf
-                    <table class="table" id="keranjang">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Harga Satuan</th>
-                                <th>Jumlah Beli</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                    </table><br>
-                    <input type="text" id="tot_barang">
-                    <input type="submit" class="btn btn-primary">
-                </form>
+                <div class="form-group">
+                    <label for="kembalian">Kembalian</label>
+                    <input type="text" class="form-control" placeholder="Kembalian" name="kembalian" id="kembalian" disabled>
                 </div>
-            </div>
+                </div>
+
+
+                <div class="pull-right">
+                    <input type="button" id="simpan" value="Tambah" class="btn btn-sm btn-primary">
+                </div>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{route('penjualan.pembayaran')}}" method="get">
+                            @csrf
+                        <table class="table" id="keranjang">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Harga Satuan</th>
+                                    <th>Jumlah Beli</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                        </table><br>
+                        <input type="text" id="tot_barang">
+                        <input type="button" id="bayar" class="btn btn-primary btn-sm" value="Bayar">
+                    </form>
+                    </div>
+                </div>
+            @else
+            <form action="{{route('penjualan.lanjut')}}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="nama">Nama pelanggan</label>
+                    <select name="nama_pelanggan" id="nama_pelanggan" class="form-control" >
+                        <option value="" disabled selected>Pilih Pelanggan</option>
+                        @foreach ($pelanggans as $pelanggan)
+                            <option value="{{$pelanggan->id}}">{{$pelanggan->nama}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jenis">Alamat</label>
+                    <input type="text" class="form-control" placeholder="Alamat" name="alamat">
+                </div>
+                <div class="form-group">
+                    <label for="jenis">No HP</label>
+                    <input type="text" class="form-control" placeholder="No HP" name="tlpn">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Selanjutnya">
+            </form>
+            @endif
+
       </div>
-      <button type="button" id="bayar">tes</button>
+
     </div>
 </div>
 {{-- <a href="{{route('invoice')}}" target="_blank" > click me to pdf </a> --}}
@@ -134,7 +146,7 @@
                 // $('input[name=harga]').val('');
                 $.ajax({
                     type: 'get',
-                    url: 'penjualan/barang/cari/',
+                    url: '/penjualan/barang/cari/',
                     data: {
                         'id': $('#nama_brng').val()
                     },
@@ -194,22 +206,25 @@
                 });
             });
             $(document).on('click','#bayar',function (e){
-                var id=[];
+                var keranjang=new Object();
+                var keranjangArray=new Array();
+                var jsonString;
                 $('#keranjang tr').each(function() {
 
                     if (!this.rowIndex) return; // skip first row
-                    var customerId = this.cells[0].innerHTML;
-                    id.push(customerId);
+                    keranjang.id = this.cells[0].innerHTML;
+                    keranjang.jml = this.cells[3].innerHTML;
+                    keranjangArray.push(keranjang);
+                    keranjang=new Object();
+
                 });
-                console.log(id);
+                console.log(keranjangArray);
                 $.ajax({
                     type: 'post',
-                    url: 'penjualan/',
+                    url: '/penjualan/pembayaran/create',
                     data: {
                         '_token': $('input[name=_token]').val(),
-                        'barang_id': $('#nama_brng').val(),
-                        'jml_beli': $('#jml_beli').val(),
-                        'total_bayar': $('#total_bayar_2').val(),
+                        'barang': keranjangArray,
                     },
                     success: function(data) {
                         if ((data.errors)){

@@ -59,9 +59,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     //penjualan
     Route::resource('penjualan', 'PenjualanController');
+    Route::post('penjualan/toko/beli', 'PenjualanController@lanjut')->name('penjualan.lanjut');
     Route::get('penjualan/barang/cari', 'PenjualanController@cari')->name('penjualan.cari');
     Route::get('penjualan/pelanggan/cari_pelanggan', 'PenjualanController@cari_pelanggan')->name('penjualan.cari_pelanggan');
-    Route::get('penjualan/pembayaran/create', 'PenjualanController@pembayaran')->name('penjualan.pembayaran');
+    Route::post('penjualan/pembayaran/create', 'PenjualanController@pembayaran')->name('penjualan.pembayaran');
 
 
 });

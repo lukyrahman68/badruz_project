@@ -19,7 +19,14 @@ class PenjualanController extends Controller
     public function index(){
         $barangs = Barang::all();
         $pelanggans = Pelanggan::all();
-        return view('penjualan.index',compact('barangs','pelanggans'));
+        $tempPel='';
+        return view('penjualan.index',compact('barangs','pelanggans','tempPel'));
+    }
+    public function lanjut(request $request){
+        $barangs = Barang::all();
+        $pelanggan = Pelanggan::find($request->nama_pelanggan);
+        $tempPel=$request->nama_pelanggan;
+        return view('penjualan.index',compact('barangs','pelanggan','tempPel'));
     }
     public function cari(request $request){
         $data = Barang::find($request->id);
@@ -55,11 +62,15 @@ class PenjualanController extends Controller
         return $pdf->stream("invoice.pdf",  array( 'Attachment'=>0 ));
     }
     public function pembayaran(request $request){
-        $barangs_id = $request->barangs_id;
-        $penjualans_id = $request->penjualans_id;
-        $barangs = Barang::find($barangs_id);
-        $penjualans_id = Penjualan::find($penjualans_id);
-        // return view('penjualan.pembayaran',compact('barangs','penjualans'));
-        return $barangs;
+        $input = $request->barang;
+
+        foreach ($input as $item) {
+            $transaksi = new Transaksi;
+            $transaksi->barangs_id = $item['id'];
+            $transaksi->jml_beli = $item['jml'];
+            $transaksi->save();
+        }
+        return $transaksi;
+
     }
 }
