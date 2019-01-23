@@ -25,6 +25,7 @@
             @if ($tempPel)
             <div class="breadcrumb-line container">
                 <h3>{{$pelanggan->nama}}</h3>
+                <input type="hidden" name="pelanggans_id" id="pelanggans_id" value="{{$pelanggan->id}}">
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -103,9 +104,15 @@
                                     <th>Total</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="3">Total Bayar</th>
+                                    <th><span id="tot_bayar"></span></th>
+                                </tr>
+                            </tfoot>
                         </table><br>
-                        <input type="text" id="tot_barang">
-                        <input type="button" id="bayar" class="btn btn-primary btn-sm" value="Bayar">
+                        {{-- <input type="text" id="tot_barang"> --}}
+                        <input type="button" id="bayar_lanjut" class="btn btn-primary btn-sm" value="Bayar">
                     </form>
                     </div>
                 </div>
@@ -183,6 +190,13 @@
                 $('#name').val('');
             });
             $(document).on('click','#simpan',function (e){
+                if($('#tot_bayar').text()==''){
+                    $('#tot_bayar').text($('input[name=total_bayar_2]').val());
+                }else{
+                    $total = parseInt($('#tot_bayar').text())+parseInt($('input[name=total_bayar_2]').val());
+                    $('#tot_bayar').text($total);
+                }
+
                 $('#keranjang').append('<tr><td style="display:none">'+$('#nama_brng').val()+'</td><td>'+ $('#nama_brng :selected').text()+'</td><td>'+  $('input[name=harga]').val() +'</td><td>'+ $('input[name=jml_beli]').val()+'</td><td>'+ $('input[name=total_bayar_2]').val()+'</td></tr>');
                 $(".input_box").find(':input').each(function() {
                     switch(this.type) {
@@ -205,17 +219,19 @@
                     }
                 });
             });
-            $(document).on('click','#bayar',function (e){
+            $(document).on('click','#bayar_lanjut',function (e){
                 var keranjang=new Object();
                 var keranjangArray=new Array();
                 var jsonString;
-                $('#keranjang tr').each(function() {
+                $('#keranjang tbody tr').each(function() {
 
                     if (!this.rowIndex) return; // skip first row
                     keranjang.id = this.cells[0].innerHTML;
                     keranjang.jml = this.cells[3].innerHTML;
                     keranjangArray.push(keranjang);
                     keranjang=new Object();
+
+
 
                 });
                 console.log(keranjangArray);
@@ -225,13 +241,15 @@
                     data: {
                         '_token': $('input[name=_token]').val(),
                         'barang': keranjangArray,
+                        'pelanggans_id': $('input[name=pelanggans_id').val(),
+                        'total': $('#tot_bayar').text(),
                     },
                     success: function(data) {
                         if ((data.errors)){
                             //show error disini
                         }
                         else {
-
+                            window.location = "/penjualan/pembayaran/index/" + data.id;
                         }
                     },
                 });

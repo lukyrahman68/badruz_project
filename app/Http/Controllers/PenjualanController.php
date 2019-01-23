@@ -63,14 +63,72 @@ class PenjualanController extends Controller
     }
     public function pembayaran(request $request){
         $input = $request->barang;
-
+        $transaksi_id = Transaksi::max('transaksi_id');
+        if($transaksi_id==null){
+            $transaksi_id = '1';
+        }else{
+            $transaksi_id = $transaksi_id+1;
+        }
         foreach ($input as $item) {
             $transaksi = new Transaksi;
+            $transaksi->transaksi_id = $transaksi_id;
             $transaksi->barangs_id = $item['id'];
             $transaksi->jml_beli = $item['jml'];
             $transaksi->save();
         }
-        return $transaksi;
+        $penjualan = new Penjualan;
+        $penjualan->users_id = Auth::user()->id;
+        $penjualan->pelanggans_id = $request->pelanggans_id;
+        $penjualan->transakis_id = $transaksi_id;
+        $penjualan->total_bayar = $request->total;
+        $penjualan->save();
+        return response()->json($penjualan);
+
+    }
+    public function pembayaran_index($id){
+        $param = Penjualan::find($id);
+        $penjualans = Penjualan::where('penjualans.id','=',$id)
+                                ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
+                                ->join('barangs','barangs.id','=','transaksis.barangs_id')
+                                ->selectRaw('barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
+                                // ->selectRaw('transaksis.*')
+                                ->get();
+        return view('penjualan.pembayaran',compact('penjualans','param'));
+        // return $penjualan;
+
+    }
+    public function pembayaran_create(request $request, $id){
+        $now= Carbon::today()->format('d M Y');
+        // dd($request);
+        $penjualan = Penjualan::find($id);
+        if($request->pembayaran=='0'){
+            $penjualan->sts = 1;
+            $penjualan->sisa_bayar = $request->sisa;
+            $penjualan->sts_bayar = 1;
+            $penjualan->update();
+        }else{
+            $penjualan->sts = 2;
+            $penjualan->sisa_bayar = $request->sisa;
+            $penjualan->sts_bayar = 2;
+            $penjualan->update();
+        }
+        $penjualans = Penjualan::where('penjualans.id','=',$id)
+                                ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
+                                ->join('barangs','barangs.id','=','transaksis.barangs_id')
+                                ->join('pelanggans','pelanggans.id','=','penjualans.pelanggans_id')
+                                ->selectRaw('pelanggans.nama as nama_pelanggan,barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
+                                // ->selectRaw('transaksis.*')
+                                ->get();
+        // Send data to the view using loadView function of PDF facade
+        $data = compact('now','penjualans');
+        $pdf = PDF::loadView('penjualan.invoice', $data);
+        $pdf->setPaper([0, 100, 450, 250], 'landscape');
+        // If you want to store the generated pdf to the server then you can use the store function
+        $pdf->save(storage_path().'_filename.pdf');
+        // Finally, you can download the file using download function
+        return $pdf->download('customers.pdf');
+        // return view('penjualan.invoice',compact('now','penjualans'));
+
 
     }
 }

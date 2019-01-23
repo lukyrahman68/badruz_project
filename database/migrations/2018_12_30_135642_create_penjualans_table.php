@@ -19,6 +19,9 @@ class CreatePenjualansTable extends Migration
             $table->string('pelanggans_id');
             $table->string('transakis_id');
             $table->integer('total_bayar');
+            $table->string('sts')->default('0');
+            $table->string('sts_bayar')->default('0');
+            $table->integer('sisa_bayar')->default(0);
             $table->timestamps();
         });
     }
