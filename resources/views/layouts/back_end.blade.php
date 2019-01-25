@@ -221,6 +221,12 @@
                                     <span>Pengadaan Barang</span></a>
                                         <ul class="nav c_dd">
                                         <li>
+                                            <a href="{{route('pengadaan.stock')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Cek Stock</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{route('pengadaan.index')}}">
                                                 <i class="icon-eye"></i>
                                                 <span>Status Barang</span>
@@ -230,6 +236,25 @@
                                             <a href="{{route('stock.create')}}">
                                                 <i class="icon-check"></i>
                                                 <span>Tambah Stock</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+								</li>
+                         		<li>
+                                    <a href="#" class="click">
+                                    <i class="icon-briefcase"></i>
+                                    <span>Jenis Barang</span></a>
+                                        <ul class="nav c_dd">
+                                        <li>
+                                            <a href="{{route('jenis.index')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Tambah Jenis</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('jenis.create')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Data Jenis</span>
                                             </a>
                                         </li>
                                         </ul>

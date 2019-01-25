@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Barang;
+use App\Stock;
 
 class PengadaanController extends Controller
 {
@@ -16,5 +18,11 @@ class PengadaanController extends Controller
         //Lead Time
         $LT = 1;
         return view('pengadaan_barang.index');
+    }
+    public function stock(){
+        $barangs = Barang::join('stocks','stocks.barang_id','=','barangs.id')
+                        ->selectRaw('barangs.*,stocks.jumlah')
+                        ->get();
+        return view('pengadaan_barang.stock',compact('barangs'));
     }
 }

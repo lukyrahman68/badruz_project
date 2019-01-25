@@ -99,8 +99,20 @@ class PenjualanController extends Controller
     }
     public function pembayaran_create(request $request, $id){
         $now= Carbon::today()->format('d M Y');
+
         // dd($request);
         $penjualan = Penjualan::find($id);
+        $barang = Penjualan::where('penjualans.id','=',$id)
+                                ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
+                                ->join('barangs','barangs.id','=','transaksis.barangs_id')
+                                ->selectRaw('barangs.id,transaksis.jml_beli')
+                                ->get();
+        foreach ($barang as $item) {
+            $bar_updt = Stock::where('barang_id','=',$item->id)->first();
+            // return $bar_updt->jumlah;
+            $new_stock = $bar_updt->jumlah-$item->jml_beli;
+            $bar_updt->update(['jumlah'=>$new_stock]);
+        }
         if($request->pembayaran=='0'){
             $penjualan->sts = 1;
             $penjualan->sisa_bayar = $request->sisa;
@@ -120,14 +132,13 @@ class PenjualanController extends Controller
                                 // ->selectRaw('transaksis.*')
                                 ->get();
         // Send data to the view using loadView function of PDF facade
-        $data = compact('now','penjualans');
-        $pdf = PDF::loadView('penjualan.invoice', $data);
-        $pdf->setPaper([0, 100, 450, 250], 'landscape');
-        // If you want to store the generated pdf to the server then you can use the store function
-        $pdf->save(storage_path().'_filename.pdf');
-        // Finally, you can download the file using download function
-        return $pdf->download('customers.pdf');
-        // return view('penjualan.invoice',compact('now','penjualans'));
+        // $data = compact('now','penjualans');
+        // $pdf = PDF::loadView('penjualan.invoice', $data);
+        // $pdf->setPaper([0, 100, 450, 250], 'landscape');
+        // $pdf->save(storage_path().'_filename.pdf');
+        // return $pdf->download('customers.pdf');
+        // $pdf->stream('customers.pdf',array("Attachment" => false));
+        return view('penjualan.invoice',compact('now','penjualans'));
 
 
     }

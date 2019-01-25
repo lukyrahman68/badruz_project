@@ -3,11 +3,11 @@
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
-                
+
                 <h4><a href="{{route('supplier.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Tambah Data Supplier</span></h4>
             </div>
         </div>
-    
+
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                <li><a href="{{route('barang.index')}}"><i class="icon-home2 position-left"></i> Data Supplier</a></li>
@@ -22,7 +22,7 @@
         <h3 class="box-title" style="font-weight: bold"></h3>
         <form action="{{route('supplier.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -33,9 +33,15 @@
                 <label for="warna">Alamat</label>
                 <input type="text" class="form-control" placeholder="Warna" name="warna">
             </div>
-           <div class="form-group">
+            <div class="form-group">
                 <label for="jenis">No Telepon</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="jenis">
+            </div>
+            <div class="form-group">
+                <label for="jenis">Jenis</label>
+                <select name="" id="">
+                    <option value=""></option>
+                </select>
             </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
@@ -43,7 +49,7 @@
                 </div>
             </div>
 
-            
+
         </form>
       </div>
     </div>

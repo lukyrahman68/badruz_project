@@ -54,7 +54,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <form action="{{route('penjualan.pembayaran_create',$param->id)}}" method="POST">
+                <form target="_blank" action="{{route('penjualan.pembayaran_create',$param->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                 <div class="form-group">
@@ -73,7 +73,7 @@
                 <h3><span id="kembalian"></span></h3>
                 <div class="form-group">
 
-                    <input type="submit" class="btn btn-primary" value="Simpan">
+                    <input type="submit" id="save" class="btn btn-primary" value="Simpan">
                 </div>
             </form>
           </div>
@@ -94,6 +94,9 @@
                 $('#kembalian').html('Rp. '+total);
                 $('#sisa').val('0');
             }
+        });
+        $('#save').click(function(){
+            window.location.href = '/penjualan';
         });
     });
 </script>

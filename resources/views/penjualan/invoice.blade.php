@@ -1,5 +1,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<div class="container" style="margin-top: -100px">
+<script>
+window.onload = function(){
+    window.print()
+};
+</script>
+<div class="container">
+{{-- <div class="container" style="margin-top: -100px"> --}}
 <table style="width: 100%">
     <tr>
         <td style="width: 30%"></td>
