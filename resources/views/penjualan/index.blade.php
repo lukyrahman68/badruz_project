@@ -40,11 +40,11 @@
                 </div>
                 <div class="form-group">
                     <label for="warna">Harga</label>
-                    <input type="text" class="form-control" placeholder="Harga" name="harga" id="harga">
+                    <input type="text" class="form-control" placeholder="Harga" name="harga" id="harga" disabled>
                 </div>
                <div class="form-group">
                     <label for="jenis">Jumlah Stock</label>
-                    <input type="text" class="form-control" placeholder="Jumlah Stock" name="jml_stock" id="jml_stock">
+                    <input type="text" class="form-control" placeholder="Jumlah Stock" name="jml_stock" id="jml_stock" disabled>
                 </div>
 
                 <hr>
@@ -130,11 +130,11 @@
                 </div>
                 <div class="form-group">
                     <label for="jenis">Alamat</label>
-                    <input type="text" class="form-control" placeholder="Alamat" name="alamat">
+                    <input type="text" class="form-control" placeholder="Alamat" name="alamat" disabled>
                 </div>
                 <div class="form-group">
                     <label for="jenis">No HP</label>
-                    <input type="text" class="form-control" placeholder="No HP" name="tlpn">
+                    <input type="text" class="form-control" placeholder="No HP" name="tlpn" disabled>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Selanjutnya">
             </form>
@@ -218,6 +218,7 @@
                             break;
                     }
                 });
+                $('#total_bayar').text('');
             });
             $(document).on('click','#bayar_lanjut',function (e){
                 var keranjang=new Object();

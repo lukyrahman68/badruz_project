@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label for="jenis">Bayar</label>
                     <input type="text" class="form-control" placeholder="Bayar" id="bayar">
-                    <input type="text" class="form-control" placeholder="si" id="sisa" name="sisa">
+                    <input type="hidden" class="form-control" placeholder="si" id="sisa" name="sisa">
                 </div>
                 <h3><span id="kembalian"></span></h3>
                 <div class="form-group">
