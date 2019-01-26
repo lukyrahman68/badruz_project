@@ -70,7 +70,18 @@ Route::group(['middleware' => ['auth']], function() {
 
     //jenis
     Route::resource('jenis', 'JenisBarangController');
+
+
+    //new user
+    Route::get('user/ajaxListUser', 'UserController@ajaxListUser')->name('user.listUser');
+    Route::get('user/hapus/{id}', 'UserController@destroy')->name('user.hapus');
+    Route::post('user/ubah/{id}', 'UserController@ubah')->name('user.ubah');
+    Route::get('user/edit/{id}', 'UserController@edit')->name('user.edit');
+    Route::resource('user', 'UserController');
+
+    Route::get('bar-chart', 'ChartController@index');
 });
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');

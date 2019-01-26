@@ -67,6 +67,24 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'is_owner' => 1,
         ]);
     }
+
+    // protected function new_user(array $data)
+    // {
+    //     $user = Auth::user();
+    //     if($user->is_owner == '1'){
+
+    //     }else{
+
+    //     }
+    //     // return User::create([
+    //     //     'name' => $data['name'],
+    //     //     'email' => $data['email'],
+    //     //     'password' => Hash::make($data['password']),
+    //     //     ''
+    //     // ]);
+    // }
 }
