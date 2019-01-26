@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('penjualan/pembayaran/create', 'PenjualanController@pembayaran')->name('penjualan.pembayaran');
     Route::get('penjualan/pembayaran/index/{id}', 'PenjualanController@pembayaran_index')->name('penjualan.pembayaran_index');
     Route::PUT('penjualan/pembayaran/index/create/{id}', 'PenjualanController@pembayaran_create')->name('penjualan.pembayaran_create');
+    Route::get('cek/rop', 'BarangController@cek_rop')->name('barang.cek_rop');
 
     //jenis
     Route::resource('jenis', 'JenisBarangController');

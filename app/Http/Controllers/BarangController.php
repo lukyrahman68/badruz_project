@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang;
+use App\Supplier;
 
 class BarangController extends Controller
 {
@@ -13,7 +14,8 @@ class BarangController extends Controller
     }
 
     public function create(){
-        return view('barang.create');
+        $supplier=Supplier::all();
+        return view('barang.create',compact('supplier'));
     }
 
     public function ajaxListBarang(Request $request){
@@ -120,4 +122,11 @@ public function ubah(Request $request,$id){
 
         return redirect()->route('barang.index')->with('success', 'Data deleted');
 }
+    public function cek_rop(){
+        $barang = Barang::where('stocks.jumlah','<=','200')
+                        ->join('stocks','stocks.barang_id','=','barangs.id')
+                        // ->groupBy('barangs.id')
+                        ->count();
+        return response()->json($barang);
+    }
 }

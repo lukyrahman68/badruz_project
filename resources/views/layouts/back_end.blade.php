@@ -19,7 +19,20 @@
 
 	<link href="<?php echo asset('vendor/summernote/summernote.css') ?>" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
-
+    <style>
+        .rop{
+            position: absolute;
+            border-radius: 50%;
+            background-color: yellow;
+            color: black;
+            margin-top: -15%;
+            margin-left: -6%;
+            padding: 2px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+        }
+    </style>
 	<!-- Core JS files -->
 	<script type="text/javascript" src="<?php echo asset('assets/js/plugins/loaders/pace.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/jquery.min.js') ?>"></script>
@@ -83,7 +96,6 @@
 				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
 			</ul>
 		</div>
-
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav">
 				<li>
@@ -186,6 +198,26 @@
 							    </li>
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>Pembayaran Pre-Order ?</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>penentuan HPP ? manager</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>management User ? Pemilik</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>Laporan ? Pemilik</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                    <span>Pemberian Hadiah</span></a>
+							    </li>
+                                <li>
+                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Barang</span></a>
 							    </li>
                                 <li>
@@ -196,7 +228,7 @@
                                 <a href="{{route('supplier.index')}}"><i class="icon-truck"></i>
                                     <span>Supplier</span></a>
 							    </li>
-                         		<li>
+                         		{{-- <li>
                                     <a href="#" class="click">
                                     <i class="icon-briefcase"></i>
                                     <span>Management Stock</span></a>
@@ -214,14 +246,14 @@
                                             </a>
                                         </li>
                                         </ul>
-								</li>
-                         		<li>
-                                    <a href="#" class="click">
+								</li> --}}
+                         		<li  style="position: relative">
+                                    <a href="#" name="cek" class="click">
                                     <i class="icon-briefcase"></i>
                                     <span>Pengadaan Barang</span></a>
                                         <ul class="nav c_dd">
                                         <li>
-                                            <a href="{{route('pengadaan.stock')}}">
+                                            <a href="{{route('pengadaan.stock')}}" name="cek">
                                                 <i class="icon-eye"></i>
                                                 <span>Cek Stock</span>
                                             </a>
@@ -307,39 +339,6 @@
 											<p>Pelanggan</p>
 										</a>
 									</li> --}}
-									<li>
-										<a href="table.html">
-											<i class="pe-7s-note2"></i>
-											<p>Table List</p>
-										</a>
-									</li>
-									<li>
-										<a href="typography.html">
-											<i class="pe-7s-news-paper"></i>
-											<p>Typography</p>
-										</a>
-									</li>
-									<li>
-										<a href="icons.html">
-											<i class="pe-7s-science"></i>
-											<p>Icons</p>
-										</a>
-									</li>
-									<li>
-										<a href="maps.html">
-											<i class="pe-7s-map-marker"></i>
-											<p>Maps</p>
-										</a>
-									</li>
-									<li>
-										<a href="notifications.html">
-											<i class="pe-7s-bell"></i>
-											<p>Notifications</p>
-										</a>
-									</li>
-
-
-
 							</ul>
 						</div>
 					</div>
@@ -360,6 +359,28 @@
 
 	</div>
 	<!-- /page container -->
+<script>
+    $(document).ready(function () {
+        $(function(){
+            $.ajax({
+                type: 'get',
+                url: '/cek/rop',
+                data: {
+                },
+                success: function(data) {
+                    if ((data.errors)){
+                        //show error disini
+                    }
+                    else {
+                        if(data>0){
+                            $('<div class="rop">'+data+'</div>').appendTo($('a[name=cek]'));
+                        }
 
+                    }
+                },
+            });
+        });
+    });
+</script>
 </body>
 </html>

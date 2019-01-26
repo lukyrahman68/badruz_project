@@ -8,6 +8,7 @@ class Barang extends Model
 {
     protected $fillable = [
         'id',
+        'supplier_id',
         'nama',
         'warna',
         'jenis',

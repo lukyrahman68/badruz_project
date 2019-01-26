@@ -31,16 +31,19 @@
             </div>
             <div class="form-group">
                 <label for="warna">Alamat</label>
-                <input type="text" class="form-control" placeholder="Warna" name="warna">
+                <input type="text" class="form-control" placeholder="Alamat" name="alamat">
             </div>
             <div class="form-group">
                 <label for="jenis">No Telepon</label>
-                <input type="text" class="form-control" placeholder="Jenis" name="jenis">
+                <input type="text" class="form-control" placeholder="No Telphone" name="tlpn">
             </div>
             <div class="form-group">
                 <label for="jenis">Jenis</label>
-                <select name="" id="">
-                    <option value=""></option>
+                <select name="jenis_id" id="jenis_id" class="form-control">
+                    <option value="" selected disabled>Pilih Supplier</option>
+                    @foreach ($jenis as $item)
+                        <option value="{{$item->id}}">{{$item->nama}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="pull-right">

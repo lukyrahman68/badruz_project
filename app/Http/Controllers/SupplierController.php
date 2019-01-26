@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Supplier;
+use App\JenisBarang;
 
 class SupplierController extends Controller
 {
@@ -12,14 +13,15 @@ class SupplierController extends Controller
         return view('supplier.index');
     }
     public function create(){
-        return view('supplier.create');
+        $jenis=JenisBarang::all();
+        return view('supplier.create',compact('jenis'));
     }
     public function ajaxListSupplier(Request $request){
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
         $columns = array(
-           
-           
+
+
             0 => 'nama',
             1 => 'alamat',
             2 => 'tlpn',
@@ -29,10 +31,10 @@ class SupplierController extends Controller
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
         $totaldata = Supplier::select('*')->count();
-    //    
+    //
             $totalFiltered =$totaldata;
         //    dd($pelanggan);
-            
+
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
@@ -47,14 +49,14 @@ class SupplierController extends Controller
                     ->get();
             } else {
                 $search = $request->input('search.value');
-    
+
                 $supplier = $supplier->where(function ($query) use ($search) {
                     $query->orWhere('id', 'LIKE', "%{$search}%");
                     $query->orWhere('nama', 'LIKE', "%{$search}%");
                     $query->orWhere('alamat', 'LIKE', "%{$search}%");
                     $query->orWhere('tlpn', 'LIKE', "%{$search}%");
                     $query->orWhere('created_at', 'LIKE', "%{$search}%");
-               
+
                 })
                     ->offset($start)
                     ->limit($limit)
@@ -74,7 +76,7 @@ class SupplierController extends Controller
                     $nestedData['tlpn'] = $r_aktif->tlpn;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
-                  
+
                     $data[] = $nestedData;
 
                     $no++;
@@ -112,6 +114,6 @@ public function destroy($id){
     $supplier->delete();
 
     return redirect()->route('supplier.index')->with('success', 'Data deleted');
-    
+
 }
 }
