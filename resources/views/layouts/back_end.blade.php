@@ -197,7 +197,7 @@
                                     <span>Penjualan</span></a>
 							    </li>
                                 <li>
-                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+                                <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
                                     <span>Pembayaran Pre-Order ?</span></a>
 							    </li>
                                 <li>

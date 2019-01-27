@@ -70,6 +70,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     //jenis
     Route::resource('jenis', 'JenisBarangController');
+
+    //pre-order
+    Route::resource('preorder', 'PreOrderController');
 });
 Auth::routes();
 
