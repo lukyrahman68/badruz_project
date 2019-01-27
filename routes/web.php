@@ -80,6 +80,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('user', 'UserController');
 
     Route::get('bar-chart', 'ChartController@index');
+    //pre-order
+    Route::resource('preorder', 'PreOrderController');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
