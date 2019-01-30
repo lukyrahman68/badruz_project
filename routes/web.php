@@ -55,8 +55,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('stock', 'StockController');
 
     //pengadaan barang
+  
+    Route::get('pengadaan/ajaxListStock', 'PengadaanController@ajaxListStock')->name('pengadaan.listStock');
     Route::get('pengadaan', 'PengadaanController@index')->name('pengadaan.index');
     Route::get('pengadaan/stock', 'PengadaanController@stock')->name('pengadaan.stock');
+    Route::post('pengadaan/proses/save', 'PengadaanController@save')->name('pengadaan.save');
+    Route::get('pengadaan/proses/{id}', 'PengadaanController@prosesPengadaan')->name('pengadaan.proses');
 
     //penjualan
     Route::resource('penjualan', 'PenjualanController');
@@ -71,6 +75,12 @@ Route::group(['middleware' => ['auth']], function() {
     //jenis
     Route::resource('jenis', 'JenisBarangController');
 
+    //hadiah
+    // Route::get('hadiah/ajaxListHadiah','HadiahContoller@ajaxListHadiah')->name('hadiah.listHadiah');
+    Route::post('hadiah/cari/periode', 'HadiahController@cari')->name('hadiah.cari');
+    Route::resource('hadiah', 'HadiahController');
+    
+   
 
     //new user
     Route::get('user/ajaxListUser', 'UserController@ajaxListUser')->name('user.listUser');
@@ -79,7 +89,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('user/edit/{id}', 'UserController@edit')->name('user.edit');
     Route::resource('user', 'UserController');
 
-    Route::get('bar-chart', 'ChartController@index');
+    // Route::get('bar-chart', 'ChartController@index');
     //pre-order
     Route::resource('preorder', 'PreOrderController');
 });

@@ -201,10 +201,7 @@
                                     <span>Pembayaran Pre-Order ?</span></a>
 							    </li>
                                 
-                                <li>
-                                <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-                                    <span>Pemberian Hadiah</span></a>
-							    </li>
+                                
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Barang</span></a>
@@ -266,6 +263,11 @@
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>penentuan HPP</span></a>
 								   </li>
+								   <li>
+										<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
+											<span>Pemberian Hadiah</span></a>
+										</li>
+								   
 									@elseif(Auth::getUser()->role == 'pemilik')
 									<li>
 										<a href="#"><i class="icon-user"></i>
@@ -314,9 +316,8 @@
 												</li>
 												
 												<li>
-												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+													<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
 													<span>Pemberian Hadiah</span></a>
-												</li>
 												<li>
 												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 													<span>Barang</span></a>
@@ -387,7 +388,7 @@
 																	<a href="{{route('user.index')}}">
 																		<i class="icon-eye"></i>
 																		<span>Data User</span>
-																	</a>
+																</a>
 																</li>
 																<li>
 																	<a href="{{route('user.create')}}">

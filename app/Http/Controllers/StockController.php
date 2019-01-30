@@ -19,32 +19,33 @@ class StockController extends Controller
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
         $columns = array(
 
-            0 => 'kode',
+            0 => 'no',
             1 => 'nama',
             2 => 'jumlah',
-            3 => 'action',
+            // 3 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
         $totaldata = Barang::join('stocks','stocks.barang_id' ,'=','barangs.id')
-                             ->selectRaw('*, stocks.jumlah as jumlah')->count();
+        ->selectRaw('*, barangs.id as barang_id, stocks.jumlah as jumlah')->count();
     //
             $totalFiltered =$totaldata;
         //    dd($pelanggan);
 
         $limit = $request->input('length');
         $start = $request->input('start');
-        $order = $columns[$request->input('order.0.column')];
+        // $order = $columns[$request->input('order.0.column')];
         $dir   = $request->input('order.0.dir');
 
         // DD($limit, $start , $order, $dir);
             $barang = Barang::join('stocks','stocks.barang_id' ,'=','barangs.id')
-                                ->selectRaw('*, stocks.jumlah as jumlah');
+                                ->selectRaw('*, barangs.id as barang_id, stocks.jumlah as jumlah');
             if (empty($request->input('search.value'))) {
                 $barang = $barang->offset($start)
                     ->limit($limit)
-                    ->orderBy($order, $dir)
+                    // ->orderBy($order, $dir)
                     ->get();
+                    // dd($barang);
             } else {
                 $search = $request->input('search.value');
 
@@ -59,7 +60,7 @@ class StockController extends Controller
                 })
                     ->offset($start)
                     ->limit($limit)
-                    ->orderBy($order, $dir)
+                    // ->orderBy($order, $dir)
                     ->get();
             }
             $data = array();
@@ -70,11 +71,11 @@ class StockController extends Controller
                 // $edit = "<a href='".route('barang.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 // $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
                     $nestedData['no'] = $no;
-                    $nestedData['kode'] = $r_aktif->kode;
+                    // $nestedData['barangs.id'] = $r_aktif->barang_id;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
                     $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
-                    $nestedData['action'] = "";
+                    // $nestedData['action'] = "";
 
                     $data[] = $nestedData;
 
