@@ -59,7 +59,8 @@
 
 	<script type="text/javascript" src="<?php echo asset('assets/js/core/libraries/jquery-ui.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo asset('js/alert.js') ?>"></script>
-	<script type="text/javascript" src="<?php echo asset('plugins/ckeditor/ckeditor.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo asset('plugins/ckeditor/ckeditor.js') ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 	<script type="text/javascript" src="<?php echo asset('vendor/summernote/summernote.min.js') ?>"></script>
 	@section('header')
@@ -79,6 +80,7 @@
 
 		    font: 12px Arial, sans-serif;
 		}
+
 	</style>
 </head>
 
@@ -192,15 +194,16 @@
                                 {{-- <li class="navigation-header"><span>Main</span>
                                     <i class="icon-menu" title="Main pages"></i>
                                 </li> --}}
+                                @if (Auth::getUser()->role =='karyawan')
                                 <li>
                                 <a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>
                                     <span>Penjualan</span></a>
 							    </li>
                                 <li>
                                 <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
-                                    <span>Pembayaran Pre-Order ?</span></a>
+                                    <span>Pembayaran Pre-Order</span></a>
 							    </li>
-                                <li>
+                                {{-- <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>penentuan HPP ? manager</span></a>
 							    </li>
@@ -211,11 +214,12 @@
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Laporan ? Pemilik</span></a>
-							    </li>
-                                <li>
+							    </li> --}}
+
+                                {{-- <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Pemberian Hadiah</span></a>
-							    </li>
+							    </li> --}}
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Barang</span></a>
@@ -272,7 +276,7 @@
                                         </li>
                                         </ul>
 								</li>
-                         		<li>
+                         		{{-- <li>
                                     <a href="#" class="click">
                                     <i class="icon-briefcase"></i>
                                     <span>Jenis Barang</span></a>
@@ -290,8 +294,14 @@
                                             </a>
                                         </li>
                                         </ul>
-								</li>
-									{{-- <li>
+								</li> --}}
+							        <li>
+										<a href="{{route('jenis.index')}}">
+											<i class="icon-eye"></i>
+											<p>Barang</p>
+										</a>
+									</li>
+							        {{-- <li>
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>
 											<p>Cek Stock</p>
@@ -314,8 +324,54 @@
 											<i class="pe-7s-user"></i>
 											<p>Penentuan Harga</p>
 										</a>
+                                    </li> --}}
+                                    @elseif(Auth::getUser()->role =='manajer')
+                                    <li>
+										<a href="{{route('hpp.index')}}"><i class="icon-archive"></i>
+											<span>Penentuan HPP</span></a>
+								    </li>
+									<li>
+										<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
+											<span>Pemberian Hadiah</span></a>
+								    </li>
+                                    @elseif(Auth::getUser()->role == 'pemilik')
+                                    <li>
+										<a href="#"><i class="icon-user"></i>
+											<span>Management User</span></a>
+												<ul class="nav c_dd">
+												<li>
+													<a href="{{route('user.index')}}">
+														<i class="icon-eye"></i>
+														<span>Data User</span>
+													</a>
+												</li>
+												<li>
+													<a href="{{route('user.create')}}">
+														<i class="icon-eye"></i>
+														<span>Tambah User</span>
+													</a>
+												</li>
+												</ul>
 									</li>
 									<li>
+										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+											<span>Laporan</span></a>
+											<ul class="nav c_dd">
+												<li>
+													<a href="#">
+														<i class="icon-eye"></i>
+															<span>Laporan Penjualan</span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<i class="icon-eye"></i>
+															<span>Laporan Pengadaan Barang</span>
+													</a>
+												</li>
+											</ul>
+									</li>
+									{{-- <li>
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>
 											<p>Penjualan</p>
@@ -338,7 +394,142 @@
 											<i class="pe-7s-user"></i>
 											<p>Pelanggan</p>
 										</a>
+                                    </li> --}}
+                                    {{-- <li>
+										<a href="#"><i class="icon-archive"></i>
+											<span>Laporan</span></a>
+											<ul class="nav c_dd">
+												<li>
+													<a href="{{route('laporan.penjualan')}}">
+														<i class="icon-eye"></i>
+															<span>Laporan Penjualan</span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<i class="icon-eye"></i>
+															<span>Laporan Pengadaan Barang</span>
+													</a>
+												</li>
+											</ul>
 									</li> --}}
+										@elseif(Auth::getUser()->role == 'super_admin')
+										<li>
+												<a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>
+													<span>Penjualan</span></a>
+												</li>
+												<li>
+                                                <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
+                                                    <span>Pembayaran Pre-Order ?</span></a>
+                                                </li>
+												<li>
+                                                <a href="{{route('chart.index')}}"><i class="icon-archive"></i>
+                                                    <span>Chart</span></a>
+                                                </li>
+
+												<li>
+												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+													<span>Pemberian Hadiah</span></a>
+												</li>
+												<li>
+												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+													<span>Barang</span></a>
+												</li>
+												<li>
+												<a href="{{route('pelanggan.index')}}"><i class="icon-user-tie"></i>
+													<span>Pelanggan</span></a>
+												</li>
+												<li>
+												<a href="{{route('supplier.index')}}"><i class="icon-truck"></i>
+													<span>Supplier</span></a>
+												</li>
+												 <li  style="position: relative">
+													<a href="#" name="cek" class="click">
+													<i class="icon-briefcase"></i>
+													<span>Pengadaan Barang</span></a>
+														<ul class="nav c_dd">
+														<li>
+															<a href="{{route('pengadaan.stock')}}" name="cek">
+																<i class="icon-eye"></i>
+																<span>Cek Stock</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{route('pengadaan.index')}}">
+																<i class="icon-eye"></i>
+																<span>Status Barang</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{route('stock.create')}}">
+																<i class="icon-check"></i>
+																<span>Tambah Stock</span>
+															</a>
+														</li>
+														</ul>
+												</li>
+												 <li>
+													<a href="#" class="click">
+													<i class="icon-briefcase"></i>
+													<span>Jenis Barang</span></a>
+														<ul class="nav c_dd">
+														<li>
+															<a href="{{route('jenis.index')}}">
+																<i class="icon-eye"></i>
+																<span>Tambah Jenis</span>
+															</a>
+														</li>
+														<li>
+															<a href="{{route('jenis.create')}}">
+																<i class="icon-eye"></i>
+																<span>Data Jenis</span>
+															</a>
+														</li>
+														</ul>
+												</li>
+
+													<li>
+														<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+															<span>penentuan HPP</span></a>
+												   </li>
+
+													<li>
+															<a href="#"><i class="icon-user"></i>
+																<span>Management User</span></a>
+																<ul class="nav c_dd">
+																<li>
+																	<a href="{{route('user.index')}}">
+																		<i class="icon-eye"></i>
+																		<span>Data User</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="{{route('user.create')}}">
+																		<i class="icon-eye"></i>
+																		<span>Tambah User</span>
+																	</a>
+																</li>
+																</ul>
+													</li>
+													<li>
+														<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
+															<span>Laporan ? Pemilik</span></a>
+															<ul class="nav c_dd">
+																<li>
+																	<a href="#">
+																		<i class="icon-eye"></i>
+																			<span>Laporan Penjualan</span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<i class="icon-eye"></i>
+																			<span>Laporan Pengadaan Barang</span>
+																	</a>
+																</li>
+															</ul>
+													</li>
+													@endif
 							</ul>
 						</div>
 					</div>
@@ -380,6 +571,8 @@
                 },
             });
         });
+        $('.select2').select2()
+        @yield('js')
     });
 </script>
 </body>

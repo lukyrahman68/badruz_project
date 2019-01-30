@@ -22,6 +22,7 @@ class PengadaanController extends Controller
     public function stock(){
         $barangs = Barang::join('stocks','stocks.barang_id','=','barangs.id')
                         ->selectRaw('barangs.*,stocks.jumlah')
+                        ->orderBy('stocks.jumlah')
                         ->get();
         return view('pengadaan_barang.stock',compact('barangs'));
     }

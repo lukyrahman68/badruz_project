@@ -16,6 +16,7 @@ class JenisBarangController extends Controller
         $jenis=JenisBarang::create($request->all());
         return redirect()->route('jenis.index');
     }
+
     public function update(request $request,$id){
         $jenis=JenisBarang::find($id);
         $jenis->update($request->all());

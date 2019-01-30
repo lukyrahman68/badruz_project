@@ -18,16 +18,6 @@
 </div>
 <br>
 <div class="content">
-    <div class="panel" style="background-color: transparent; border:0; box-shadow: none;">
-            <a href="{{route('pelanggan.create')}}">
-                <button type="button" class="btn btn-success btn-labeled"><b><i class="icon-plus3"></i></b> Create
-                </button>
-              </a>
-    </div>
-
-
-
-
             <!-- /.box-header -->
     <div class="row" style="">
         <div class="col-md-12">
@@ -35,6 +25,7 @@
                 <thead>
                     <tr>
                         <th>Nama</th>
+                        <th>DP</th>
                         <th>Sisa Bayar</th>
                         <th>Tanggal Transaksi</th>
                         <th>Aksi</th>
@@ -44,11 +35,11 @@
                     @foreach ($pelanggans as $pelanggan)
                         <tr>
                             <td>{{$pelanggan->nama}}</td>
+                            <td>{{$pelanggan->total_bayar-$pelanggan->sisa_bayar}}</td>
                             <td>{{$pelanggan->sisa_bayar}}</td>
                             <td>{{$pelanggan->created_at}}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                                <a target="_blank" href="{{route('preorder.updt',$pelanggan->p_id)}}" class="btn btn-info btn-sm" id="save">Lunas</a>
                             </td>
                         </tr>
                     @endforeach
@@ -59,7 +50,9 @@
 </div>
           <script type="text/javascript">
             $(document).ready(function () {
-
+                $('#save').click(function(){
+                    window.location.href = '/penjualan';
+                });
             });
           </script>
 @endsection

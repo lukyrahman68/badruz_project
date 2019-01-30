@@ -6,13 +6,13 @@
         <div class="page-header-content">
             <div class="page-title">
 
-                <h4><a href="{{route('barang.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Stock</span></h4>
+                <h4><a href="{{route('barang.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Data Hadiah</span></h4>
             </div>
         </div>
 
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
-               <li><i class="icon-home2 position-left active"></i> Stock</a></li>
+               <li><i class="icon-home2 position-left active"></i> Data Hadiah</a></li>
             </ul>
         </div>
 
@@ -26,18 +26,20 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <td>No</td>
                         <td>Nama</td>
-                        <td>Warna</td>
-                        <td>Stock</td>
+                        <td>Hadiah</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $barang)
-                    <tr {{($barang->jumlah<=200)?'style=background-color:yellow':''}}>
-                        <td>{{$barang->nama}}</td>
-                        <td>{{$barang->warna}}</td>
-                        <td>{{$barang->jumlah}}</td>
-                    </tr>
+                    <?php $idx =1; ?>
+                    @foreach ($hadiah as $item)
+                        <tr>
+                            <td>{{$idx}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{$item->hadiah}}</td>
+                        </tr>
+                        <?php $idx++; ?>
                     @endforeach
                 </tbody>
             </table>

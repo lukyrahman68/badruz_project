@@ -73,6 +73,34 @@ Route::group(['middleware' => ['auth']], function() {
 
     //pre-order
     Route::resource('preorder', 'PreOrderController');
+
+    //new user
+    Route::get('user/ajaxListUser', 'UserController@ajaxListUser')->name('user.listUser');
+    Route::get('user/hapus/{id}', 'UserController@destroy')->name('user.hapus');
+    Route::post('user/ubah/{id}', 'UserController@ubah')->name('user.ubah');
+    Route::get('user/edit/{id}', 'UserController@edit')->name('user.edit');
+    Route::resource('user', 'UserController');
+
+    Route::get('bar-chart', 'ChartController@index');
+    //pre-order
+    Route::resource('preorder', 'PreOrderController');
+    Route::get('preorder/updt/{id}', 'PreOrderController@updt')->name('preorder.updt');
+    //chart
+    Route::get('chart', 'ChartController@index')->name('chart.index');
+    //laporan
+    Route::get('laporan', 'LaporanController@penjualan')->name('laporan.penjualan');
+    Route::post('laporan/filter', 'LaporanController@filter')->name('laporan.filter');
+    //cetak
+    Route::get('cetak/penjualan', 'LaporanController@cetak')->name('laporan.cetak');
+
+    //hpp
+    Route::get('hpp', 'HppController@index')->name('hpp.index');
+    Route::get('hpp/cari/{id}/barang', 'HppController@cari')->name('hpp.cari');
+
+    //hadiah
+    Route::get('hadiah', 'HadiahController@index')->name('hadiah.index');
+    Route::post('hadiah/store', 'HadiahController@store')->name('hadiah.store');
+    Route::get('hadiah/view/hadiah', 'HadiahController@view')->name('hadiah.view');
 });
 Auth::routes();
 

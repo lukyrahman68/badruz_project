@@ -59,11 +59,11 @@
 		    width: 20px;
 		    height: 20px;
 		    padding-top: 2px;
-		    
+
 		    background: #FF4500;
 		    color: #ffffff;
 		    text-align: center;
-		    
+
 		    font: 12px Arial, sans-serif;
 		}
 	</style>
@@ -176,7 +176,7 @@
 
 								<!-- Main -->
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-								
+
 									<li class="active">
 										<a href="dashboard.html">
 											<i class="icon-home"></i>
@@ -276,8 +276,8 @@
 											<p>Notifications</p>
 										</a>
 									</li>
-							
-								
+
+
 
 							</ul>
 						</div>
