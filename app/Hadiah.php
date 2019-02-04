@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hadiah extends Model
 {
-    //
     protected $fillable = [
-        'pelanggans_id',
-        'hadiah'
+        'id',
+        'id_pelanggan',
+        'jml_beli',
+        'status',
+
     ];
 }
