@@ -20,10 +20,13 @@ class UserController extends Controller
         $columns = array(
             0 => 'id',
             1 => 'nama',
-            2 => 'email',
-            3 => 'role',
-            4 => 'tgl',
-            5 => 'action',
+            2 => 'alamat',
+            3 => 'jk',
+            4 => 'telepon',
+            5 => 'email',
+            6 => 'role',
+            7 => 'tgl',
+            8 => 'action',
         );
         $totaldata = User::select('*')->count();
             $totalFiltered =$totaldata;
@@ -65,6 +68,9 @@ class UserController extends Controller
                 $hapus = "<a href='".route('user.hapus', $r_aktif->id)."'  title='Hapus User' ><span class='icon-trash'></span></a>";
                 $nestedData['id'] =$r_aktif->id;
                 $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->name.'</strong>';
+                $nestedData['alamat'] =$r_aktif->alamat;
+                $nestedData['jk'] =$r_aktif->jk;
+                $nestedData['telepon'] =$r_aktif->telepon;
                     $nestedData['email'] =$r_aktif->email;
                     $nestedData['role'] =$r_aktif->role;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
@@ -92,6 +98,9 @@ dd($data);
             $save = new User;
             $save->name= $request->name;
             $save->email= $request->email;
+            $save->jk= $request->jk;
+            $save->alamat= $request->alamat;
+            $save->telepon= $request->tlpn;
             $save->password= Hash::make($request->password);
             $save->role= $request->role;
             $save->is_owner = 0;
@@ -112,6 +121,9 @@ dd($data);
         $save = User::find($id);
         $save->name= $request->name;
         $save->email= $request->email;
+        $save->jk= $request->jk;
+        $save->alamat= $request->alamat;
+        $save->telepon= $request->tlpn;
         $save->password= Hash::make($request->password);
         $save->role= $request->role;
         $save->is_owner = 0;

@@ -29,6 +29,9 @@
           "columns": [
               {"data": 'id'},
               {"data": 'nama'},
+              {"data": 'alamat'},
+              {"data": 'jk'},
+              {"data": 'telepon'},
               {"data": 'email'},
               {"data": 'role'},
               {"data": 'created_at'},
@@ -53,6 +56,9 @@
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Nama</th>
+                      <th scope="col">Alamat</th>
+                      <th scope="col">Jenis Kelamin</th>
+                      <th scope="col">Telepon</th>
                       <th scope="col">Email</th>
                       <th scope="col">Role</th>
                       <th scope="col">Tanggal Pendaftaran</th>

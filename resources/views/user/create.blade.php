@@ -26,10 +26,30 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
+            <div class="form-group">
                 <label for="nama">Nama User</label>
                 <input type="text" class="form-control" placeholder="Nama" name="name" id="nama">
             </div>
+            <div class="form-group">
+                <label for="nama">Alamat</label>
+                <input type="text" class="form-control" placeholder="Alamat" name="alamat" id="alamat">
+            </div>
+            <div class="form-group">
+                <label for="nama">Jenis Kelamin</label>
+                <select name="jk" class="form-control">
+                    <option value="L">Laki-Laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nama">Telephon</label>
+                <input type="text" class="form-control" placeholder="Telepon" name="tlpn" id="tlpn">
+            </div>
+            <div class="pull-right">
+                <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
+            </div>
+                </div>
+                <div class="col-md-6">
             <div class="form-group">
                 <label for="warna">Email</label>
                 <input type="text" class="form-control" placeholder="email" name="email" id="email">
@@ -46,9 +66,6 @@
                     <option value="pemilik">Pemilik</option>
                     <option value="super_admin">Super admin</option>
                 </select>
-            </div>
-            <div class="pull-right">
-                <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
             </div>
                 </div>
             </div>
