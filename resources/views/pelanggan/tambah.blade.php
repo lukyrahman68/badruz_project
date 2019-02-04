@@ -30,9 +30,6 @@
         <h3 class="box-title" style="font-weight: bold"></h3>
         <form action="{{route('pelanggan.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            
-         
-          
             <div class="form-group">
                 <label for="nama">NIK</label>
                 <input type="text" class="form-control" placeholder="NIK" name="nik">

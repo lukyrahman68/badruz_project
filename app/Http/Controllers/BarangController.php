@@ -22,17 +22,22 @@ class BarangController extends Controller
         // $data = $request->all();
         // $kategori = ($data['kategori'] ? $data['kategori'] : -1);
         $columns = array(
-            0 => 'nama',
+            0 => 'barangs.nama',
             1 => 'jenis',
             2 => 'warna',
-            3 => 'harga_beli',
-            4 => 'harga_jual',
-            5 => 'created_at',
-            6 => 'action',
+            3 => 'satuan',
+            4 => 'harga_beli',
+            5 => 'harga_jual',
+            6 => 'jumlah',
+            7 => 'created_at',
+            8 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
-        $totaldata = Barang::select('*')->count();
+        $totaldata = Barang::leftjoin('suppliers','suppliers.id','=','barangs.supplier_id')
+        ->leftjoin('jenis_barangs','jenis_barangs.id','=','suppliers.jenis_id')
+        ->leftjoin('stocks','stocks.barang_id','=','barangs.id')
+        ->selectRaw('*,barangs.nama as namabar, stocks.jumlah as jumlah, barangs.id as idb, jenis_barangs.nama as jenisbar')->count();
     //
             $totalFiltered =$totaldata;
         //    dd($pelanggan);
@@ -43,7 +48,10 @@ class BarangController extends Controller
         $dir   = $request->input('order.0.dir');
 
         // DD($limit, $start , $order, $dir);
-            $barang = Barang::select('*');
+            $barang = Barang::leftjoin('suppliers','suppliers.id','=','barangs.supplier_id')
+                            ->leftjoin('jenis_barangs','jenis_barangs.id','=','suppliers.jenis_id')
+                            ->leftjoin('stocks','stocks.barang_id','=','barangs.id')
+                            ->selectRaw('*,barangs.nama as namabar, stocks.jumlah as jumlah, barangs.id as idb, jenis_barangs.nama as jenisbar');
             if (empty($request->input('search.value'))) {
                 $barang = $barang->offset($start)
                     ->limit($limit)
@@ -70,13 +78,15 @@ class BarangController extends Controller
                 $no = 1;
             foreach ($barang as $r_aktif) {
                /*route('project.edit', $r_pendanaan->loan_id) .*/
-                $edit = "<a href='".route('barang.edit', $r_aktif->id)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
-                $hapus = "<a href='".route('barang.hapus', $r_aktif->id)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
-                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
+                $edit = "<a href='".route('barang.edit', $r_aktif->idb)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
+                $hapus = "<a href='".route('barang.hapus', $r_aktif->idb)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
+                    $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->namabar.'</strong>';
                     $nestedData['warna'] =$r_aktif->warna;
-                    $nestedData['jenis'] =$r_aktif->jenis;
+                    $nestedData['jenis'] =$r_aktif->jenisbar;
+                    $nestedData['satuan'] =$r_aktif->satuan;
                     $nestedData['harga_beli'] =$r_aktif->harga_beli;
                     $nestedData['harga_jual'] =$r_aktif->harga_jual;
+                    $nestedData['jenis'] =$r_aktif->jenisbar;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
 
