@@ -9,11 +9,7 @@ use App\User;
 class UserController extends Controller
 {
     public function index(){
-<<<<<<< HEAD
         $user = User::all();
-=======
-        // $user = User::all();
->>>>>>> origin
         return view('user.index', compact('user'));
     }
     public function create(){

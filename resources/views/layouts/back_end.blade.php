@@ -193,13 +193,8 @@
                                 {{-- <li class="navigation-header"><span>Main</span>
                                     <i class="icon-menu" title="Main pages"></i>
                                 </li> --}}
-<<<<<<< HEAD
                                 @if (Auth::getUser()->role =='karyawan')
                                 <li>
-=======
-								@if(Auth::getUser()->role == 'karyawan' )
-								<li>
->>>>>>> origin
                                 <a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>
                                     <span>Penjualan</span></a>
 							    </li>
@@ -207,7 +202,6 @@
                                 <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
                                     <span>Pembayaran Pre-Order</span></a>
 							    </li>
-<<<<<<< HEAD
                                 {{-- <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>penentuan HPP ? manager</span></a>
@@ -225,10 +219,6 @@
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Pemberian Hadiah</span></a>
 							    </li> --}}
-=======
-                                
-                                
->>>>>>> origin
                                 <li>
                                 <a href="{{route('barang.index')}}"><i class="icon-archive"></i>
                                     <span>Barang</span></a>
@@ -284,7 +274,6 @@
                                             </a>
                                         </li>
                                         </ul>
-<<<<<<< HEAD
 								</li> --}}
 							        <li>
 										<a href="{{route('jenis.index')}}">
@@ -298,10 +287,6 @@
 											<p>Cek Stock</p>
 										</a>
 									</li>
-=======
-								</li>
-									@elseif(Auth::getUser()->role == 'manajer' )
->>>>>>> origin
 									<li>
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>penentuan HPP</span></a>
@@ -331,7 +316,6 @@
 												</ul>
 									</li>
 									<li>
-<<<<<<< HEAD
 										<a href="{{route('pelanggan.index')}}">
 											<i class="pe-7s-user"></i>
 											<p>Penentuan Harga</p>
@@ -425,32 +409,12 @@
 												</li>
 											</ul>
 									</li> --}}
-=======
-										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-											<span>Laporan ? Pemilik</span></a>
-											<ul class="nav c_dd">
-												<li>
-													<a href="#">
-														<i class="icon-eye"></i>
-															<span>Laporan Penjualan</span>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-eye"></i>
-															<span>Laporan Pengadaan Barang</span>
-													</a>
-												</li>
-											</ul>
-									</li>
->>>>>>> origin
 										@elseif(Auth::getUser()->role == 'super_admin')
 										<li>
 												<a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>
 													<span>Penjualan</span></a>
 												</li>
 												<li>
-<<<<<<< HEAD
                                                 <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
                                                     <span>Pembayaran Pre-Order ?</span></a>
                                                 </li>
@@ -458,20 +422,14 @@
                                                 <a href="{{route('chart.index')}}"><i class="icon-archive"></i>
                                                     <span>Chart</span></a>
                                                 </li>
-
 												<li>
-												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-													<span>Pemberian Hadiah</span></a>
+													<a href="{{route('hpp.index')}}"><i class="icon-archive"></i>
+														<span>Penentuan HPP</span></a>
 												</li>
-=======
-												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-													<span>Pembayaran Pre-Order</span></a>
-												</li>
-												
 												<li>
 													<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
-													<span>Pemberian Hadiah</span></a>
->>>>>>> origin
+														<span>Pemberian Hadiah</span></a>
+												</li>
 												<li>
 												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 													<span>Barang</span></a>
@@ -488,11 +446,7 @@
 													<a href="#" name="cek" class="click">
 													<i class="icon-briefcase"></i>
 													<span>Pengadaan Barang</span></a>
-<<<<<<< HEAD
 														<ul class="nav c_dd">
-=======
-													<ul class="nav c_dd">
->>>>>>> origin
 														<li>
 															<a href="{{route('pengadaan.stock')}}" name="cek">
 																<i class="icon-eye"></i>
@@ -500,15 +454,9 @@
 															</a>
 														</li>
 														<li>
-<<<<<<< HEAD
-															<a href="{{route('pengadaan.index')}}">
-																<i class="icon-eye"></i>
-																<span>Status Barang</span>
-=======
 															<a href="{{route('pengadaan.list')}}">
 																<i class="icon-eye"></i>
 																<span>Status Pengadaan Barang</span>
->>>>>>> origin
 															</a>
 														</li>
 														<li>
@@ -538,20 +486,10 @@
 														</li>
 														</ul>
 												</li>
-<<<<<<< HEAD
-
-=======
-												
->>>>>>> origin
 													<li>
 														<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 															<span>penentuan HPP</span></a>
 												   </li>
-<<<<<<< HEAD
-
-=======
-													
->>>>>>> origin
 													<li>
 															<a href="#"><i class="icon-user"></i>
 																<span>Management User</span></a>
@@ -560,11 +498,7 @@
 																	<a href="{{route('user.index')}}">
 																		<i class="icon-eye"></i>
 																		<span>Data User</span>
-<<<<<<< HEAD
 																	</a>
-=======
-																</a>
->>>>>>> origin
 																</li>
 																<li>
 																	<a href="{{route('user.create')}}">
@@ -592,11 +526,7 @@
 																</li>
 															</ul>
 													</li>
-<<<<<<< HEAD
 													@endif
-=======
-													@endif	
->>>>>>> origin
 							</ul>
 						</div>
 					</div>
