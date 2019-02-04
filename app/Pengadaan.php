@@ -9,10 +9,11 @@ class Pengadaan extends Model
     protected $fillable = [
         'id',
         'barang_id',
-        'jenis_id',
         'supplier_id',
         'jml_order',
-        'satuan',
+        'jml_diterima',
+        'harga_beli',
+        'cost',
         'status',
     ];
     protected $table= 'histori_pengadaans';

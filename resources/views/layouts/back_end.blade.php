@@ -198,7 +198,7 @@
 							    </li>
                                 <li>
                                 <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
-                                    <span>Pembayaran Pre-Order ?</span></a>
+                                    <span>Pembayaran Pre-Order</span></a>
 							    </li>
                                 
                                 
@@ -218,7 +218,7 @@
                                     <a href="#" name="cek" class="click">
                                     <i class="icon-briefcase"></i>
                                     <span>Pengadaan Barang</span></a>
-                                        <ul class="nav c_dd">
+									<ul class="nav c_dd">
                                         <li>
                                             <a href="{{route('pengadaan.stock')}}" name="cek">
                                                 <i class="icon-eye"></i>
@@ -226,9 +226,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{route('pengadaan.index')}}">
+                                            <a href="{{route('pengadaan.list')}}">
                                                 <i class="icon-eye"></i>
-                                                <span>Status Barang</span>
+                                                <span>Status Pengadaan Barang</span>
                                             </a>
                                         </li>
                                         <li>
@@ -312,7 +312,7 @@
 												</li>
 												<li>
 												<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-													<span>Pembayaran Pre-Order ?</span></a>
+													<span>Pembayaran Pre-Order</span></a>
 												</li>
 												
 												<li>
@@ -334,7 +334,7 @@
 													<a href="#" name="cek" class="click">
 													<i class="icon-briefcase"></i>
 													<span>Pengadaan Barang</span></a>
-														<ul class="nav c_dd">
+													<ul class="nav c_dd">
 														<li>
 															<a href="{{route('pengadaan.stock')}}" name="cek">
 																<i class="icon-eye"></i>
@@ -342,9 +342,9 @@
 															</a>
 														</li>
 														<li>
-															<a href="{{route('pengadaan.index')}}">
+															<a href="{{route('pengadaan.list')}}">
 																<i class="icon-eye"></i>
-																<span>Status Barang</span>
+																<span>Status Pengadaan Barang</span>
 															</a>
 														</li>
 														<li>

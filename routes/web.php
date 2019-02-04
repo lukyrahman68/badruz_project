@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth']], function() {
             return view('pemilik.index');
         }
     });
+
+    
     //pelanggan
     Route::get('pelanggan/ajaxListPelanggan', 'PelangganController@ajaxListPelanggan')->name('pelanggan.listPelanggan');
     Route::get('pelanggan/hapus/{id}', 'PelangganController@destroy')->name('pelanggan.hapus');
@@ -55,13 +57,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('stock', 'StockController');
 
     //pengadaan barang
-  
     Route::get('pengadaan/ajaxListStock', 'PengadaanController@ajaxListStock')->name('pengadaan.listStock');
     Route::get('pengadaan', 'PengadaanController@index')->name('pengadaan.index');
+    Route::get('pengadaan/edit/{id}', 'PengadaanController@edit')->name('pengadaan.edit');
     Route::get('pengadaan/stock', 'PengadaanController@stock')->name('pengadaan.stock');
-    Route::post('pengadaan/proses/save', 'PengadaanController@save')->name('pengadaan.save');
+    Route::get('pengadaan/list', 'PengadaanController@list')->name('pengadaan.list');
+    Route::get('pengadaan/list/ajaxListStatus', 'PengadaanController@ajaxListStatus')->name('pengadaan.listStatus');
+    Route::post('pengadaan/proses/edit/{id}', 'PengadaanController@edit')->name('pengadaan.edit');
     Route::get('pengadaan/proses/{id}', 'PengadaanController@prosesPengadaan')->name('pengadaan.proses');
-
+    Route::post('pengadaan/proses/send_email', 'PengadaanController@sendEmail')->name('pengadaan.sendEmail');
     //penjualan
     Route::resource('penjualan', 'PenjualanController');
     Route::post('penjualan/toko/beli', 'PenjualanController@lanjut')->name('penjualan.lanjut');

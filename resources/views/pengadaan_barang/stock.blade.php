@@ -8,14 +8,14 @@
     <div class="page-header-content">
         <div class="page-title">
             {{-- <h4><a href="{{!empty(\URL::previous())?\URL::previous():route('dashboard')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">User</span></h4> --}}
-            <h4><a href="{{route('stock.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Stock Barang</span></h4>
+            <h4><a href="{{route('stock.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Stock Habis</span></h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             {{-- <li><a href="{{route('dashboard')}}"><i class="icon-home2 position-left"></i> Home</a></li> --}}
-            <li class="active">Stock Barang</li>
+            <li class="active">Stock Habis</li>
         </ul>
     </div>
 </div>
@@ -30,7 +30,6 @@
               {"data": 'no'},
               {"data": 'nama'},
               {"data": 'warna'},
-              {"data": 'jenis'},
               {"data": 'supplier'},
               {"data": 'jumlah'},
               {"data": 'action'},
@@ -48,8 +47,7 @@
                     <tr>
                       <th scope="col">No</th>
                       <th scope="col">Nama</th>
-                      <th scope="col">warna</th>
-                      <th scope="col">jenis</th>
+                      <th scope="col">Warna</th>
                       <th scope="col">supplier</th>
                       <th scope="col">Sisa Stock</th>
                       <th scope="col">Action</th>

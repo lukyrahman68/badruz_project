@@ -23,21 +23,20 @@
               "processing": true,
               "serverSide": true,
               "ajax" 		: "{{route('barang.listBarang')}}",
-
               "columns": [
-
                   {"data": 'nama'},
                   {"data": 'warna'},
                   {"data": 'jenis'},
+                  {"data": 'satuan'},
                   {"data": 'harga_beli'},
                   {"data": 'harga_jual'},
+                  {"data": 'jumlah'},
                   {"data": 'created_at'},
                   {"data": 'action'},
               ]
           });
       });
       </script>
-    <br>
     <div class="content">
         <div class="panel" style="background-color: transparent; border:0; box-shadow: none;">
                 <a href="{{route('barang.create')}}">
@@ -45,30 +44,19 @@
                     </button>
                   </a>
         </div>
-
-
-
-
-                <!-- /.box-header -->
                <div class="row">
                   <div class="col-md-12">
                     <table class="table datatable-ajax" id="example">
-                      <colgroup>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                      </colgroup>
-
                       <thead class="thead-dark">
                         <tr>
 
                           <th scope="col">Nama</th>
                           <th scope="col">Warna</th>
                           <th scope="col">Jenis</th>
+                          <th scope="col">Satuan</th>
                           <th scope="col">Harga Beli</th>
                           <th scope="col">Harga Jual</th>
+                          <th scope="col">Jumlah Stock</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>
                         </tr>

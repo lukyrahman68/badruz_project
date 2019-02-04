@@ -1,7 +1,6 @@
 @extends('layouts.back_end')
 @section('main')
-<br>
-<div class="content">
+
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
@@ -17,6 +16,7 @@
             </ul>
         </div>
     </div>
+    <div class="content">
 <div class="col-xs-12 inner">
     <div class="box">
       <div class="box-header">
@@ -44,13 +44,20 @@
                 <input type="text" class="form-control" placeholder="Warna" name="warna">
             </div>
            <div class="form-group">
-                <label for="jenis">Jenis</label>
-                <input type="text" class="form-control" placeholder="Jenis" name="jenis">
-            </div>
-           <div class="form-group">
                 <label for="jenis">Harga Beli</label>
                 <input type="text" class="form-control" placeholder="Harga Beli" name="harga_beli">
             </div>
+                <div class="form-group">
+                    <label for="jenis">Satuan</label>
+                    <select name="satuan" id="satuan" class="form-control">
+                        <option value="liter">Liter</option>
+                        <option value="pasang">Pasang</option>
+                        <option value="meter">Meter</option>
+                        <option value="lembar">Lembar</option>
+                        <option value="pcs">Pcs</option>
+                        <option value="biji">Biji</option>
+                    </select>
+                </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
             </div>

@@ -11,8 +11,8 @@ class Barang extends Model
         'supplier_id',
         'nama',
         'warna',
-        'jenis',
         'harga_beli',
         'harga_jual',
+        'satuan',
     ];
 }

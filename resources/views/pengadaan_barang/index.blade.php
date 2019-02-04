@@ -14,54 +14,33 @@
              display: block;
     }
 </style>
+{{-- {{$get_data}} --}}
+@foreach($get_data as $data)
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title">
             {{-- <h4><a href="{{!empty(\URL::previous())?\URL::previous():route('dashboard')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">User</span></h4> --}}
-            <h4><a href="{{route('stock.index')}}"><i class="icon-arrow-left52 position-left" style="color: #000;"></i></a> <span class="text-semibold">Periode Penentuan Penerima Hadiah</span></h4>
+            <h4> <span class="text-semibold">Pengadaan Barang</span></h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
             {{-- <li><a href="{{route('dashboard')}}"><i class="icon-home2 position-left"></i> Home</a></li> --}}
-            <li class="active">Periode Hadiah</li>
+            <li class="active">Pengadaan Barang</li>
         </ul>
     </div>
 </div>
-{{-- <script type="text/javascript">
-  $(document).ready(function () {
-      $('.datatable-ajax').DataTable({
-          "processing": true,
-          "serverSide": true,
-          "ajax" 		: "{{route('stock.listStock')}}",
-
-          "columns": [
-              {"data": 'no'},
-              {"data": 'nama'},
-              {"data": 'jumlah'},
-          ]
-      });
-  });
-  </script> --}}
 <br>
 <div class="content">
-    {{-- {{$get_data}} --}}
-@foreach($get_data as $data)
            <div class="row">
               <div class="col-md-6">
-            <form action="{{route('pengadaan.save')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('pengadaan.edit', $data->idp)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="jenis">Nama Barang</label>
-                    <input type="text" class="form-control" value="{{$data->nama_bar}}" disabled>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="jenis">Jenis Barang</label>
-                    <input type="text" class="form-control" value="{{$data->nama_jenis}}" disabled>
+                    <input type="text" class="form-control" value="{{$data->nm_bar}}" disabled>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -81,12 +60,7 @@
                             <label for="jenis">Email Supplier</label>
                         <input type="text" class="form-control" value="{{$data->email}}" disabled>
                         </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <input type="submit" id="save" class="btn btn-primary" value="Proses">
-                </div>
-           
-                  
+                </div>                  
               </div>
               <div class="col-md-6">
                     <div class="col-md-12">
@@ -95,27 +69,16 @@
                             <input type="text" class="form-control" name="jml">
                             </div>
                     </div>
-                    <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="jenis">Satuan</label>
-                                <select name="satuan" id="satuan" class="form-control">
-                                    <option value="liter">Liter</option>
-                                    <option value="pasang">Pasang</option>
-                                    <option value="meter">Meter</option>
-                                    <option value="lembar">Lembar</option>
-                                    <option value="pcs">Pcs</option>
-                                    <option value="biji">Biji</option>
-                                </select>
-                            </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" id="save" class="btn btn-primary" value="Proses">
                     </div>
                 <input type="hidden" name="id" value="{{$data->id_bar}}">
-                <input type="hidden" name="sup" value="{{$data->id_sup}}">
+                <input type="hidden" name="sup" value="{{$data->sup_id}}">
                 <input type="hidden" name="jen" value="{{$data->id_jen}}">
               </div>
             </form>
             </div>
             @endforeach
-           
           </div>
 
 @endsection

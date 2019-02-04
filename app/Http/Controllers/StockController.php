@@ -130,7 +130,7 @@ dd($data);
         }else{
             Stock::create($request->all());
         }
-        return redirect()->route('stock.index');
+        return redirect()->route('barang.index');
 
     }
 
