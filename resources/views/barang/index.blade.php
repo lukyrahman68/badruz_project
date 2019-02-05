@@ -29,7 +29,7 @@
                   {"data": 'jenis'},
                   {"data": 'satuan'},
                   {"data": 'harga_beli'},
-                  {"data": 'harga_jual'},
+                //   {"data": 'harga_jual'},
                   {"data": 'jumlah'},
                   {"data": 'created_at'},
                   {"data": 'action'},
@@ -54,8 +54,8 @@
                           <th scope="col">Warna</th>
                           <th scope="col">Jenis</th>
                           <th scope="col">Satuan</th>
-                          <th scope="col">Harga Beli</th>
-                          <th scope="col">Harga Jual</th>
+                          <th scope="col">Harga Pokok Penjualan</th>
+                          {{-- <th scope="col">Harga Jual</th> --}}
                           <th scope="col">Jumlah Stock</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>

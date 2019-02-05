@@ -43,10 +43,10 @@
                 <label for="warna">Warna</label>
                 <input type="text" class="form-control" placeholder="Warna" name="warna">
             </div>
-           <div class="form-group">
+           {{-- <div class="form-group">
                 <label for="jenis">Harga Beli</label>
                 <input type="text" class="form-control" placeholder="Harga Beli" name="harga_beli">
-            </div>
+            </div> --}}
                 <div class="form-group">
                     <label for="jenis">Satuan</label>
                     <select name="satuan" id="satuan" class="form-control">

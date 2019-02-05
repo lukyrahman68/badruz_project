@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Barang;
 use App\Supplier;
+use App\Stock;
 
 class BarangController extends Controller
 {
@@ -27,10 +28,10 @@ class BarangController extends Controller
             2 => 'warna',
             3 => 'satuan',
             4 => 'harga_beli',
-            5 => 'harga_jual',
-            6 => 'jumlah',
-            7 => 'created_at',
-            8 => 'action',
+            // 5 => 'harga_jual',
+            5 => 'jumlah',
+            6 => 'created_at',
+            7 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
@@ -85,8 +86,8 @@ class BarangController extends Controller
                     $nestedData['jenis'] =$r_aktif->jenisbar;
                     $nestedData['satuan'] =$r_aktif->satuan;
                     $nestedData['harga_beli'] =$r_aktif->harga_beli;
-                    $nestedData['harga_jual'] =$r_aktif->harga_jual;
-                    $nestedData['jenis'] =$r_aktif->jenisbar;
+                    // $nestedData['harga_jual'] =$r_aktif->harga_jual;
+                    $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
 
@@ -108,8 +109,25 @@ dd($data);
     }
 
 public function store(Request $request){
-    $request['harga_jual'] = ($request->harga_beli * 0.5)+$request->harga_beli;
-    $simpan = Barang::create($request->all());
+    // // $request['harga_jual'] = ($request->harga_beli * 0.5)+$request->harga_beli;
+    // $simpan = Barang::create($request->all());
+    // return view('barang.index');
+    $save = new Barang;
+    $save->supplier_id = $request->supplier_id;
+    $save->nama = $request->nama;
+    $save->satuan = $request->satuan;
+    $save->warna = $request->warna;
+    if($save->save()){
+        $idbarang = $save->id;
+
+        $stock = new Stock;
+        $stock->barang_id= $idbarang;
+        $stock->jumlah = 0;
+        $stock->harga_satuan = 0;
+        $stock->harga_total = 0;
+
+        $stock->save();
+    }
     return view('barang.index');
 }
 

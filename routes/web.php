@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('pengadaan/proses/edit/{id}', 'PengadaanController@edit')->name('pengadaan.edit');
     Route::get('pengadaan/proses/{id}', 'PengadaanController@prosesPengadaan')->name('pengadaan.proses');
     Route::post('pengadaan/proses/send_email', 'PengadaanController@sendEmail')->name('pengadaan.sendEmail');
+    Route::get('pengadaan/proses/ubah/{id}', 'PengadaanController@changeStatus')->name('pengadaan.ubahstatus');
+    Route::post('pengadaan/proses/savesatatus/{id}', 'PengadaanController@savestatus')->name('pengadaan.savestatus');
     //penjualan
     Route::resource('penjualan', 'PenjualanController');
     Route::post('penjualan/toko/beli', 'PenjualanController@lanjut')->name('penjualan.lanjut');
@@ -80,6 +82,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     //jenis
     Route::resource('jenis', 'JenisBarangController');
+
+    //pencatatan Penjualan 
+    Route::get('pencatatan', 'PengadaanController@Pencatatan')->name('pecatatan.list');
+    Route::get('pencatatan/AjaxPencatatan', 'PengadaanController@AjaxPencatatan')->name('pecatatan.Ajax');
 
     //hadiah
     // Route::get('hadiah/ajaxListHadiah','HadiahContoller@ajaxListHadiah')->name('hadiah.listHadiah');

@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-md-12">
           <table class="table datatable-ajax" id="example">
-            <thead class="thead-dark">
+            <thead class="thead-dark" style="background-color:#ddd">
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>

@@ -248,12 +248,6 @@
                                                 <span>Status Pengadaan Barang</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="{{route('stock.create')}}">
-                                                <i class="icon-check"></i>
-                                                <span>Tambah Stock</span>
-                                            </a>
-                                        </li>
                                         </ul>
 								</li>
                          		{{-- <li>
@@ -323,8 +317,8 @@
                                     </li> --}}
                                     @elseif(Auth::getUser()->role =='manajer')
                                     <li>
-										<a href="{{route('hpp.index')}}"><i class="icon-archive"></i>
-											<span>Penentuan HPP</span></a>
+										<a href="{{route('pecatatan.list')}}"><i class="icon-archive"></i>
+											<span>Pencatatan Persediaan</span></a>
 								    </li>
 									<li>
 										<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
@@ -349,6 +343,10 @@
 												</li>
 												</ul>
 									</li>
+									<li>
+											<a href="{{route('pecatatan.list')}}"><i class="icon-archive"></i>
+												<span>Pencatatan Persediaan</span></a>
+										</li>
 									<li>
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>Laporan</span></a>
@@ -419,8 +417,8 @@
                                                     <span>Pembayaran Pre-Order </span></a>
                                                 </li>
 												<li>
-													<a href="{{route('hpp.index')}}"><i class="icon-archive"></i>
-														<span>Penentuan HPP</span></a>
+													<a href="{{route('pecatatan.list')}}"><i class="icon-archive"></i>
+														<span>Pencatatan Persediaan</span></a>
 												</li>
 												<li>
 													<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
@@ -455,12 +453,6 @@
 																<span>Status Pengadaan Barang</span>
 															</a>
 														</li>
-														<li>
-															<a href="{{route('stock.create')}}">
-																<i class="icon-check"></i>
-																<span>Tambah Stock</span>
-															</a>
-														</li>
 														</ul>
 												</li>
 												 <li>
@@ -482,10 +474,6 @@
 														</li>
 														</ul>
 												</li>
-													<li>
-														<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
-															<span>penentuan HPP</span></a>
-												   </li>
 													<li>
 															<a href="#"><i class="icon-user"></i>
 																<span>Management User</span></a>

@@ -18,28 +18,6 @@
             <li class="active">Stock Habis</li>
         </ul>
     </div>
-<<<<<<< HEAD
-    <div class="col-xs-12 inner input_box">
-        <div class="box">
-        <div class="box-header">
-            <h3 class="box-title" style="font-weight: bold"></h3>
-        </div>
-        <div class="box-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Nama</td>
-                        <td>Warna</td>
-                        <td>Stock</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($barangs as $barang)
-                    <tr {{($barang->jumlah<=200)?'style=background-color:yellow':''}}>
-                        <td>{{$barang->nama}}</td>
-                        <td>{{$barang->warna}}</td>
-                        <td>{{$barang->jumlah}}</td>
-=======
 </div>
 <script type="text/javascript">
   $(document).ready(function () {
@@ -73,7 +51,6 @@
                       <th scope="col">supplier</th>
                       <th scope="col">Sisa Stock</th>
                       <th scope="col">Action</th>
->>>>>>> origin
                     </tr>
                   </thead>
                   <tbody>
