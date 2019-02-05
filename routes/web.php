@@ -149,7 +149,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('laporan/filter', 'LaporanController@filter')->name('laporan.filter');
     //cetak
     Route::get('cetak/penjualan', 'LaporanController@cetak')->name('laporan.cetak');
-    Route::get('cetak/penjualanpengadaan', 'LaporanController@cetakpengadaan')->name('laporan.cetakpengadaan');
+    Route::post('cetak/penjualanpengadaan', 'LaporanController@cetakpengadaan')->name('laporan.cetakpengadaan');
     //hpp
     Route::get('hpp', 'HppController@index')->name('hpp.index');
     Route::get('hpp/cari/{id}/barang', 'HppController@cari')->name('hpp.cari');

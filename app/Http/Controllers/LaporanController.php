@@ -16,6 +16,8 @@ class LaporanController extends Controller
     }
     public function cetakpengadaan(request $request){
         $pengadaan = pengadaan::where('status','=','Diterima')
+                        ->where('histori_pengadaans.updated_at','>',$request->tgl_awal)
+                        ->where('histori_pengadaans.updated_at','<',$request->tgl_akhir)
                         ->join('barangs','barangs.id','=','histori_pengadaans.barang_id')
                         ->select('*','histori_pengadaans.updated_at as aaa')
                         ->get();

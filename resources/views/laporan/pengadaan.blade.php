@@ -2,7 +2,7 @@
 @section('main')
     <br>
     <div class="container">
-        <form action="{{route('laporan.filter')}}" method="POST">
+        <form action="{{route('laporan.cetakpengadaan')}}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-5">
@@ -19,6 +19,9 @@
                     <div class="col-md-6" style="text-align:left">
                         <input type="date" class="form-control" name="tgl_akhir">
                     </div>
+                    <div class="col-md-4" style="text-align:left">
+                        <input type="submit" class="btn btn-primary" value="Cetak">
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,7 +31,7 @@
             
             
 
-    <a href="{{route('laporan.cetakpengadaan')}}" id="cetak" class="btn btn-primary">Cetak</a>
+    
         </div>
     </div>
     
