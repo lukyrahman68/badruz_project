@@ -11,6 +11,8 @@
 |
 */
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Pelanggan;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -110,6 +112,31 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('preorder/updt/{id}', 'PreOrderController@updt')->name('preorder.updt');
     //chart
     Route::get('chart', 'ChartController@index')->name('chart.index');
+    Route::get('chart2', function(){
+        return view('chart.chart2');
+    })->name('chart.index2');
+    Route::post('cekchart', function (Request $request) {
+        $a = $request->get('tgl1');
+        $b = $request->get('tgl2');
+        $chart = pelanggan::whereBetween('pelanggans.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
+        ->join('penjualans','penjualans.pelanggans_id','=','pelanggans.id')
+                                ->join('transaksis','transaksis.transaksi_id','=','penjualans.id')
+                                ->selectRaw('pelanggans.nama as nama_pelanggan , sum(jml_beli) as j')
+                                ->groupBy('nama_pelanggan')
+                                ->get();
+        return view('chart.index',compact('chart'));
+    })->name('cekchart');
+    Route::post('cekchart2', function (Request $request) {
+        $a = $request->get('tgl1');
+        $b = $request->get('tgl2');
+        $chart = pelanggan::whereBetween('pelanggans.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
+        ->join('penjualans','penjualans.pelanggans_id','=','pelanggans.id')
+                                ->join('transaksis','transaksis.transaksi_id','=','penjualans.id')
+                                ->selectRaw('pelanggans.nama as nama_pelanggan , sum(total_bayar) as j')
+                                ->groupBy('nama_pelanggan')
+                                ->get();
+        return view('chart.index',compact('chart'));
+    })->name('cekchart2');
     //laporan
     Route::get('laporan', 'LaporanController@penjualan')->name('laporan.penjualan');
     Route::post('laporan/filter', 'LaporanController@filter')->name('laporan.filter');

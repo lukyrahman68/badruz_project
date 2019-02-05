@@ -2,9 +2,9 @@
 @section('main')
     <br>
     <div class="container">
-        <strong>Pembelian barang terbanyak</strong>
+        <strong>Laporan pelanggan dengan pembelian terbanyak</strong>
         <br>
-        <form method="post" action="cekchart">
+        <form method="post" action="cekchart2">
         @csrf
             <div class="form-group">
                 <label>Tgl Mulai : </label>
