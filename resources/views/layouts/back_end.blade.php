@@ -508,6 +508,12 @@
 																		<span>Laporan pelanggan dengan jumlah beli terbanyak</span>
 																</a>
 															</li>
+															<li>
+																<a href="{{route('laporanpengadaan')}}">
+																	<i class="icon-eye"></i>
+																		<span>Laporan Pengadaan</span>
+																</a>
+															</li>
 															</ul>
 													</li>
 													@endif

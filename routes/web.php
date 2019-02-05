@@ -144,11 +144,12 @@ Route::group(['middleware' => ['auth']], function() {
         return view('chart.index',compact('chart'));
     })->name('cekchart2');
     //laporan
+    Route::get('laporanpengadaan', 'LaporanController@pengadaan')->name('laporanpengadaan');
     Route::get('laporan', 'LaporanController@penjualan')->name('laporan.penjualan');
     Route::post('laporan/filter', 'LaporanController@filter')->name('laporan.filter');
     //cetak
     Route::get('cetak/penjualan', 'LaporanController@cetak')->name('laporan.cetak');
-
+    Route::get('cetak/penjualanpengadaan', 'LaporanController@cetakpengadaan')->name('laporan.cetakpengadaan');
     //hpp
     Route::get('hpp', 'HppController@index')->name('hpp.index');
     Route::get('hpp/cari/{id}/barang', 'HppController@cari')->name('hpp.cari');
