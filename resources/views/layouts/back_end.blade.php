@@ -416,11 +416,7 @@
 												</li>
 												<li>
                                                 <a href="{{route('preorder.index')}}"><i class="icon-archive"></i>
-                                                    <span>Pembayaran Pre-Order ?</span></a>
-                                                </li>
-												<li>
-                                                <a href="{{route('chart.index')}}"><i class="icon-archive"></i>
-                                                    <span>Chart</span></a>
+                                                    <span>Pembayaran Pre-Order </span></a>
                                                 </li>
 												<li>
 													<a href="{{route('hpp.index')}}"><i class="icon-archive"></i>
