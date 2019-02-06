@@ -519,6 +519,18 @@
 																		<span>Laporan Pengadaan</span>
 																</a>
 															</li>
+															<li>
+																<a href="{{route('laporanpenjualan')}}">
+																	<i class="icon-eye"></i>
+																		<span>Laporan Penjualan</span>
+																</a>
+															</li>
+															<li>
+																<a href="{{route('laporanbaranglaku')}}">
+																	<i class="icon-eye"></i>
+																		<span>Laporan Barang paling banyak laku</span>
+																</a>
+															</li>
 															</ul>
 													</li>
 													@endif

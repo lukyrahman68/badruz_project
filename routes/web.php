@@ -13,6 +13,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Pelanggan;
+use App\Barang;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -143,13 +144,27 @@ Route::group(['middleware' => ['auth']], function() {
                                 ->get();
         return view('chart.index',compact('chart'));
     })->name('cekchart2');
+    Route::post('cekchartbaranglaku', function (Request $request) {
+        $a = $request->get('tgl1');
+        $b = $request->get('tgl2');
+        $chart = Barang::whereBetween('transaksis.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
+                                ->join('transaksis','transaksis.barangs_id','=','barangs.id')
+                                ->selectRaw('barangs.nama as namabarang , sum(jml_beli) as j')
+                                ->groupBy('namabarang')
+                                ->get();
+        return view('laporan.baranglaku',compact('chart'));
+    })->name('cekchartbaranglaku');
     //laporan
     Route::get('laporanpengadaan', 'LaporanController@pengadaan')->name('laporanpengadaan');
+    Route::get('laporanpenjualan', 'LaporanController@penjualan2')->name('laporanpenjualan');
+    Route::get('laporanbaranglaku', 'LaporanController@baranglaku')->name('laporanbaranglaku');
     Route::get('laporan', 'LaporanController@penjualan')->name('laporan.penjualan');
     Route::post('laporan/filter', 'LaporanController@filter')->name('laporan.filter');
     //cetak
     Route::get('cetak/penjualan', 'LaporanController@cetak')->name('laporan.cetak');
     Route::post('cetak/penjualanpengadaan', 'LaporanController@cetakpengadaan')->name('laporan.cetakpengadaan');
+    Route::post('cetak/laporanpenjualan', 'LaporanController@cetakpenjualan')->name('laporan.cetakpenjualan');
+    Route::post('cetak/laporanbaranglaku', 'LaporanController@cetakbaranglaku')->name('laporan.cetakbaranglaku');
     //hpp
     Route::get('hpp', 'HppController@index')->name('hpp.index');
     Route::get('hpp/cari/{id}/barang', 'HppController@cari')->name('hpp.cari');
