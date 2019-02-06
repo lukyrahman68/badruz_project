@@ -10,6 +10,7 @@ use App\Pencatatan;
 use App\Pengadaan;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
+use App\Margin;
 
 class PengadaanController extends Controller
 {
@@ -230,8 +231,13 @@ dd($data);
                         'harga_satuan'=>$harga_satuan, 
                         'harga_total'=>$totalharga]);
 
+        $margin = Margin::first();
+        $margininpercent = $margin->margin/100;
+        $jml_margin = $harga_satuan*$margininpercent;
+        $harga_jual = $harga_satuan+$jml_margin;
+
         $up_barang = Barang::where('id',$get_id)
-                            ->update(['harga_beli' => $harga_satuan]);
+                            ->update(['harga_beli' => $harga_satuan,'harga_jual' => $harga_jual]);
 
         return view('pengadaan_barang.list');
     }

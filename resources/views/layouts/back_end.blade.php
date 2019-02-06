@@ -289,7 +289,7 @@
 										<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
 											<span>Pemberian Hadiah</span></a>
 										</li>
-								   
+
 									@elseif(Auth::getUser()->role == 'pemilik')
 									<li>
 										<a href="#"><i class="icon-user"></i>
@@ -346,6 +346,11 @@
 									<li>
 											<a href="{{route('pecatatan.list')}}"><i class="icon-archive"></i>
 												<span>Pencatatan Persediaan</span></a>
+										</li>
+									<li>
+									<li>
+											<a href="{{route('margin.index')}}"><i class="icon-archive"></i>
+												<span>Set Margin</span></a>
 										</li>
 									<li>
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
