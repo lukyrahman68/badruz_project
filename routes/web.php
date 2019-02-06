@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
         }
     });
 
-    
+
     //pelanggan
     Route::get('pelanggan/ajaxListPelanggan', 'PelangganController@ajaxListPelanggan')->name('pelanggan.listPelanggan');
     Route::get('pelanggan/hapus/{id}', 'PelangganController@destroy')->name('pelanggan.hapus');
@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function() {
     //jenis
     Route::resource('jenis', 'JenisBarangController');
 
-    //pencatatan Penjualan 
+    //pencatatan Penjualan
     Route::get('pencatatan', 'PengadaanController@Pencatatan')->name('pecatatan.list');
     Route::get('pencatatan/AjaxPencatatan', 'PengadaanController@AjaxPencatatan')->name('pecatatan.Ajax');
 
@@ -91,8 +91,8 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('hadiah/ajaxListHadiah','HadiahContoller@ajaxListHadiah')->name('hadiah.listHadiah');
     Route::post('hadiah/cari/periode', 'HadiahController@cari')->name('hadiah.cari');
     Route::resource('hadiah', 'HadiahController');
-    
-   
+
+
 
     //new user
     Route::get('user/ajaxListUser', 'UserController@ajaxListUser')->name('user.listUser');
@@ -158,6 +158,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('hadiah', 'HadiahController@index')->name('hadiah.index');
     Route::post('hadiah/store', 'HadiahController@store')->name('hadiah.store');
     Route::get('hadiah/view/hadiah', 'HadiahController@view')->name('hadiah.view');
+
+    //margin
+    Route::resource('margin', 'MarginController');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
