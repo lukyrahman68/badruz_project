@@ -33,12 +33,16 @@
                 <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{$supplier->nama}}">
             </div>
             <div class="form-group">
-                <label for="warna">Warna</label>
+                <label for="warna">Alamat</label>
                 <input type="text" class="form-control" placeholder="Warna" name="alamat" value="{{$supplier->alamat}}">
             </div>
            <div class="form-group">
-                <label for="jenis">Jenis</label>
+                <label for="jenis">Telepon</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="tlpn" value="{{$supplier->tlpn}}">
+            </div>
+            <div class="form-group">
+                <label for="jenis">Email</label>
+                <input type="text" class="form-control" placeholder="Email" name="email" value="{{$supplier->email}}">
             </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">

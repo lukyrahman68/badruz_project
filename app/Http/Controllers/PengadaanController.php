@@ -71,9 +71,12 @@ class PengadaanController extends Controller
         $data = Pengadaan::leftjoin('barangs','barangs.id','=','histori_pengadaans.barang_id')
                                 ->leftjoin('suppliers','suppliers.id','=','histori_pengadaans.supplier_id')
                                 ->where('histori_pengadaans.id', $idp)
-                                ->selectRaw('*,suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')->get();
-            
-            Mail::to('nestyadamayanti@gmail.com')->send(new SendMail($data));
+                                ->selectRaw('*,suppliers.email as mail, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')->get();
+        foreach($data as $sup){
+            $email = $sup->mail;
+        }  
+        // dd($email);
+            Mail::to($email)->send(new SendMail($data));
             return redirect('pengadaan/list');
     }
         public function list(){

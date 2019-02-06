@@ -25,8 +25,9 @@ class SupplierController extends Controller
             0 => 'nama',
             1 => 'alamat',
             2 => 'tlpn',
-            3 => 'created_at',
-            4 => 'action',
+            3 => 'email',
+            4 => 'created_at',
+            5 => 'action',
         );
         // $get_user = Sentinel::getUser();
         // $user = User::find($get_user->id);
@@ -74,6 +75,7 @@ class SupplierController extends Controller
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nama.'</strong>';
                     $nestedData['alamat'] = $r_aktif->alamat;
                     $nestedData['tlpn'] = $r_aktif->tlpn;
+                    $nestedData['email'] = $r_aktif->email;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = "$edit &emsp;$hapus";;
 
