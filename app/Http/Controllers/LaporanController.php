@@ -13,7 +13,7 @@ class LaporanController extends Controller
 {
     //
     public function pengadaan(){
-        return view('laporan.pengadaan',compact('pengadaan'));
+        return view('laporan.pengadaan');
     }
     public function penjualan2(){
         return view('laporan.penjualan');
