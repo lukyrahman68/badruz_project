@@ -2,7 +2,7 @@
 @section('main')
     <br>
     <div class="container">
-        <form action="{{route('laporan.cetakbaranglaku')}}" method="POST">
+        <form action="{{route('laporan.cetakpenjualan')}}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-5">
