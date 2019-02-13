@@ -102,6 +102,7 @@ class PenjualanController extends Controller
 
         // dd($request);
         $penjualan = Penjualan::find($id);
+        $penjualan->diskon = $request->diskon;
         $barang = Penjualan::where('penjualans.id','=',$id)
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
                                 ->join('barangs','barangs.id','=','transaksis.barangs_id')
@@ -128,7 +129,7 @@ class PenjualanController extends Controller
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
                                 ->join('barangs','barangs.id','=','transaksis.barangs_id')
                                 ->join('pelanggans','pelanggans.id','=','penjualans.pelanggans_id')
-                                ->selectRaw('pelanggans.nama as nama_pelanggan,barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
+                                ->selectRaw('pelanggans.nama as nama_pelanggan,barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual, penjualans.diskon')
                                 // ->selectRaw('transaksis.*')
                                 ->get();
         // Send data to the view using loadView function of PDF facade

@@ -54,9 +54,19 @@ window.onload = function(){
         @endforeach
     </tbody>
     <tfoot>
+            <tr style="font-weight: bold;border-top: solid">
+                    <td colspan="2">Total</td>
+                    <td>{{$total_brng}}</td>
+                    <td><span id="total">{{$total}}</span></td>
+                </tr>
+        
+    <?php $total= $total - $penjualan->diskon ?>
+        <tr>
+            <td colspan="3">Diskon</td>
+            <td>{{$penjualan->diskon}}</td>
+        </tr>
         <tr style="font-weight: bold;border-top: solid">
-            <td colspan="2">Total</td>
-            <td>{{$total_brng}}</td>
+            <td colspan="3">Total Bayar</td>
             <td><span id="total">{{$total}}</span></td>
         </tr>
     </tfoot>

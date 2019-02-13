@@ -58,11 +58,6 @@
                     @csrf
                     @method('PUT')
                 <div class="form-group">
-                        <label for="diskon">Diskon</label>
-                        <input type="text" class="form-control" placeholder="Diskon" id="diskon">
-                        {{-- <input type="hidden" class="form-control" placeholder="si" id="sisa" name="sisa"> --}}
-                </div>
-                <div class="form-group">
                     <label for="jenis">Pilih Pembayaran</label>
                     <select name="pembayaran" id="pembayaran" class="form-control">
                         <option value=""disabled selected>Pilih Pembayaran</option>
