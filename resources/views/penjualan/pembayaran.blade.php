@@ -66,6 +66,12 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="">Diskon</label>
+                    <input type="text" class="form-control" name="diskon" placeholder="Diskon">
+                </div>
+                <input type="hidden" name="bayar_diskon_total">
+                <h3 id="wrap_diskon" style="display:none"> Total yang harus dibayar Rp. <span id="bayar_diskon"></span></h3>
+                <div class="form-group">
                     <label for="jenis">Bayar</label>
                     <input type="text" class="form-control" placeholder="Bayar" id="bayar">
                     <input type="hidden" class="form-control" placeholder="si" id="sisa" name="sisa">
@@ -81,7 +87,15 @@
     </div>
 <script>
     $(document).ready(function () {
+        $(document).on('change', 'input[name=diskon]', function(){
+            $('#wrap_diskon').css('display','block');
+            var total = parseInt($('#total').html())-parseInt($(this).val());
+            $('#bayar_diskon').text(total);
+            $('input[name=bayar_diskon_total]').val(total);
+            
+        });
         $(document).on('change','#bayar', function (e){
+            if( $('input[name=bayar_diskon_total]').val()==''){
             var total = parseInt($('#bayar').val())-parseInt($('#total').html());
             var jenis_byr = $('#pembayaran').find(':selected').text();
             if(jenis_byr=="Pre-Order"){
@@ -94,6 +108,20 @@
                 $('#kembalian').html('Rp. '+total);
                 $('#sisa').val('0');
             }
+        }else{
+            
+            var jenis_byr = $('#pembayaran').find(':selected').text();
+            if(jenis_byr=="Pre-Order"){
+                var total = parseInt($('input[name=bayar_diskon_total]').val())-parseInt($('#bayar').val());
+                $('#kembalian').html('Sisa Yang Harus Dibayar Rp. '+total);
+                $('#sisa').val(total);
+
+            }else{
+                var total = parseInt($('#bayar').val())-parseInt($('input[name=bayar_diskon_total]').val());
+                $('#kembalian').html('Rp. '+total);
+                $('#sisa').val('0');
+            }
+        }
         });
         $('#save').click(function(){
             window.location.href = '/penjualan';
