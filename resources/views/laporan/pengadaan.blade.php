@@ -28,10 +28,6 @@
         </form>
         <br>
         <div id="print_area" class="col-md-12">
-            
-            
-
-    
         </div>
     </div>
     

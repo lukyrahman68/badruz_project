@@ -38,6 +38,10 @@
                 <input type="text" class="form-control" placeholder="No Telphone" name="tlpn">
             </div>
             <div class="form-group">
+                <label for="jenis">Email</label>
+                <input type="text" class="form-control" placeholder="Email" name="email">
+            </div>
+            <div class="form-group">
                 <label for="jenis">Jenis</label>
                 <select name="jenis_id" id="jenis_id" class="form-control">
                     <option value="" selected disabled>Pilih Supplier</option>

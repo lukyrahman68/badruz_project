@@ -20,8 +20,8 @@
                 <th>1</th>
                 <th>{{$d->nm_bar}}</th>
                 <th>{{$d->warna}}</th>
-                <th>{{$d->satuan}}</th>
                 <th>{{$d->jml_order}}</th>
+                <th>{{$d->satuan}}</th>
             </tr>
        </tbody>
       </table>

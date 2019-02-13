@@ -12,5 +12,6 @@ class Supplier extends Model
         'nama',
         'alamat',
         'tlpn',
+        'email',
     ];
 }

@@ -31,6 +31,7 @@
                   {"data": 'nama'},
                   {"data": 'alamat'},
                   {"data": 'tlpn'},
+                  {"data": 'email'},
                   {"data": 'created_at'},
                   {"data": 'action'},
               ]
@@ -68,6 +69,7 @@
                           <th scope="col">Nama</th>
                           <th scope="col">Alamat</th>
                           <th scope="col">Telepon</th>
+                          <th scope="col">Email</th>
                           <th scope="col">Tanggal Daftar</th>
                           <th scope="col">Aksi</th>
                         </tr>

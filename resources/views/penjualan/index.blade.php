@@ -1,6 +1,8 @@
 @extends('layouts.back_end')
 @section('main')
 <br>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="content">
     <div class="page-header">
         <div class="page-header-content">
@@ -21,6 +23,7 @@
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
+        
             @csrf
             @if ($tempPel)
             <div class="breadcrumb-line container">
@@ -31,12 +34,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                 <label for="nama">Nama Barang</label>
-                <select name="nama_brng" id="nama_brng" class="form-control" >
-                    <option value="" disabled selected>Pilih Barang</option>
-                    @foreach ($barangs as $barang)
-                        <option value="{{$barang->id}}">{{$barang->nama}}</option>
-                    @endforeach
-                </select>
+                <input id="tags" class="form-control">
+                <input name="nama_brng" id="nama_brng" hidden>
                 </div>
                 <div class="form-group">
                     <label for="warna">Harga</label>
@@ -149,7 +148,8 @@
 <script>
         $(document).ready( function () {
             $('#simpan').prop('disabled',true);
-            $(document).on('change','#nama_brng',function (e){
+            $(document).on('change keyup focusout','#tags',function (e){
+                //alert('a');
                 // $('input[name=harga]').val('');
                 $.ajax({
                     type: 'get',
@@ -167,7 +167,7 @@
                         }
                     },
                 });
-                $('#name').val('');
+                //$('#name').val('');
             });
             $(document).on('change','#nama_pelanggan',function (e){
                 // $('input[name=harga]').val('');
@@ -312,4 +312,28 @@
 
         });
     </script>
+    <script>
+  $( function() {
+    var availableTags = [@foreach ($barangs as $barang){
+    value: {{$barang->id}},
+    label: "{{$barang->nama}}"
+    },@endforeach];
+    $( "#tags" ).autocomplete({
+      source: availableTags,
+      select: function (event, ui) {
+    var label = ui.item.label;
+    var value = ui.item.value;
+    document.getElementById("tags").value = label;
+    document.getElementById("nama_brng").value = value;
+    
+    return false;
+      },
+      focus: function(event, ui) {
+        event.preventDefault();
+        $("#tags").val(ui.item.label);
+    }
+    });
+    
+  } );
+  </script>
 @endsection
