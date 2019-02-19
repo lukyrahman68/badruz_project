@@ -88,9 +88,10 @@ class PenjualanController extends Controller
     public function pembayaran_index($id){
         $param = Penjualan::find($id);
         $penjualans = Penjualan::where('penjualans.id','=',$id)
+                                ->where('penjualans.sts_bayar',0)
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
                                 ->join('barangs','barangs.id','=','transaksis.barangs_id')
-                                ->selectRaw('barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
+                                ->selectRaw('penjualans.sts_bayar,barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
                                 // ->selectRaw('transaksis.*')
                                 ->get();
         return view('penjualan.pembayaran',compact('penjualans','param'));

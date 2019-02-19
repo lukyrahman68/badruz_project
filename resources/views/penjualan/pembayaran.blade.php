@@ -49,7 +49,9 @@
                     <tfoot>
                         <tr style="font-weight: bold;border-top: solid">
                             <td>Total</td>
-                            <td>{{$total_brng}}</td>
+                            <td>{{$total_brng}}
+                                <input type="text" id="total_input" value="{{$total_brng}}">
+                            </td>
                             <td><span id="total">{{$total}}</span></td>
                         </tr>
                     </tfoot>
@@ -67,7 +69,8 @@
                 </div>
                 <div class="form-group">
                     <label for="">Diskon</label>
-                    <input type="text" class="form-control" name="diskon" placeholder="Diskon">
+                    <input type="text" class="form-control" name="diskon" placeholder="Diskon" disabled>
+                    <input type="hidden" class="form-control" name="diskon" placeholder="Diskon">
                 </div>
                 <input type="hidden" name="bayar_diskon_total">
                 <h3 id="wrap_diskon" style="display:none"> Total yang harus dibayar Rp. <span id="bayar_diskon"></span></h3>
@@ -87,12 +90,24 @@
     </div>
 <script>
     $(document).ready(function () {
+        if($('#total_input').val()>=5){
+            var potongan = Math.floor($('#total_input').val()/5)*5000;
+            $('input[name=diskon]').val(potongan);
+        }
+        $('#pembayaran').on('change', function(){
+            if($(this).val()=='0'){
+                $('input[name=diskon]').val(potongan);
+                $('input[name=diskon]').trigger('change');
+            }else{
+                $('input[name=diskon]').val(0);
+            }
+        });
         $(document).on('change', 'input[name=diskon]', function(){
             $('#wrap_diskon').css('display','block');
             var total = parseInt($('#total').html())-parseInt($(this).val());
             $('#bayar_diskon').text(total);
             $('input[name=bayar_diskon_total]').val(total);
-            
+
         });
         $(document).on('change','#bayar', function (e){
             if( $('input[name=bayar_diskon_total]').val()==''){
@@ -109,9 +124,10 @@
                 $('#sisa').val('0');
             }
         }else{
-            
+
             var jenis_byr = $('#pembayaran').find(':selected').text();
             if(jenis_byr=="Pre-Order"){
+
                 var total = parseInt($('input[name=bayar_diskon_total]').val())-parseInt($('#bayar').val());
                 $('#kembalian').html('Sisa Yang Harus Dibayar Rp. '+total);
                 $('#sisa').val(total);
