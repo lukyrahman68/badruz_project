@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth']], function() {
     //pencatatan Penjualan
     Route::get('pencatatan', 'PengadaanController@Pencatatan')->name('pecatatan.list');
     Route::get('pencatatan/AjaxPencatatan', 'PengadaanController@AjaxPencatatan')->name('pecatatan.Ajax');
-
+ 
     //hadiah
     // Route::get('hadiah/ajaxListHadiah','HadiahContoller@ajaxListHadiah')->name('hadiah.listHadiah');
     Route::post('hadiah/cari/periode', 'HadiahController@cari')->name('hadiah.cari');
