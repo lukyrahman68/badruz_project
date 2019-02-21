@@ -30,7 +30,7 @@
                         </tr>
                         <?php 
                         $total+= $pengadaan->cost;
-                        
+                        $idx++;
                         ?>
                         @endforeach
                     </tbody>
@@ -43,6 +43,4 @@
                 </table>
                 </div>
                 <br>
-                <?php $idx++;?>
-            
         </div>
