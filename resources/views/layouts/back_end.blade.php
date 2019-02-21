@@ -356,18 +356,36 @@
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>Laporan</span></a>
 											<ul class="nav c_dd">
-												<li>
-													<a href="#">
-														<i class="icon-eye"></i>
-															<span>Laporan Penjualan</span>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-eye"></i>
-															<span>Laporan Pengadaan Barang</span>
-													</a>
-												</li>
+												{{-- <li>
+                                                    <a href="{{route('chart.index')}}">
+                                                        <i class="icon-eye"></i>
+                                                            <span>Laporan Pembelian terbanyak</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('chart.index2')}}">
+                                                        <i class="icon-eye"></i>
+                                                            <span>Laporan pelanggan dengan jumlah beli terbanyak</span>
+                                                    </a>
+                                                </li> --}}
+                                                <li>
+                                                    <a href="{{route('laporanpengadaan')}}">
+                                                        <i class="icon-eye"></i>
+                                                            <span>Laporan Pengadaan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('laporanpenjualan')}}">
+                                                        <i class="icon-eye"></i>
+                                                            <span>Laporan Penjualan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('laporanbaranglaku')}}">
+                                                        <i class="icon-eye"></i>
+                                                            <span>Laporan Barang paling banyak laku</span>
+                                                    </a>
+                                                </li>
 											</ul>
 									</li>
 									{{-- <li>

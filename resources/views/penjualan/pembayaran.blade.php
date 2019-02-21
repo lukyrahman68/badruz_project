@@ -90,9 +90,11 @@
     </div>
 <script>
     $(document).ready(function () {
-        if($('#total_input').val()>=5){
-            var potongan = Math.floor($('#total_input').val()/5)*5000;
+        if($('#total_input').val()>=200){
+            var potongan = Math.floor($('#total_input').val()/200)*5000;
             $('input[name=diskon]').val(potongan);
+        }else{
+            potongan = 0;
         }
         $('#pembayaran').on('change', function(){
             if($(this).val()=='0'){
