@@ -50,7 +50,7 @@
                         <tr style="font-weight: bold;border-top: solid">
                             <td>Total</td>
                             <td>{{$total_brng}}
-                                <input type="text" id="total_input" value="{{$total_brng}}">
+                                <input type="text" id="total_input" value="{{$total_brng}}" hidden>
                             </td>
                             <td><span id="total">{{$total}}</span></td>
                         </tr>

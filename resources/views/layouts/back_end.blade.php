@@ -367,7 +367,7 @@
                                                         <i class="icon-eye"></i>
                                                             <span>Laporan pelanggan dengan jumlah beli terbanyak</span>
                                                     </a>
-                                                </li> --}}
+                                                </li>
                                                 <li>
                                                     <a href="{{route('laporanpengadaan')}}">
                                                         <i class="icon-eye"></i>
