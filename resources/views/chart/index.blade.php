@@ -4,6 +4,11 @@
     <div class="container">
         <strong>Pembelian barang terbanyak</strong>
         <br>
+        @isset($chart)
+            @foreach($chart as $chart1)
+            {{$chart1->nama_pelanggan}}
+            @endforeach
+        @endisset
         <form method="post" action="cekchart">
         @csrf
             <div class="form-group">
