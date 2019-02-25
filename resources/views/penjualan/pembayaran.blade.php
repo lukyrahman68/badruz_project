@@ -29,9 +29,13 @@
                             <th>Harga</th>
                         </tr>
                     </thead>
-                    <tbody><?php $total_brng=0; ?>
+                    <tbody><?php $total_brng=0;$diskon=0; ?>
                         @foreach ($penjualans as $penjualan)
-                        <?php $total = $penjualan->total_bayar;
+                        <?php
+                        if($penjualan->satuan=='pasang'){
+                            $diskon += $penjualan->jml_beli;
+                        }
+                         $total = $penjualan->total_bayar;
                         $total_brng += $penjualan->jml_beli ?>
                         <tr>
                             <td>
@@ -45,6 +49,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        <input type="text" id="diskon_jml" value="{{$diskon}}">
                     </tbody>
                     <tfoot>
                         <tr style="font-weight: bold;border-top: solid">
@@ -90,8 +95,8 @@
     </div>
 <script>
     $(document).ready(function () {
-        if($('#total_input').val()>=200){
-            var potongan = Math.floor($('#total_input').val()/200)*5000;
+        if($('#diskon_jml').val()>=200){
+            var potongan = Math.floor($('#total_input').val()/200)*50000;
             $('input[name=diskon]').val(potongan);
         }else{
             potongan = 0;
@@ -101,6 +106,7 @@
                 $('input[name=diskon]').val(potongan);
                 $('input[name=diskon]').trigger('change');
             }else{
+                $('#wrap_diskon').css('display','none');
                 $('input[name=diskon]').val(0);
             }
         });
