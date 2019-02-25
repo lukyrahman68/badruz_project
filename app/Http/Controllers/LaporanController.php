@@ -38,7 +38,7 @@ class LaporanController extends Controller
         $penjualan = penjualan::where('transaksis.updated_at','>',$request->tgl_awal)
                         ->where('transaksis.updated_at','<',$request->tgl_akhir)
                         ->join('pelanggans','pelanggans.id','=','penjualans.pelanggans_id')
-                        ->join('transaksis','penjualans.transakis_id','=','transaksis.transaksi_id')
+                        ->join('transaksis','penjualans.id','=','transaksis.transaksi_id')
                         ->join('barangs','barangs.id','=','transaksis.barangs_id')
                         ->select('*','pelanggans.nama as namapelanggan','barangs.nama as namabarang','transaksis.updated_at as aaa')
                         ->get();

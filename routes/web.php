@@ -125,8 +125,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('cekchart', function (Request $request) {
         $a = $request->get('tgl1');
         $b = $request->get('tgl2');
-        $chart = pelanggan::whereBetween('pelanggans.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
-        ->join('penjualans','penjualans.pelanggans_id','=','pelanggans.id')
+        $chart = pelanggan::join('penjualans','penjualans.pelanggans_id','=','pelanggans.id')
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.id')
                                 ->selectRaw('pelanggans.nama as nama_pelanggan , sum(jml_beli) as j')
                                 ->groupBy('nama_pelanggan')
@@ -136,7 +135,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('cekchart2', function (Request $request) {
         $a = $request->get('tgl1');
         $b = $request->get('tgl2');
-        $chart = pelanggan::whereBetween('pelanggans.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
+        $chart = pelanggan::whereBetween('penjualans.created_at', array($a.' 00:00:00', $b.' 23:59:59'))
         ->join('penjualans','penjualans.pelanggans_id','=','pelanggans.id')
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.id')
                                 ->selectRaw('pelanggans.nama as nama_pelanggan , sum(total_bayar) as j')

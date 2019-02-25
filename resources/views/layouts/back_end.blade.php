@@ -324,6 +324,25 @@
 										<a href="{{route('hadiah.index')}}"><i class="icon-archive"></i>
 											<span>Pemberian Hadiah</span></a>
 								    </li>
+									<li  style="position: relative">
+                                    <a href="#" name="cek" class="click">
+                                    <i class="icon-briefcase"></i>
+                                    <span>Pengadaan Barang</span></a>
+									<ul class="nav c_dd">
+                                        <li>
+                                            <a href="{{route('pengadaan.stock')}}" name="cek">
+                                                <i class="icon-eye"></i>
+                                                <span>Cek Stock</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('pengadaan.list')}}">
+                                                <i class="icon-eye"></i>
+                                                <span>Status Pengadaan Barang</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+								</li>
                                     @elseif(Auth::getUser()->role == 'pemilik')
                                     <li>
 										<a href="#"><i class="icon-user"></i>
@@ -356,7 +375,7 @@
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>Laporan</span></a>
 											<ul class="nav c_dd">
-												{{-- <li>
+												 <li>
                                                     <a href="{{route('chart.index')}}">
                                                         <i class="icon-eye"></i>
                                                             <span>Laporan Pembelian terbanyak</span>
@@ -367,7 +386,7 @@
                                                         <i class="icon-eye"></i>
                                                             <span>Laporan pelanggan dengan jumlah beli terbanyak</span>
                                                     </a>
-                                                </li> --}}
+                                                </li> 
                                                 <li>
                                                     <a href="{{route('laporanpengadaan')}}">
                                                         <i class="icon-eye"></i>
@@ -388,48 +407,7 @@
                                                 </li>
 											</ul>
 									</li>
-									{{-- <li>
-										<a href="{{route('pelanggan.index')}}">
-											<i class="pe-7s-user"></i>
-											<p>Penjualan</p>
-										</a>
-									</li>
-									<li>
-										<a href="{{route('pelanggan.index')}}">
-											<i class="pe-7s-user"></i>
-											<p>Laporan</p>
-										</a>
-									</li>
-									<li>
-										<a href="{{route('pelanggan.index')}}">
-											<i class="pe-7s-user"></i>
-											<p>Pemberian Hadiah</p>
-										</a>
-									</li> --}}
-									{{-- <li>
-										<a href="{{route('pelanggan.index')}}">
-											<i class="pe-7s-user"></i>
-											<p>Pelanggan</p>
-										</a>
-                                    </li> --}}
-                                    {{-- <li>
-										<a href="#"><i class="icon-archive"></i>
-											<span>Laporan</span></a>
-											<ul class="nav c_dd">
-												<li>
-													<a href="{{route('laporan.penjualan')}}">
-														<i class="icon-eye"></i>
-															<span>Laporan Penjualan</span>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-eye"></i>
-															<span>Laporan Pengadaan Barang</span>
-													</a>
-												</li>
-											</ul>
-									</li> --}}
+									
 										@elseif(Auth::getUser()->role == 'super_admin')
 										<li>
 												<a href="{{route('penjualan.index')}}"><i class="icon-archive"></i>

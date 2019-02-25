@@ -20,7 +20,7 @@
             background-color: #eee;
         }
     </style>
-    <body>
+    <body style="background-image:url({{asset('images/sepatu.JPG')}})">
         <div class="content" style="padding:10%">
             @if (Route::has('login'))
             @auth

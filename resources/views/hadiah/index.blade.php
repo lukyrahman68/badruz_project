@@ -39,9 +39,9 @@
                             <td>{{$idx}}</td>
                             <td>{{$pelanggan->nama}}</td>
                             <td>{{$pelanggan->jml}}</td>
-                            <td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit">Pilih</a></td>
+                            <td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-{{$pelanggan->id}}">Pilih</a></td>
                             <!-- Modal -->
-                            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="edit-{{$pelanggan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
