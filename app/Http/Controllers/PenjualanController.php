@@ -91,7 +91,7 @@ class PenjualanController extends Controller
                                 ->where('penjualans.sts_bayar',0)
                                 ->join('transaksis','transaksis.transaksi_id','=','penjualans.transakis_id')
                                 ->join('barangs','barangs.id','=','transaksis.barangs_id')
-                                ->selectRaw('penjualans.sts_bayar,barangs.nama,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
+                                ->selectRaw('penjualans.sts_bayar,barangs.nama,barangs.satuan,transaksis.jml_beli,penjualans.total_bayar,barangs.harga_jual')
                                 // ->selectRaw('transaksis.*')
                                 ->get();
         return view('penjualan.pembayaran',compact('penjualans','param'));
