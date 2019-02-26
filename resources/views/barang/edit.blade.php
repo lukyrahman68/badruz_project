@@ -41,6 +41,10 @@
                 <label for="jenis">Jenis</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="{{$barang->jenis}}">
             </div>
+            <div class="form-group">
+                <label for="jenis">Lead Time</label>
+                <input type="text" class="form-control" placeholder="Jenis" name="leadtime" value="{{$barang->leadtime}}">
+            </div>
             <div class="pull-right">
                 <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
             </div>

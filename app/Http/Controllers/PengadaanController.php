@@ -8,6 +8,7 @@ use App\Barang;
 use App\Stock;
 use App\Pencatatan;
 use App\Pengadaan;
+use App\Penjualan;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use App\Margin;
@@ -41,6 +42,9 @@ class PengadaanController extends Controller
                               ->where('histori_pengadaans.id', $idB)
                               ->selectRaw('*, histori_pengadaans.id as idp, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')
                               ->get();
+        //$qee = Penjualan::select('barangs_id')->where('transaksis.barangs_id','=',$idB)->join('transaksis','transaksis.id','=','penjualans.transakis_id')->get();
+        //$asd=$get_data[0]->barang_id;
+        $qee = Penjualan::selectRaw('barangs_id, max(sum(jml_beli)), avg(jml_beli)')->where('transaksis.barangs_id',$get_data[0]->barang_id)->join('transaksis','transaksis.id','=','penjualans.transakis_id')->groupBy('barangs_id')->get();
         // dd($idB);
         // $get_data = Pengadaan::join('stocks','stocks.barang_id','=','barangs.id')
         //                     ->join('suppliers','suppliers.id','=','barangs.supplier_id')
@@ -48,7 +52,7 @@ class PengadaanController extends Controller
         //                     ->where('histori_pengadaans','=',$idB)
         //                     ->selectRaw('*,barangs.id as id_bar, suppliers.id as sup_id, jenis_barangs.id as id_jen, jenis_barangs.nama as nama_jenis, stocks.jumlah,barangs.nama as nama_bar, suppliers.nama as nama_sup')
         //                     ->get();             
-        return view('pengadaan_barang.index',compact('get_data'));
+        return view('pengadaan_barang.index',compact('get_data','qee'));
     }
 
     // public function edit($id){
@@ -251,7 +255,8 @@ dd($data);
             2 => 'warna',
             3 => 'supplier',
             4 => 'jumlah',
-            5 => 'action',
+            5 => 'rop',
+            6 => 'action',
         );
         $totaldata = Barang::join('stocks','stocks.barang_id','=','barangs.id')
                           ->join('suppliers','suppliers.id','=','barangs.supplier_id')
@@ -319,12 +324,13 @@ dd($data);
                     $q = Pengadaan::select('id')->where('barang_id',$r_aktif->id_bar)->first();
                     $proses = "<a href='".route('pengadaan.proses', $q->id)."'><input type='submit' class='btn btn-primary' value='Proses'></a>";
                 }
+                    //$qee = Penjualan::select('barangs_id')->where('transaksis.barangs_id','=',$r_aktif->id_bar)->join('transaksis','transaksis.id','=','penjualans.transakis_id')->get();
+                    //$qee = Penjualan::selectRaw('barangs_id ,sum(jml_beli) as a')->join('transaksis','transaksis.id','=','penjualans.transakis_id')->groupBy('barangs_id')->get();
                     $nestedData['no'] = $no;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nm_bar.'</strong>';
                     $nestedData['warna'] =$r_aktif->warna;
                     $nestedData['supplier'] =$r_aktif->nama_sup;
                     $nestedData['jumlah'] ='<strong class="text-bold primary-text">'.$r_aktif->jumlah.'</strong>';
-                    // $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
                     $nestedData['action'] = $proses;
                     $data[] = $nestedData;
                     $no++;

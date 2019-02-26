@@ -14,5 +14,6 @@ class Barang extends Model
         'harga_beli',
         'harga_jual',
         'satuan',
+        'leadtime',
     ];
 }
