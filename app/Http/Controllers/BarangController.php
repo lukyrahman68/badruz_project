@@ -121,7 +121,6 @@ public function store(Request $request){
     $save->warna = $request->warna;
     if($save->save()){
         $idbarang = $save->id;
-
         $stock = new Stock;
         $stock->barang_id= $idbarang;
         $stock->jumlah = 0;

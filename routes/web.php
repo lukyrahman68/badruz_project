@@ -93,8 +93,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('hadiah/cari/periode', 'HadiahController@cari')->name('hadiah.cari');
     Route::resource('hadiah', 'HadiahController');
 
-    //savety stock
-    Route::get('barang/savetystock/{id}', 'PengadaanController@safetystock')->name('safety.stock');
+    //safety stock
+    Route::get('barang/safetystock/{id}', 'PengadaanController@safetystock')->name('safety.stock');
 
     //new user
     Route::get('user/ajaxListUser', 'UserController@ajaxListUser')->name('user.listUser');

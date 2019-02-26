@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Barang;
@@ -60,10 +61,9 @@ class PengadaanController extends Controller
 
     public function safetystock($id){
         $idB = $id;
-        $get_max = Transaksi::selectRaw('created_at,max(jml_beli)')->where('barangs_id', $id)
-                             ->groupBy('created_at')
-                             ->groupBy('barangs_id')->get();
-        dd($get_max);
+        $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a')->groupBy('barangs_id')->get();
+        //dd($get_max);
+        return view('barang.ss', compact('get_max'));
     }
 
     // public function edit($id){
