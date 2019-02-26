@@ -81,6 +81,8 @@ class BarangController extends Controller
                /*route('project.edit', $r_pendanaan->loan_id) .*/
                 $edit = "<a href='".route('barang.edit', $r_aktif->idb)."' title='Detail Pinjaman' ><span class='icon-pencil'></span></a>";
                 $hapus = "<a href='".route('barang.hapus', $r_aktif->idb)."'  title='Detail Pinjaman' ><span class='icon-trash'></span></a>";
+                $safety = "<a href='".route('safety.stock', $r_aktif->idb)."'  title='Cek Safety Stock' ><span class='icon-check'></span></a>";
+              
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->namabar.'</strong>';
                     $nestedData['warna'] =$r_aktif->warna;
                     $nestedData['jenis'] =$r_aktif->jenisbar;
@@ -89,7 +91,7 @@ class BarangController extends Controller
                     // $nestedData['harga_jual'] =$r_aktif->harga_jual;
                     $nestedData['jumlah'] =$r_aktif->jumlah;
                     $nestedData['created_at'] = date('j M Y h:i a', strtotime($r_aktif->created_at));
-                    $nestedData['action'] = "$edit &emsp;$hapus";;
+                    $nestedData['action'] = "$edit &emsp;$hapus &emsp;$safety";;
 
                     $data[] = $nestedData;
 
