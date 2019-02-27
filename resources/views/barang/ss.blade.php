@@ -26,7 +26,7 @@
         <br>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <!--<div class="form-group">
                 <label for="nama">Nama</label>
                 <input type="text" class="form-control" placeholder="Nama" name="nama" value="">
             </div>
@@ -37,14 +37,14 @@
            <div class="form-group">
                 <label for="jenis">Jenis</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="">
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="jenis">SS</label>
-                <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="{{$ss}}" disabled>
+                <input type="text" class="form-control" placeholder="Belum Tersedia" name="jenis" value="@isset($ss){{$ss}}@endisset" disabled>
             </div>
             <div class="form-group">
                 <label for="jenis">ROP</label>
-                <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="{{$rop}}" disabled>
+                <input type="text" class="form-control" placeholder="Belum Tersedia" name="jenis" value="@isset($rop){{$rop}}@endisset" disabled>
             </div>
                 </div>
             </div>
