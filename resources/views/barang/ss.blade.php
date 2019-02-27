@@ -21,7 +21,9 @@
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
-        {{$get_max}}
+        
+        
+        <br>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -35,6 +37,14 @@
            <div class="form-group">
                 <label for="jenis">Jenis</label>
                 <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="">
+            </div>
+            <div class="form-group">
+                <label for="jenis">SS</label>
+                <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="{{$ss}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="jenis">ROP</label>
+                <input type="text" class="form-control" placeholder="Jenis" name="jenis" value="{{$rop}}" disabled>
             </div>
                 </div>
             </div>
