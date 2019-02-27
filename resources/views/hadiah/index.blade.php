@@ -39,7 +39,12 @@
                             <td>{{$idx}}</td>
                             <td>{{$pelanggan->nama}}</td>
                             <td>{{$pelanggan->jml}}</td>
+                            @if ($pelanggan->hadiah)
+                                <td>{{$pelanggan->hadiah}}</td>
+                            @else
                             <td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-{{$pelanggan->id}}">Pilih</a></td>
+                            @endif
+
                             <!-- Modal -->
                             <div class="modal fade" id="edit-{{$pelanggan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

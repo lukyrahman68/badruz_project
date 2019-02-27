@@ -11,8 +11,8 @@ class HadiahController extends Controller
     //
     public function index (){
         $pelanggans= Pelanggan::join('penjualans','penjualans.pelanggans_id','pelanggans.id')
-                                // ->join('')
-                                ->selectRaw('pelanggans.id, pelanggans.nama,SUM(penjualans.total_bayar) as jml,')
+                                ->leftjoin('hadiahs','hadiahs.pelanggans_id','pelanggans.id')
+                                ->selectRaw('pelanggans.id, pelanggans.nama,SUM(penjualans.total_bayar) as jml, hadiahs.hadiah')
                                 ->havingRaw('SUM(penjualans.total_bayar) >= 1000000')
                                 ->groupBy('pelanggans.id', 'pelanggans.nama')
                                 ->get();
@@ -23,9 +23,10 @@ class HadiahController extends Controller
         $hadiah->pelanggans_id = $request->pelanggan_id;
         $hadiah->hadiah = $request->hadiah;
         $hadiah->save();
-        return redirect()->route('hadiah.view');
+        return redirect()->back();
     }
     public function view(){
+
         $hadiah = hadiah::join('pelanggans','pelanggans.id','hadiahs.pelanggans_id')
                         ->selectRaw('pelanggans.nama,hadiahs.hadiah')
                         ->get();
