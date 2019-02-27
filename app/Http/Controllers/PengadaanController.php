@@ -55,13 +55,14 @@ class PengadaanController extends Controller
         //                     ->join('jenis_barangs','jenis_barangs.id','=','suppliers.jenis_id')
         //                     ->where('histori_pengadaans','=',$idB)
         //                     ->selectRaw('*,barangs.id as id_bar, suppliers.id as sup_id, jenis_barangs.id as id_jen, jenis_barangs.nama as nama_jenis, stocks.jumlah,barangs.nama as nama_bar, suppliers.nama as nama_sup')
-        //                     ->get();             
+        //                     ->get();
         return view('pengadaan_barang.index',compact('get_data'));
     }
 
     public function safetystock($id){
         $idB = $id;
-        $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a')->groupBy('barangs_id')->get();
+        $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
+
         //dd($get_max);
         return view('barang.ss', compact('get_max'));
     }
@@ -73,10 +74,10 @@ class PengadaanController extends Controller
 
     public function edit(Request $request,$id){
         $idp = $id;
-        
+
         $jml = $request->jml;
         $up = Pengadaan::where('histori_pengadaans.id',$idp)
-                        ->update(['jml_order' => $jml, 'status' => 'Di Proses']); 
+                        ->update(['jml_order' => $jml, 'status' => 'Di Proses']);
         // $pengadaan = new Pengadaan;
         // $pengadaan->jml_order = $request->jml;
         // $pengadaan->barang_id = $request->id;
@@ -90,7 +91,7 @@ class PengadaanController extends Controller
                                 ->selectRaw('*,suppliers.email as mail, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')->get();
         foreach($data as $sup){
             $email = $sup->mail;
-        }  
+        }
         // dd($email);
             Mail::to($email)->send(new SendMail($data));
             return redirect('pengadaan/list');
@@ -155,7 +156,7 @@ class PengadaanController extends Controller
                     $proses= "";
                 }else{
                     $proses = "<a href='".route('pengadaan.ubahstatus', $r_aktif->idpe)."'><input type='submit' class='btn btn-primary' value='Ubah Status'></a>";
-                
+
                 }
                     $nestedData['no'] = $no;
                     $nestedData['nama'] = '<strong class="text-bold primary-text">'.$r_aktif->nm_bar.'</strong>';
@@ -180,7 +181,7 @@ class PengadaanController extends Controller
         );
         return json_encode($json_data);
 dd($data);
-    
+
     }
 
     public function changeStatus($id){
@@ -190,7 +191,7 @@ dd($data);
         ->where('histori_pengadaans.id',$idp)
         ->selectRaw('*, histori_pengadaans.id as idpe, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')
         ->get();
-        
+
         return view('pengadaan_barang.change',compact('pengadaan'));
     }
     public function savestatus(Request $request,$id){
@@ -221,7 +222,7 @@ dd($data);
         $harga_satuan_pembelian = $total/$jml_diterima;
 
         //cari id barang dan jumlah stock untuk diubah
-              
+
         $get_stock = Stock::select('jumlah','harga_satuan','harga_total')
                             ->where('barang_id',$get_id)->get();
         foreach($get_stock as $stock){
@@ -234,19 +235,19 @@ dd($data);
         $harga_satuan = $totalharga/$new_stock;
 
         // dd($new_stock, $harga_satuan, $totalharga);
-        //update histori pengadaan 
+        //update histori pengadaan
         $up = Pengadaan::where('histori_pengadaans.id',$idpe)
-                        ->update(['jml_diterima' => $jml_diterima, 
+                        ->update(['jml_diterima' => $jml_diterima,
                         'harga_beli' => $harga,
                         'cost' => $cost,
                         'total_harga' => $total,
                         'harga_satuan' => $harga_satuan_pembelian,
-                        'status' => 'Diterima']); 
+                        'status' => 'Diterima']);
 
         //update stock
         $up_stock = Stock::where('barang_id',$get_id)
-                        ->update(['jumlah'=>$new_stock, 
-                        'harga_satuan'=>$harga_satuan, 
+                        ->update(['jumlah'=>$new_stock,
+                        'harga_satuan'=>$harga_satuan,
                         'harga_total'=>$totalharga]);
 
         $margin = Margin::first();
@@ -304,7 +305,7 @@ dd($data);
             $data = array();
             if (!empty($barang)) {
                 $no = 1;
-         
+
             foreach ($barang as $r_aktif) {
                 //jika ada barang habis, insert ke history pengadaan
                 // $query = Pengadaan::select('barang_id')->where('barang_id',$r_aktif->id_bar)->get();
@@ -322,7 +323,7 @@ dd($data);
                     if($ins->save()){
                         $proses = "<a href='".route('pengadaan.proses', $ins->id)."'><input type='submit' class='btn btn-primary' value='Proses'></a>";
                     };
-                    
+
                 }elseif(count($q) != 0 && $sts != 'Stock Habis'){
                         $ins = new Pengadaan;
                         $ins->barang_id = $r_aktif->id_bar;
@@ -330,7 +331,7 @@ dd($data);
                         $ins->status = 'Stock Habis';
                         if($ins->save()){
                         $proses = "<a href='".route('pengadaan.proses', $ins->id)."'><input type='submit' class='btn btn-primary' value='Proses'></a>";
-                        }; 
+                        };
                 }else{
                     $q = Pengadaan::select('id')->where('barang_id',$r_aktif->id_bar)->first();
                     $proses = "<a href='".route('pengadaan.proses', $q->id)."'><input type='submit' class='btn btn-primary' value='Proses'></a>";

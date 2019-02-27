@@ -11,7 +11,8 @@ class HadiahController extends Controller
     //
     public function index (){
         $pelanggans= Pelanggan::join('penjualans','penjualans.pelanggans_id','pelanggans.id')
-                                ->selectRaw('pelanggans.id, pelanggans.nama,SUM(penjualans.total_bayar) as jml')
+                                // ->join('')
+                                ->selectRaw('pelanggans.id, pelanggans.nama,SUM(penjualans.total_bayar) as jml,')
                                 ->havingRaw('SUM(penjualans.total_bayar) >= 1000000')
                                 ->groupBy('pelanggans.id', 'pelanggans.nama')
                                 ->get();
