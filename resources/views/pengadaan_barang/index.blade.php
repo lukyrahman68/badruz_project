@@ -35,7 +35,10 @@
 <div class="content">
            <div class="row">
               <div class="col-md-6">
+<<<<<<< HEAD
               
+=======
+>>>>>>> 2175995fc2dbca7a17d9ced8365e7667ead4c061
             <form action="{{route('pengadaan.edit', $data->idp)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">

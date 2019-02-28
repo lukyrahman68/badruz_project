@@ -61,12 +61,28 @@ class PengadaanController extends Controller
 
     public function safetystock($id){
         $idB = $id;
+<<<<<<< HEAD
         $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
 
         // dd($get_max);
         // $data = json_decode($get_max, true);
         
         return view('barang.ss', compact('get_max'));
+=======
+        $get_max = DB::select('SELECT *, max(jumlah) as max, avg(jml) as avg FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
+        //$get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
+        $barang = Barang::findOrFail($id);
+        if(!isset($get_max[0])){
+            $ss="";
+            $rop="";
+        }else{
+            $ss = ($get_max[0]->max - $get_max[0]->avg)*$barang->leadtime;
+        $rop = ($get_max[0]->avg * $barang->leadtime)+$ss;
+        }
+        
+        //dd($get_max);
+        return view('barang.ss', compact('ss','rop'));
+>>>>>>> 2175995fc2dbca7a17d9ced8365e7667ead4c061
     }
 
     // public function edit($id){
