@@ -272,7 +272,7 @@
 							        <li>
 										<a href="{{route('jenis.index')}}">
 											<i class="icon-eye"></i>
-											<p>Barang</p>
+											<p>Jenis Barang</p>
 										</a>
 									</li>
 							        {{-- <li>
@@ -375,11 +375,8 @@
 										<a href="{{route('barang.index')}}"><i class="icon-archive"></i>
 											<span>Laporan</span></a>
 											<ul class="nav c_dd">
-<<<<<<< HEAD
 												 <li>
-=======
-												<li>
->>>>>>> origin
+												
                                                     <a href="{{route('chart.index')}}">
                                                         <i class="icon-eye"></i>
                                                             <span>Laporan Pembelian terbanyak</span>
@@ -390,11 +387,7 @@
                                                         <i class="icon-eye"></i>
                                                             <span>Laporan pelanggan dengan jumlah beli terbanyak</span>
                                                     </a>
-<<<<<<< HEAD
                                                 </li> 
-=======
-                                                </li>
->>>>>>> origin
                                                 <li>
                                                     <a href="{{route('laporanpengadaan')}}">
                                                         <i class="icon-eye"></i>

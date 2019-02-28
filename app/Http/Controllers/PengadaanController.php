@@ -63,7 +63,9 @@ class PengadaanController extends Controller
         $idB = $id;
         $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
 
-        //dd($get_max);
+        // dd($get_max);
+        // $data = json_decode($get_max, true);
+        
         return view('barang.ss', compact('get_max'));
     }
 

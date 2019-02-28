@@ -35,7 +35,7 @@
 <div class="content">
            <div class="row">
               <div class="col-md-6">
-              {{$qee}}
+              
             <form action="{{route('pengadaan.edit', $data->idp)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">

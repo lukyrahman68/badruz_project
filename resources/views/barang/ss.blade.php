@@ -21,7 +21,9 @@
     <div class="box">
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
-        {{$get_max}}
+     
+
+        {{$get_max[0]->jml}}
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
