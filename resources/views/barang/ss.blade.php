@@ -18,18 +18,12 @@
         </div>
     </div>
 <div class="col-xs-12 inner">
-    <div class="box">
+    <div class="box">   
       <div class="box-header">
         <h3 class="box-title" style="font-weight: bold"></h3>
-<<<<<<< HEAD
-     
-
-        {{$get_max[0]->jml}}
-=======
         
         
         <br>
->>>>>>> 2175995fc2dbca7a17d9ced8365e7667ead4c061
             <div class="row">
                 <div class="col-md-6">
                     <!--<div class="form-group">

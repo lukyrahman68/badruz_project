@@ -551,30 +551,6 @@
 
 	</div>
 	<!-- /page container -->
-<script>
-    $(document).ready(function () {
-        $(function(){
-            $.ajax({
-                type: 'get',
-                url: '/cek/rop',
-                data: {
-                },
-                success: function(data) {
-                    if ((data.errors)){
-                        //show error disini
-                    }
-                    else {
-                        if(data>0){
-                            $('<div class="rop">'+data+'</div>').appendTo($('a[name=cek]'));
-                        }
 
-                    }
-                },
-            });
-        });
-        $('.select2').select2()
-        @yield('js')
-    });
-</script>
 </body>
 </html>

@@ -35,10 +35,6 @@
 <div class="content">
            <div class="row">
               <div class="col-md-6">
-<<<<<<< HEAD
-              
-=======
->>>>>>> 2175995fc2dbca7a17d9ced8365e7667ead4c061
             <form action="{{route('pengadaan.edit', $data->idp)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">
@@ -63,6 +59,18 @@
                         <div class="form-group">
                             <label for="jenis">Email Supplier</label>
                         <input type="text" class="form-control" value="{{$data->email}}" disabled>
+                        </div>
+                </div>
+                <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="jenis">Stok</label>
+                        <input type="text" class="form-control" value="{{$stok[0]->jumlah}}" disabled>
+                        </div>
+                </div>
+                <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="jenis">ROP</label>
+                        <input type="text" class="form-control" value="{{$rop}}" disabled>
                         </div>
                 </div>                  
               </div>

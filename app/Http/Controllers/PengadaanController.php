@@ -42,8 +42,22 @@ class PengadaanController extends Controller
         $get_data = Pengadaan::leftjoin('barangs','barangs.id','=','histori_pengadaans.barang_id')
                               ->leftjoin('suppliers','suppliers.id','=','histori_pengadaans.supplier_id')
                               ->where('histori_pengadaans.id', $idB)
-                              ->selectRaw('*, histori_pengadaans.id as idp, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, histori_pengadaans.created_at as cret')
+                              ->selectRaw('*, histori_pengadaans.id as idp, suppliers.nama as nama_sup, barangs.nama as nm_bar, barangs.satuan as satu, barangs.id as idbarangs, histori_pengadaans.created_at as cret')
                               ->get();
+        //dd($get_data[0]->idbarangs);
+        $asd = $get_data[0]->idbarangs;
+        $get_max = DB::select('SELECT *, max(jumlah) as max, avg(jml) as avg FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.transaksi_id = penjualans.transakis_id where barangs_id = '.$asd.' group by penjualans.created_at) as a group by barangs_id');
+        //$get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
+        $barang = Barang::findOrFail($asd);
+        $stok = Stock::where('barang_id',$asd)->get();
+        if(!isset($get_max[0])){
+            $ss="";
+            $rop="";
+        }else{
+            $ss = ($get_max[0]->max - $get_max[0]->avg)*$barang->leadtime;
+            $rop = ($get_max[0]->avg * $barang->leadtime)+$ss;
+        }
+        //dd($get_data);
         //$qee = Penjualan::select('barangs_id')->where('transaksis.barangs_id','=',$idB)->join('transaksis','transaksis.id','=','penjualans.transakis_id')->get();
         //$asd=$get_data[0]->barang_id;
 
@@ -56,20 +70,12 @@ class PengadaanController extends Controller
         //                     ->where('histori_pengadaans','=',$idB)
         //                     ->selectRaw('*,barangs.id as id_bar, suppliers.id as sup_id, jenis_barangs.id as id_jen, jenis_barangs.nama as nama_jenis, stocks.jumlah,barangs.nama as nama_bar, suppliers.nama as nama_sup')
         //                     ->get();
-        return view('pengadaan_barang.index',compact('get_data'));
+        return view('pengadaan_barang.index',compact('get_data','rop','get_max','stok'));
     }
 
     public function safetystock($id){
         $idB = $id;
-<<<<<<< HEAD
-        $get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
-
-        // dd($get_max);
-        // $data = json_decode($get_max, true);
-        
-        return view('barang.ss', compact('get_max'));
-=======
-        $get_max = DB::select('SELECT *, max(jumlah) as max, avg(jml) as avg FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
+        $get_max = DB::select('SELECT *, max(jumlah) as max, avg(jml) as avg FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.transaksi_id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
         //$get_max = DB::select('SELECT *, max(jumlah), avg(jml) FROM (select penjualans.created_at, barangs_id, sum(jml_beli) as jumlah, jml_beli as jml from penjualans join transaksis on transaksis.id = penjualans.transakis_id where barangs_id = '.$idB.' group by penjualans.created_at) as a group by barangs_id');
         $barang = Barang::findOrFail($id);
         if(!isset($get_max[0])){
@@ -81,8 +87,7 @@ class PengadaanController extends Controller
         }
         
         //dd($get_max);
-        return view('barang.ss', compact('ss','rop'));
->>>>>>> 2175995fc2dbca7a17d9ced8365e7667ead4c061
+        return view('barang.ss', compact('get_max','ss','rop'));
     }
 
     // public function edit($id){
@@ -290,7 +295,7 @@ dd($data);
         );
         $totaldata = Barang::join('stocks','stocks.barang_id','=','barangs.id')
                           ->join('suppliers','suppliers.id','=','barangs.supplier_id')
-                          ->where('stocks.jumlah','<=',200)
+        
                           ->selectRaw('*,barangs.nama as nm_bar, stocks.jumlah, barangs.id as id_bar,suppliers.id as id_sup, suppliers.jenis_id as id_jenis')
                           ->count();
         $totalFiltered =$totaldata;
@@ -300,7 +305,7 @@ dd($data);
 
         $barang = Barang::join('stocks','stocks.barang_id','=','barangs.id')
                          ->join('suppliers','suppliers.id','=','barangs.supplier_id')
-                         ->where('stocks.jumlah','<=',200)
+        
                          ->selectRaw('*,barangs.nama as nm_bar,stocks.jumlah, suppliers.nama as nama_sup, barangs.id as id_bar,suppliers.id as id_sup, suppliers.jenis_id as id_jenis');
             if (empty($request->input('search.value'))) {
                 $barang = $barang->offset($start)
